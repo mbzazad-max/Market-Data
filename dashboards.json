@@ -1,0 +1,6 @@
+{
+ "_about": "Dashboards told to rebuild when one of their series changes. uses = series id prefixes.",
+ "dashboards": [
+  {"repo": "mbzazad-max/coin-zones", "workflow": "build.yml", "uses": ["binance/", "tv/"]}
+ ]
+}

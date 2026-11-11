@@ -1,0 +1,56 @@
+name: Import market data
+on:
+  push:
+    branches: [main]
+    paths: ['incoming/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: market-data
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Merge uploads and publish in one commit
+        id: imp
+        shell: bash
+        run: |
+          set -uo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          status=0
+          for attempt in 1 2 3 4 5 6; do
+            # Start from the newest main every attempt, so a new upload is never lost.
+            git fetch --depth 1 origin main && git checkout -q -B import origin/main
+            (cd tools && python import_incoming.py); status=$?
+            if [ $status -ne 0 ] && [ $status -ne 2 ]; then echo "::error::Importer crashed; nothing published."; exit 1; fi
+            git add -A data manifest.json incoming
+            if git diff --cached --quiet; then echo "Nothing to publish."; break; fi
+            git commit -q -m "Import market data"
+            if git push -q origin HEAD:main; then echo "Published."; break; fi
+            if [ $attempt -eq 6 ]; then echo "::error::Could not publish after 6 attempts."; exit 1; fi
+            sleep $((attempt * 3))
+          done
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+      - name: Tell dashboards to rebuild
+        env:
+          GH_TOKEN: ${{ secrets.DASHBOARD_TOKEN }}
+        run: |
+          targets=$(cd tools && python notify.py)
+          [ -z "$targets" ] && { echo "No dashboard uses the changed series."; exit 0; }
+          if [ -z "$GH_TOKEN" ]; then echo "::warning::DASHBOARD_TOKEN secret not set; dashboards were not told to rebuild."; exit 0; fi
+          echo "$targets" | while read repo wf; do gh workflow run "$wf" -R "$repo" && echo "Rebuild requested: $repo"; done
+      - name: Report data errors
+        if: steps.imp.outputs.status == '2'
+        run: |
+          python -c "import json;[print('::error::'+e) for e in json.load(open('manifest.json'))['errors_last_import']]"
+          exit 1
