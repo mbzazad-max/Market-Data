@@ -1,0 +1,73 @@
+{
+ "fetched_at": 1794548400,
+ "id": "snap/coinglass_eth",
+ "payload": {
+  "as_of": "2026-11-13T16:40:00+11:00",
+  "rows": [
+   {
+    "group": "Snapshot",
+    "id": "as_of",
+    "metric": "Snapshot time",
+    "note": "Read from coinglass.com/liquidations, /FundingRate and /open-interest/ETH during the sell-off.",
+    "num": null,
+    "signal": "\u2014",
+    "value": "13 Nov 2026, 16:40 AEDT"
+   },
+   {
+    "group": "Funding",
+    "id": "funding_oiw",
+    "metric": "ETH OI-weighted funding (8h)",
+    "note": "Under the 0.01% baseline; longs not crowded.",
+    "num": 0.0037,
+    "signal": "Cooling",
+    "value": "0.0037%"
+   },
+   {
+    "group": "Funding",
+    "id": "funding_vw",
+    "metric": "ETH volume-weighted funding (8h)",
+    "note": "Binance 0.0028%, OKX \u22120.0022% (shorts paying), Bybit 0.0035%.",
+    "num": 0.0031,
+    "signal": "Cooling",
+    "value": "0.0031%"
+   },
+   {
+    "group": "Open interest",
+    "id": "oi_total",
+    "metric": "ETH futures open interest",
+    "note": "1h \u22120.21%, 4h \u22125.07%, 24h \u22126.13%. Binance 3.88M ETH (24h \u22124.31%), CME 1.27M ETH (\u22123.92%), Bybit 874K ETH (\u22122.16%), OKX 864K ETH (\u22120.51%).",
+    "num": -5.07,
+    "num_note": "4h OI change, %",
+    "signal": "Deleveraging",
+    "value": "12.29M ETH ($23.6B)"
+   },
+   {
+    "group": "Liquidations",
+    "id": "liq_btc_24h",
+    "metric": "ETH liquidations, 24h",
+    "note": "Longs $235.27M vs shorts $24.21M; $141M of the longs went in the last 4h, $11M in the last hour. ETH $1,919, \u22126.2% on the day.",
+    "num": 0.093,
+    "signal": "Heavy long flush",
+    "value": "$259.5M (91% longs)"
+   },
+   {
+    "group": "Liquidations",
+    "id": "liq_mkt_24h",
+    "metric": "All-market liquidations, 24h",
+    "note": "175,514 traders liquidated; longs $1.31B vs shorts $158.5M; market-wide OI $119.3B (\u22126.1% 24h). Largest order: $31.09M BTC-USD on Hyperliquid.",
+    "num": 0.108,
+    "signal": "Long flush",
+    "value": "$1.47B (89% longs)"
+   },
+   {
+    "group": "Read",
+    "id": "read",
+    "metric": "What it means",
+    "note": "ETH followed BTC down: $141M of ETH longs liquidated in 4 hours, open interest \u22125% in 4h and funding cooled (OKX already negative). Leverage is clearing; for spot, wait for the liquidations to fade and a 4H close back above a support zone before buying.",
+    "num": null,
+    "signal": "Flush still running",
+    "value": "Long cascade under 2,000"
+   }
+  ]
+ }
+}
