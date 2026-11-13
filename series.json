@@ -339,6 +339,66 @@
    "symbol": "TVC:SILVER",
    "tf": "4H",
    "seed_count": 5000
+  },
+  "tv/COINBASE_BTCUSD/1D": {
+   "source": "tv",
+   "symbol": "COINBASE:BTCUSD",
+   "tf": "1D",
+   "seed_count": 5000
+  },
+  "tv/COINBASE_BTCUSD/4H": {
+   "source": "tv",
+   "symbol": "COINBASE:BTCUSD",
+   "tf": "4H",
+   "seed_count": 5000
+  },
+  "tv/CRYPTOCAP_BTC.D/4H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:BTC.D",
+   "tf": "4H",
+   "seed_count": 5000
+  },
+  "tv/CRYPTOCAP_TOTAL2/4H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:TOTAL2",
+   "tf": "4H",
+   "seed_count": 5000
+  }
+ },
+ "_about_snapshots": "Non-candle readings, one JSON file each in data/snap/<name>.json, newest valid reading wins (older or invalid uploads are rejected, last good kept). task = who loads it: 'daily-tv' = the 11:30 Claude task (TV_TASK.md), 'coinglass' = the CoinGlass Claude task on the owner's computer (COINGLASS_TASK.md).",
+ "snapshots": {
+  "snap/tv_econ_us": {
+   "task": "daily-tv",
+   "kind": "tv_econ",
+   "what": "US high-importance economic calendar, yesterday to +15 days (UTC)",
+   "tool": "mcp-tv-get-economic-calendar",
+   "args": {
+    "countries": "US",
+    "min_importance": 1,
+    "date_from": "<yesterday>",
+    "date_to": "<today+15>"
+   },
+   "max_age_h": 20
+  },
+  "snap/cmc_global": {
+   "task": "daily-tv",
+   "kind": "cmc_global",
+   "what": "CoinMarketCap whole-market snapshot (Fear & Greed, Altcoin Season, market cap, dominance, ETF assets)",
+   "tool": "CoinMarketCap get_global_metrics_latest",
+   "args": {},
+   "max_age_h": 20
+  },
+  "snap/coinglass_btc": {
+   "task": "coinglass",
+   "kind": "coinglass",
+   "what": "CoinGlass BTC funding, open interest and liquidations (read in the browser)",
+   "max_age_h": 20
+  },
+  "snap/coinglass_eth": {
+   "task": "coinglass",
+   "kind": "coinglass",
+   "what": "CoinGlass ETH funding, open interest and liquidations (read in the browser)",
+   "max_age_h": 20
   }
  }
 }

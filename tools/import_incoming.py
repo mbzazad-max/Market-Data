@@ -3,6 +3,9 @@
 Each upload is one folder: incoming/<batch>/fetch.json + <SYMBOL>_<TF>.csv files.
 fetch.json: {"source": "binance"|"tv", "fetched_at": <unix seconds UTC>, "margin_s": <optional int>,
             "files": {<file name>: <its own fetched_at>} (optional, overrides fetched_at per file)}
+Snapshot uploads (source "snap") hold <name>.json files instead: {"payload": <the reading, unchanged>}.
+A snapshot replaces data/snap/<name>.json only if it is listed in series.json "snapshots", passes its
+kind check and is newer than the stored one; otherwise the last good reading stays.
 
 Rules
 - Closed candles only: a candle is kept only if open_time + period <= fetched_at - margin_s.
@@ -19,8 +22,41 @@ import shutil
 import sys
 import time
 
-from mdlib import (PERIOD, ROOT, data_path, load_json, parse_csv, read_series,
-                   same_values, save_json, series_registry, write_csv)
+from mdlib import (PERIOD, ROOT, check_snapshot, data_path, load_json, parse_csv, read_series,
+                   same_values, save_json, series_registry, snap_path, snapshot_registry, write_csv)
+
+
+def import_snapshots(b, meta, man, errors, changed, now):
+    reg = snapshot_registry()
+    fetched_at = meta["fetched_at"]
+    snaps = man.setdefault("snapshots", {})
+    for f in sorted(b.glob("*.json")):
+        if f.name == "fetch.json":
+            continue
+        sid = "snap/" + f.stem
+        if sid not in reg:
+            errors.append(f"{b.name}/{f.name}: {sid} is not listed in series.json snapshots, ignored")
+            continue
+        try:
+            payload = load_json(f)["payload"]
+        except Exception as e:  # unreadable upload: keep the last good reading
+            errors.append(f"{sid}: unreadable upload ({e}); kept last good reading")
+            continue
+        why = check_snapshot(reg[sid]["kind"], payload)
+        if why:
+            errors.append(f"{sid}: {why}; kept last good reading")
+            snaps.setdefault(sid, {})["last_error"] = why
+            continue
+        prev = snaps.get(sid, {})
+        if prev.get("fetched_at") and fetched_at <= prev["fetched_at"]:
+            print(f"{sid}: upload from {fetched_at} is not newer than {prev['fetched_at']}, ignored")
+            continue
+        p = snap_path(sid)
+        p.parent.mkdir(parents=True, exist_ok=True)
+        save_json(p, {"id": sid, "fetched_at": fetched_at, "payload": payload})
+        snaps[sid] = {"kind": reg[sid]["kind"], "fetched_at": fetched_at, "imported_at": now, "bytes": p.stat().st_size}
+        changed.append(sid)
+        print(f"{sid}: reading from {fetched_at} saved")
 
 
 def big_change(a, b, limit=0.01):
@@ -38,6 +74,10 @@ def main():
     errors, changed = [], []
     for b in batches:
         meta = load_json(b / "fetch.json")
+        if meta and meta.get("source") == "snap" and isinstance(meta.get("fetched_at"), int):
+            import_snapshots(b, meta, man, errors, changed, now)
+            shutil.rmtree(b)
+            continue
         if not meta or meta.get("source") not in ("binance", "tv") or not isinstance(meta.get("fetched_at"), int):
             errors.append(f"{b.name}: missing or invalid fetch.json, upload ignored")
             shutil.rmtree(b)

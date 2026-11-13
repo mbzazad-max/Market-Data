@@ -83,3 +83,47 @@ def read_series(sid):
 
 def same_values(a, b):
     return all(float(x) == float(y) for x, y in zip(a[1:], b[1:]))
+
+
+# ---- snapshots: non-candle readings (calendar, CoinMarketCap, CoinGlass), one JSON file each ----
+
+def snapshot_registry():
+    return load_json(ROOT / "series.json").get("snapshots", {})
+
+
+def snap_path(sid):
+    return ROOT / "data" / "snap" / (sid.split("/", 1)[1] + ".json")
+
+
+def check_snapshot(kind, payload):
+    """Return None if the payload looks like a real reading of this kind, else the reason it is rejected."""
+    if not isinstance(payload, dict):
+        return "payload is not a JSON object"
+    if kind == "tv_econ":
+        if payload.get("status") != "ok" or not isinstance(payload.get("result"), list):
+            return "economic calendar answer without status ok and a result list"
+        for e in payload["result"]:
+            if not isinstance(e, dict) or "date" not in e or "title" not in e:
+                return "calendar event without date or title"
+        return None
+    if kind == "cmc_global":
+        try:
+            idx = payload["sentiment"]["fear_greed"]["current"]["index"]
+        except (KeyError, TypeError):
+            return "no sentiment.fear_greed.current.index"
+        if not isinstance(idx, (int, float)) or not 0 <= idx <= 100:
+            return "Fear & Greed index out of range"
+        return None
+    if kind == "coinglass":
+        rows = payload.get("rows")
+        if not isinstance(rows, list) or not rows:
+            return "no rows"
+        ids = {r.get("id") for r in rows if isinstance(r, dict)}
+        need = {"as_of", "funding_oiw", "funding_vw", "oi_total", "liq_btc_24h", "liq_mkt_24h"}
+        if not need <= ids:
+            return "missing rows: " + ", ".join(sorted(need - ids))
+        for r in rows:
+            if r.get("id") != "as_of" and r.get("num") is not None and not isinstance(r.get("num"), (int, float)):
+                return f"row {r.get('id')}: num must be a number or null"
+        return None
+    return f"unknown snapshot kind {kind}"
