@@ -1,10 +1,10 @@
 {
- "fetched_at": 1794553622,
+ "fetched_at": 1794553942,
  "id": "snap/cmc_global",
  "payload": {
   "dominance": {
    "btc": {
-    "current": "+59.77%",
+    "current": "+59.75%",
     "history": {
      "last_month": "+59.82%",
      "last_week": "+59.99%",
@@ -40,7 +40,7 @@
     }
    },
    "others": {
-    "current": "+30.03%",
+    "current": "+30.04%",
     "history": {
      "last_month": "+29.26%",
      "last_week": "+29.28%",
@@ -83,25 +83,25 @@
     "futures": {
      "current": "1.09 B",
      "percent_change": {
-      "24h": "-3.48%",
-      "30d": "-10.23%",
-      "7d": "-8.62%"
+      "24h": "-3.46%",
+      "30d": "-10.22%",
+      "7d": "-8.61%"
      }
     },
     "perpetuals": {
-     "current": "336.39 B",
+     "current": "339.68 B",
      "percent_change": {
-      "24h": "-0.93%",
-      "30d": "-17.06%",
-      "7d": "-11.25%"
+      "24h": "+0.03%",
+      "30d": "-16.25%",
+      "7d": "-10.38%"
      }
     },
     "total": {
-     "current": "337.49 B",
+     "current": "340.77 B",
      "percent_change": {
-      "24h": "-0.94%",
-      "30d": "-17.04%",
-      "7d": "-11.24%"
+      "24h": "+0.02%",
+      "30d": "-16.24%",
+      "7d": "-10.38%"
      }
     }
    }
@@ -144,22 +144,22 @@
     },
     "spot_vs_perp_ratio": "0.18",
     "total": {
-     "current": "92.2 B",
+     "current": "92.64 B",
      "percent_change": {
-      "24h": "+50.36%",
-      "30d": "+8.6%",
-      "7d": "-14.32%"
+      "24h": "+51.08%",
+      "30d": "+9.12%",
+      "7d": "-13.91%"
      }
     }
    }
   },
   "market_size": {
    "total_crypto_market_cap_usd": {
-    "current": "2.32 T",
+    "current": "2.33 T",
     "percent_change": {
-     "24h": "-4.73%",
-     "30d": "-15.45%",
-     "7d": "-8.63%"
+     "24h": "-4.61%",
+     "30d": "-15.42%",
+     "7d": "-8.6%"
     },
     "yearly": {
      "max": {
