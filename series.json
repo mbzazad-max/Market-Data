@@ -360,13 +360,17 @@
    "source": "tv",
    "symbol": "CRYPTOCAP:BTC.D",
    "tf": "4H",
-   "seed_count": 5000
+   "seed_count": 5000,
+   "frozen": true,
+   "note": "Stored only (loaded once on 13 Nov 2026), no longer fetched: the BTC & ETH dashboard uses CRYPTOCAP_TOTAL2ES, which the daily task already loads, and leaves BTC dominance out."
   },
   "tv/CRYPTOCAP_TOTAL2/4H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:TOTAL2",
    "tf": "4H",
-   "seed_count": 5000
+   "seed_count": 5000,
+   "frozen": true,
+   "note": "Stored only (loaded once on 13 Nov 2026), no longer fetched: the BTC & ETH dashboard uses CRYPTOCAP_TOTAL2ES, which the daily task already loads, and leaves BTC dominance out."
   }
  },
  "_about_snapshots": "Non-candle readings, one JSON file each in data/snap/<name>.json, newest valid reading wins (older or invalid uploads are rejected, last good kept). task = who loads it: 'daily-tv' = the 11:30 Claude task (TV_TASK.md), 'coinglass' = the CoinGlass Claude task on the owner's computer (COINGLASS_TASK.md).",
