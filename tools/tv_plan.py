@@ -20,8 +20,8 @@ def main():
     now = int(time.time())
     jobs, seeds, waiting = [], 0, []
     for sid, s in series_registry().items():
-        if s["source"] != "tv":
-            continue
+        if s["source"] != "tv" or s.get("frozen"):
+            continue  # frozen = stored history only; it is never fetched again
         P = PERIOD[s["tf"]]
         m = man.get(sid)
         if not m:

@@ -344,13 +344,17 @@
    "source": "tv",
    "symbol": "COINBASE:BTCUSD",
    "tf": "1D",
-   "seed_count": 5000
+   "seed_count": 5000,
+   "frozen": true,
+   "note": "History only (loaded once on 13 Nov 2026). New BTC candles come from binance/BTCUSDT; the daily TradingView task does not fetch this series."
   },
   "tv/COINBASE_BTCUSD/4H": {
    "source": "tv",
    "symbol": "COINBASE:BTCUSD",
    "tf": "4H",
-   "seed_count": 5000
+   "seed_count": 5000,
+   "frozen": true,
+   "note": "History only (loaded once on 13 Nov 2026). New BTC candles come from binance/BTCUSDT; the daily TradingView task does not fetch this series."
   },
   "tv/CRYPTOCAP_BTC.D/4H": {
    "source": "tv",
