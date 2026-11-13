@@ -125,5 +125,8 @@ def check_snapshot(kind, payload):
         for r in rows:
             if r.get("id") != "as_of" and r.get("num") is not None and not isinstance(r.get("num"), (int, float)):
                 return f"row {r.get('id')}: num must be a number or null"
+            for k in ("long_1h", "short_1h", "long_4h", "short_4h", "long_24h", "short_24h"):
+                if k in r and (not isinstance(r[k], (int, float)) or r[k] < 0):
+                    return f"row {r.get('id')}: {k} must be a dollar amount (number, not text)"
         return None
     return f"unknown snapshot kind {kind}"

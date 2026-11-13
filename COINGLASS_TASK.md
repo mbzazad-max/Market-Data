@@ -23,7 +23,11 @@ Claude only LOADS data here: it reads CoinGlass in the built-in browser and stor
    liq_mkt_24h, read (two or three plain sentences on what the numbers mean for a spot buyer; no futures trade ideas).
    Each row: group, id, metric, value (text as shown), num, signal, note. num: funding_oiw / funding_vw = rate in %;
    oi_total = 4h open-interest change in % (and num_note "4h OI change, %"); liq_btc_24h = that coin's 24h SHORT share as a fraction;
-   liq_mkt_24h = market 24h short share as a fraction; as_of and read = null. Copy numbers exactly as read; if a table does not load,
+   liq_mkt_24h = market 24h short share as a fraction; as_of and read = null.
+   On the liq_btc_24h row also add the coin's liquidations in US dollars as plain numbers (from its "1 BTC" / "2 ETH" row on
+   /LiquidationData): long_1h, short_1h, long_4h, short_4h, long_24h, short_24h (e.g. $444.31M -> 444310000).
+   The dashboard's spot buy checklist uses long_1h and long_4h ("flush over").
+   In "read", describe what the numbers mean for a spot buyer in plain words; the dashboard adds the spot buy checklist itself. Copy numbers exactly as read; if a table does not load,
    leave that coin out of this run (its last good reading stays) rather than guessing.
 8. `python3 tools/snap_stage.py FETCHED_AT coinglass_btc=coinglass_btc.json coinglass_eth=coinglass_eth.json`, commit only
    incoming/snap-FETCHED_AT/ in ONE commit ("CoinGlass load FETCHED_AT") and push to main.
