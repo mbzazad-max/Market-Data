@@ -1,19 +1,25 @@
 name: Check dashboards
-# Run it yourself whenever a board looks wrong: Actions -> Check dashboards -> Run workflow.
-# It compares every dashboard with what Market-Data holds and writes the report on the run's Summary page.
+# Runs by itself twice a day (after the 11:30 Sydney loads, and in the evening) and can be run any time:
+# Actions -> Check dashboards -> Run workflow. It compares every dashboard with Market-Data, checks every
+# candle and reading that is due has been loaded, and writes the report on the run's Summary page.
+# A scheduled run first asks any dashboard that is behind to rebuild, waits, and checks again.
+# The run FAILS (GitHub emails you) only if something is still wrong after that.
 on:
+  schedule:
+    - cron: '45 1 * * *'   # 12:45 Sydney summer time (11:45 winter): after the laptop upload and the 11:30 loads
+    - cron: '0 8 * * *'    # 19:00 Sydney summer time (18:00 winter)
   workflow_dispatch:
     inputs:
       rebuild:
-        description: 'Also ask every dashboard that is behind or failed to rebuild'
+        description: 'Also ask every dashboard that is behind or failed to rebuild, then check again'
         type: boolean
-        default: false
+        default: true
 permissions:
   contents: read
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
@@ -24,6 +30,21 @@ jobs:
       - name: Compare dashboards with Market-Data (report on the Summary page)
         env:
           GH_TOKEN: ${{ secrets.DASHBOARD_TOKEN }}
+          REBUILD: ${{ github.event_name == 'schedule' || inputs.rebuild }}
         run: |
           [ -n "$GH_TOKEN" ] || { echo "::error::Secret DASHBOARD_TOKEN is not set."; exit 1; }
-          cd tools && python check_dashboards.py ${{ inputs.rebuild && '--rebuild' || '' }}
+          cd tools
+          if [ "$REBUILD" = "true" ]; then
+            status=0; python check_dashboards.py --rebuild || status=$?
+            if [ $status -eq 3 ]; then
+              echo "Rebuilds started; checking again in 3 minutes." | tee -a "$GITHUB_STEP_SUMMARY"
+              sleep 180
+              git pull -q --depth 1 origin main || true
+              echo "# Second check (after the rebuilds)" >> "$GITHUB_STEP_SUMMARY"
+              python check_dashboards.py
+            else
+              exit $status
+            fi
+          else
+            python check_dashboards.py
+          fi
