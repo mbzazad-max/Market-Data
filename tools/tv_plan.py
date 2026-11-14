@@ -38,15 +38,13 @@ def main():
         missing = math.ceil((latest_closed_open - m["last_open"]) / P)
         jobs.append({"id": sid, "symbol": s["symbol"], "interval": TV_INTERVAL[s["tf"]],
                      "count": min(5000, missing + 6), "format": "columns", "seed": False})
-    # non-candle readings this task also loads (the economic calendar; CoinMarketCap and CoinGlass are in READINGS_TASK.md): only when older than max_age_h
+    # non-candle readings this task also loads (the economic calendar; CoinMarketCap and CoinGlass are in READINGS_TASK.md).
+    # No age check (owner, 14 Nov 2026): every run loads them, so a late load one day never skips the next day's.
     snaps = load_json(ROOT / "manifest.json", {}).get("snapshots", {})
     today = dt.datetime.fromtimestamp(now, dt.timezone.utc).date()
     snap_jobs = []
     for sid, s in snapshot_registry().items():
         if s.get("task") != "daily-tv":
-            continue
-        got = snaps.get(sid, {}).get("fetched_at")
-        if got and now - got < s["max_age_h"] * 3600:
             continue
         args = {k: (str(today - dt.timedelta(days=1)) if v == "<yesterday>" else str(today + dt.timedelta(days=15)) if v == "<today+15>" else v)
                 for k, v in s.get("args", {}).items()}

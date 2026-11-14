@@ -12,8 +12,7 @@ Claude only LOADS data here. It does not calculate anything for any dashboard.
    Large answers are saved to a file by the tool; small answers appear inline: save each inline answer, unchanged,
    as a JSON file under /tmp/tv/. Never edit numbers.
 5. `python3 tools/tv_stage.py FETCHED_AT /tmp/tv/*.json <saved answer files...>` writes `incoming/tv-FETCHED_AT/`.
-6. Non-candle readings: `tv_plan.py` also prints `snapshot_jobs` (the US economic calendar only, when the stored one is
-   older than 20 hours; CoinMarketCap and CoinGlass moved to READINGS_TASK.md on 14 Nov 2026). For each job call its tool with exactly its args:
+6. Non-candle readings: `tv_plan.py` also prints `snapshot_jobs` (the US economic calendar, on every run: no age check since 14 Nov 2026; CoinMarketCap and CoinGlass moved to READINGS_TASK.md on 14 Nov 2026). For each job call its tool with exactly its args:
    - `mcp-tv-get-economic-calendar` (TradingView connector) with the job's countries, min_importance, date_from, date_to;
    (no CoinMarketCap here any more: see READINGS_TASK.md).
    Save each answer unchanged as JSON (descriptive prose fields such as "comment" or "definition" may be dropped; never edit

@@ -71,6 +71,29 @@ def big_change(a, b, limit=0.01):
     return any(abs(float(y) - float(x)) > limit * max(abs(float(x)), 1e-12) for x, y in zip(a[1:5], b[1:5]))
 
 
+def confirm_daily_from_4h(source, symbol, tf, P, inc, closed, f_fetched):
+    """A Binance 1D candle that closed before the file was saved but inside the safety margin
+    (the laptop download ran a few seconds after 00:00 UTC) is accepted only if its open, high, low
+    and close equal those built from the six stored, closed Binance 4H candles of that day.
+    Nothing is fetched; the check uses only data already in the repo."""
+    if source != "binance" or tf != "1D":
+        return {}
+    h4 = None
+    out = {}
+    for t, r in inc.items():
+        if t in closed or t + P > f_fetched:
+            continue  # already closed, or really still forming when the file was saved
+        if h4 is None:
+            h4 = read_series(f"binance/{symbol}/4H")
+        bars = [h4.get(t + k * 14400) for k in range(6)]
+        if any(b is None for b in bars):
+            continue
+        o, h, l, c = float(bars[0][1]), max(float(b[2]) for b in bars), min(float(b[3]) for b in bars), float(bars[5][4])
+        if (float(r[1]), float(r[2]), float(r[3]), float(r[4])) == (o, h, l, c):
+            out[t] = r
+    return out
+
+
 def main():
     reg = series_registry()
     man = load_json(ROOT / "manifest.json", {"series": {}})
@@ -112,6 +135,10 @@ def main():
                 man["series"].setdefault(sid, {})["last_error"] = str(e)
                 continue
             closed = {t: r for t, r in inc.items() if t + P <= cutoff}
+            confirmed = confirm_daily_from_4h(source, symbol, tf, P, inc, closed, f_fetched)
+            if confirmed:
+                closed.update(confirmed)
+                print(f"{sid}: {len(confirmed)} candle(s) inside the safety margin accepted, they match the stored closed 4H candles")
             dropped = len(inc) - len(closed)
             conflict, revised, added = [], 0, 0
             merged = dict(old)
