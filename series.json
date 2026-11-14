@@ -407,6 +407,28 @@
    "kind": "coinglass",
    "what": "CoinGlass ETH funding, open interest and liquidations (read in the browser)",
    "max_age_h": 20
+  },
+  "snap/cmc_quotes": {
+   "task": "daily-tv",
+   "kind": "cmc_quotes",
+   "what": "CoinMarketCap quotes for SOL (id 5426) and BNB (id 1839): price, rank, market cap, dominance, volume, % changes (BTC & ETH dashboard, SOL/BNB views)",
+   "tool": "CoinMarketCap get_crypto_quotes_latest",
+   "args": {
+    "id": "5426,1839"
+   },
+   "max_age_h": 20
+  },
+  "snap/coinglass_sol": {
+   "task": "coinglass",
+   "kind": "coinglass",
+   "what": "CoinGlass SOL funding, open interest and liquidations (read in the browser)",
+   "max_age_h": 20
+  },
+  "snap/coinglass_bnb": {
+   "task": "coinglass",
+   "kind": "coinglass",
+   "what": "CoinGlass BNB funding, open interest and liquidations (read in the browser)",
+   "max_age_h": 20
   }
  }
 }

@@ -129,4 +129,16 @@ def check_snapshot(kind, payload):
                 if k in r and (not isinstance(r[k], (int, float)) or r[k] < 0):
                     return f"row {r.get('id')}: {k} must be a dollar amount (number, not text)"
         return None
+    if kind == "cmc_quotes":
+        # get_crypto_quotes_latest answer for 2+ ids: {"headers": [...], "rows": [[...], ...]}; 1 id: a list of objects
+        if isinstance(payload.get("headers"), list) and isinstance(payload.get("rows"), list) and payload["rows"]:
+            h = payload["headers"]
+            if not {"id", "symbol", "price", "market_cap"} <= set(h):
+                return "quotes answer without id, symbol, price and market_cap columns"
+            for r in payload["rows"]:
+                v = r[h.index("price")] if isinstance(r, list) and len(r) == len(h) else None
+                if not isinstance(v, (int, float)) or v <= 0:
+                    return "quote row without a positive price"
+            return None
+        return "quotes answer without headers and rows"
     return f"unknown snapshot kind {kind}"
