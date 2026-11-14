@@ -114,7 +114,7 @@ def main():
             continue
         source, fetched_at, margin = meta["source"], meta["fetched_at"], int(meta.get("margin_s", 0))
         cutoff = fetched_at - margin
-        for f in sorted(b.glob("*.csv")):
+        for f in sorted(b.glob("*.csv"), key=lambda p: (not p.stem.endswith("_4H"), p.name)):  # 4H first, so a 1D candle can be checked against 4H candles from the same upload
             stem = f.stem
             if "_" not in stem:
                 errors.append(f"{b.name}/{f.name}: file name must be <SYMBOL>_<TF>.csv")
