@@ -1,0 +1,29 @@
+name: Check dashboards
+# Run it yourself whenever a board looks wrong: Actions -> Check dashboards -> Run workflow.
+# It compares every dashboard with what Market-Data holds and writes the report on the run's Summary page.
+on:
+  workflow_dispatch:
+    inputs:
+      rebuild:
+        description: 'Also ask every dashboard that is behind or failed to rebuild'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compare dashboards with Market-Data (report on the Summary page)
+        env:
+          GH_TOKEN: ${{ secrets.DASHBOARD_TOKEN }}
+        run: |
+          [ -n "$GH_TOKEN" ] || { echo "::error::Secret DASHBOARD_TOKEN is not set."; exit 1; }
+          cd tools && python check_dashboards.py ${{ inputs.rebuild && '--rebuild' || '' }}

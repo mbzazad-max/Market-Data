@@ -11,3 +11,6 @@ columns `time,open,high,low,close,volume`, time = candle open in unix seconds UT
 
 Closed candles only: a candle is kept only if it had closed by the data's own fetch time (never the time the import runs).
 A Binance candle that already exists must never change; if it does, that upload is rejected and the last good data stays.
+
+## Check dashboards (on demand)
+Actions → **Check dashboards** → **Run workflow**. It compares every dashboard in `dashboards.json` with `manifest.json`: last closed candle and row count per series, reading times, the dashboard's last build, and the live page (`site`) against its repo. The report is on the run's **Summary** page; the run turns red when something needs attention. Tick "rebuild" to also restart every dashboard that is behind or failed. Script: `tools/check_dashboards.py`.

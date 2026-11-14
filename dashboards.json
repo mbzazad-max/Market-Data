@@ -1,8 +1,8 @@
 {
- "_about": "Dashboards told to rebuild when one of their series changes. uses = series id prefixes.",
+ "_about": "Dashboards told to rebuild when one of their series changes. uses = series id prefixes. site = the address the check workflow opens (tools/check_dashboards.py).",
  "dashboards": [
-  {"repo": "mbzazad-max/coin-zones", "workflow": "build.yml", "uses": ["binance/", "tv/"]},
-  {"repo": "mbzazad-max/btc-eth-dashboard", "workflow": "build.yml", "uses": ["binance/BTCUSDT/", "binance/ETHUSDT/", "tv/CRYPTOCAP_USDT.D/", "tv/CRYPTOCAP_USDC.D/", "tv/CRYPTOCAP_TOTAL2ES/", "snap/"]},
-  {"repo": "mbzazad-max/Fib-Extension-", "workflow": "build.yml", "uses": ["binance/BTCUSDT/", "binance/ETHUSDT/"]}
+  {"repo": "mbzazad-max/coin-zones", "workflow": "build.yml", "site": "https://dashboards.mbzazad.workers.dev/coin-zones/", "uses": ["binance/", "tv/"]},
+  {"repo": "mbzazad-max/btc-eth-dashboard", "workflow": "build.yml", "site": "https://dashboards.mbzazad.workers.dev/btc-eth/", "uses": ["binance/BTCUSDT/", "binance/ETHUSDT/", "tv/CRYPTOCAP_USDT.D/", "tv/CRYPTOCAP_USDC.D/", "tv/CRYPTOCAP_TOTAL2ES/", "snap/"]},
+  {"repo": "mbzazad-max/Fib-Extension-", "workflow": "build.yml", "site": "https://dashboards.mbzazad.workers.dev/fib-extension/", "uses": ["binance/BTCUSDT/", "binance/ETHUSDT/"]}
  ]
 }
