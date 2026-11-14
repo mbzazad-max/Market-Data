@@ -13,7 +13,7 @@ Claude only LOADS data here. It does not calculate anything for any dashboard.
    as a JSON file under /tmp/tv/. Never edit numbers.
 5. `python3 tools/tv_stage.py FETCHED_AT /tmp/tv/*.json <saved answer files...>` writes `incoming/tv-FETCHED_AT/`.
 6. Non-candle readings: `tv_plan.py` also prints `snapshot_jobs` (the US economic calendar and the CoinMarketCap
-   readings, each only when the stored one is older than 20 hours). For each job call its tool with exactly its args:
+   readings, each only when the stored one is older than its max_age_h: 20 hours for the calendar, 12 hours for CoinMarketCap so it is refreshed on every daily run). For each job call its tool with exactly its args:
    - `mcp-tv-get-economic-calendar` (TradingView connector) with the job's countries, min_importance, date_from, date_to;
    - `get_global_metrics_latest` (CoinMarketCap connector, no arguments);
    - `get_crypto_quotes_latest` (CoinMarketCap connector) with exactly the job's `id` string ("5426,1839" = SOL and BNB, one call).

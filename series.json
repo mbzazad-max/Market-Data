@@ -394,7 +394,7 @@
    "what": "CoinMarketCap whole-market snapshot (Fear & Greed, Altcoin Season, market cap, dominance, ETF assets)",
    "tool": "CoinMarketCap get_global_metrics_latest",
    "args": {},
-   "max_age_h": 20
+   "max_age_h": 12
   },
   "snap/coinglass_btc": {
    "task": "coinglass",
@@ -416,7 +416,7 @@
    "args": {
     "id": "5426,1839"
    },
-   "max_age_h": 20
+   "max_age_h": 12
   },
   "snap/coinglass_sol": {
    "task": "coinglass",
