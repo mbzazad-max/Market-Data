@@ -5,6 +5,7 @@ Claude only LOADS data here: it reads CoinGlass in the built-in browser and stor
 
 1. Clone this repo (`mbzazad-max/market-data`, push access) and `cd` into it.
 2. Check `manifest.json` → `snapshots`: if both readings were fetched less than 20 hours ago, stop and report "CoinGlass already current".
+   Exception: when the owner asks for a CoinGlass load directly in chat, skip this check and load straight away, without asking questions.
 3. Run `date -u +%s` and keep it as FETCHED_AT, BEFORE opening CoinGlass.
 4. Load the `built-in-browser` skill, open https://www.coinglass.com/FundingRate, set the viewport to 1440×900 and wait ~5 s.
    If the built-in browser cannot be reached (computer asleep or app closed), stop and report it: the last good readings stay.
