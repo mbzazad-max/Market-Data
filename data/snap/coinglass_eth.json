@@ -1,78 +1,92 @@
 {
- "fetched_at": 1794617097,
+ "fetched_at": 1794633201,
  "id": "snap/coinglass_eth",
  "payload": {
-  "as_of": "2026-11-14T11:45:00+11:00",
+  "as_of": "2026-11-14T16:15:00+11:00",
   "rows": [
    {
     "group": "Snapshot",
     "id": "as_of",
     "metric": "Snapshot time",
-    "note": "Read from coinglass.com/LiquidationData, /FundingRate and /open-interest/ETH the morning after the sell-off.",
+    "note": "Read from coinglass.com/FundingRate, /LiquidationData and /open-interest/ETH.",
     "num": null,
     "signal": "\u2014",
-    "value": "14 Nov 2026, 11:45 AEDT"
+    "value": "14 Nov 2026, 16:15 AEDT"
    },
    {
     "group": "Funding",
     "id": "funding_oiw",
     "metric": "ETH OI-weighted funding (8h)",
-    "note": "Well under the 0.01% baseline; longs not crowded.",
-    "num": 0.0025,
+    "note": "Close to flat; longs not crowded.",
+    "num": 0.0007,
     "signal": "Cool",
-    "value": "0.0025%"
+    "value": "0.0007%"
    },
    {
     "group": "Funding",
     "id": "funding_vw",
     "metric": "ETH volume-weighted funding (8h)",
-    "note": "Binance 0.0014%, OKX 0.0007%, Bybit 0.0044%; KuCoin slightly negative (\u22120.0010%).",
-    "num": 0.0025,
+    "note": "Binance 0.0002%, OKX \u22120.0033%, Bybit 0.0045%.",
+    "num": 0.001,
     "signal": "Cool",
-    "value": "0.0025%"
+    "value": "0.0010%"
    },
    {
     "group": "Open interest",
     "id": "oi_total",
     "metric": "ETH futures open interest",
-    "note": "1h +0.32%, 4h \u22120.83%, 24h \u22124.67%. Binance 3.84M ETH (24h \u22124.12%), CME 1.25M ETH (\u22124.76%), Bybit 861.77K ETH (\u22124.13%), OKX 841.97K ETH (+0.42%).",
-    "num": -0.83,
+    "note": "1h +0.71%, 4h \u22121.54%, 24h \u22122.33%. Binance 3.85M ETH (24h \u22122.02%), CME 1.25M ETH (\u22122.54%), Bybit 860.52K ETH (\u22122.30%), OKX 850.49K ETH (\u22122.44%).",
+    "num": -1.54,
     "num_note": "4h OI change, %",
-    "signal": "Deleveraging slowing",
-    "value": "12.15M ETH ($23.45B)"
+    "oi_chg_1h": 0.71,
+    "oi_chg_24h": -2.33,
+    "oi_usd": 23080000000,
+    "signal": "Deleveraging",
+    "value": "12.15M ETH ($23.08B)"
    },
    {
     "group": "Liquidations",
     "id": "liq_btc_24h",
-    "long_1h": 101330,
-    "long_24h": 198680000,
-    "long_4h": 7060000,
+    "long_1h": 379950,
+    "long_24h": 120480000,
+    "long_4h": 63400000,
     "metric": "ETH liquidations, 24h",
-    "note": "Longs $198.68M vs shorts $60.82M; last 4h longs $7.06M vs shorts $1.59M, last hour $101.33K vs $696.98K. ETH $1,929.49, \u22123.75% on the day.",
-    "num": 0.2344,
-    "short_1h": 696980,
-    "short_24h": 60820000,
-    "short_4h": 1590000,
-    "signal": "Long flush fading",
-    "value": "$259.50M (77% longs)"
+    "note": "Longs $120.48M vs shorts $51.20M; last 4h longs $63.40M vs shorts $3.69M, last hour $379.95K vs $857.73K. ETH $1,899.77, \u22121.44% on the day.",
+    "num": 0.2982,
+    "price": 1899.77,
+    "price_chg_24h": -1.44,
+    "short_1h": 857730,
+    "short_24h": 51200000,
+    "short_4h": 3690000,
+    "signal": "Fresh long flush",
+    "value": "$171.68M (70% longs)"
    },
    {
     "group": "Liquidations",
     "id": "liq_mkt_24h",
+    "long_1h": 1790000,
+    "long_24h": 685980000,
+    "long_4h": 329880000,
+    "long_ratio": 49.62,
     "metric": "All-market liquidations, 24h",
-    "note": "164,493 traders liquidated; longs $1.08B vs shorts $213.79M (4h: longs $48.46M vs shorts $4.89M; 1h: $1.01M vs $1.91M); market-wide OI $117.59B (\u22125.12% 24h); long/short 48.56/51.44. Largest order: $20.15M BTC-USD long on Hyperliquid.",
-    "num": 0.165,
-    "signal": "Long flush fading",
-    "value": "$1.29B (83.5% longs)"
+    "note": "136,343 traders liquidated; longs $685.98M vs shorts $149.01M (4h: longs $329.88M vs shorts $13.35M; 1h: $1.79M vs $2.48M); market-wide OI $115.26B (\u22123.27% 24h); long/short 49.62/50.38. Largest order: $17.81M ETHUSDT short on Binance.",
+    "num": 0.178,
+    "oi_chg_24h": -3.27,
+    "oi_usd": 115258998589,
+    "short_1h": 2480000,
+    "short_24h": 149010000,
+    "short_4h": 13350000,
+    "signal": "Fresh long flush",
+    "value": "$835.00M (82.2% longs)"
    },
    {
     "group": "Read",
     "id": "read",
     "metric": "What it means",
-    "note": "ETH's long liquidations have slowed to a trickle ($7M over 4h), open interest is down 4.7% on the day and funding is close to flat at 0.0025%. Leverage has been flushed out, but price is still near the lows. For spot buyers: the forced selling looks done; wait for ETH to hold a support zone on a 4H close before adding.",
+    "note": "ETH longs were flushed again in the last 4h ($63M) and open interest is down 1.5% in 4h, while funding sits near zero at 0.0007%. The last hour saw more shorts than longs liquidated and open interest ticked up 0.7%. For spot buyers: the pressure is easing but only just; wait for liquidations to stay quiet over a full 4h and price to hold support before adding.",
     "num": null,
-    "signal": "Flush over",
-    "value": "Leverage cleared, price still weak"
+    "signal": "Flush pausing",
+    "value": "Leverage coming out, easing"
    }
   ]
  }
