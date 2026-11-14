@@ -38,7 +38,7 @@ def main():
         missing = math.ceil((latest_closed_open - m["last_open"]) / P)
         jobs.append({"id": sid, "symbol": s["symbol"], "interval": TV_INTERVAL[s["tf"]],
                      "count": min(5000, missing + 6), "format": "columns", "seed": False})
-    # non-candle readings this task also loads (economic calendar, CoinMarketCap): only when older than max_age_h
+    # non-candle readings this task also loads (the economic calendar; CoinMarketCap and CoinGlass are in READINGS_TASK.md): only when older than max_age_h
     snaps = load_json(ROOT / "manifest.json", {}).get("snapshots", {})
     today = dt.datetime.fromtimestamp(now, dt.timezone.utc).date()
     snap_jobs = []

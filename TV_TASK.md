@@ -12,11 +12,10 @@ Claude only LOADS data here. It does not calculate anything for any dashboard.
    Large answers are saved to a file by the tool; small answers appear inline: save each inline answer, unchanged,
    as a JSON file under /tmp/tv/. Never edit numbers.
 5. `python3 tools/tv_stage.py FETCHED_AT /tmp/tv/*.json <saved answer files...>` writes `incoming/tv-FETCHED_AT/`.
-6. Non-candle readings: `tv_plan.py` also prints `snapshot_jobs` (the US economic calendar and the CoinMarketCap
-   readings, each only when the stored one is older than its max_age_h: 20 hours for the calendar, 12 hours for CoinMarketCap so it is refreshed on every daily run). For each job call its tool with exactly its args:
+6. Non-candle readings: `tv_plan.py` also prints `snapshot_jobs` (the US economic calendar only, when the stored one is
+   older than 20 hours; CoinMarketCap and CoinGlass moved to READINGS_TASK.md on 14 Nov 2026). For each job call its tool with exactly its args:
    - `mcp-tv-get-economic-calendar` (TradingView connector) with the job's countries, min_importance, date_from, date_to;
-   - `get_global_metrics_latest` (CoinMarketCap connector, no arguments);
-   - `get_crypto_quotes_latest` (CoinMarketCap connector) with exactly the job's `id` string ("5426,1839" = SOL and BNB, one call).
+   (no CoinMarketCap here any more: see READINGS_TASK.md).
    Save each answer unchanged as JSON (descriptive prose fields such as "comment" or "definition" may be dropped; never edit
    numbers or dates), then: `python3 tools/snap_stage.py FETCHED_AT <name>=<file> ...` (name = the job's "name").
    Never use CryptoRank.

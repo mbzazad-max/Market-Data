@@ -389,7 +389,7 @@
    "max_age_h": 20
   },
   "snap/cmc_global": {
-   "task": "daily-tv",
+   "task": "readings",
    "kind": "cmc_global",
    "what": "CoinMarketCap whole-market snapshot (Fear & Greed, Altcoin Season, market cap, dominance, ETF assets)",
    "tool": "CoinMarketCap get_global_metrics_latest",
@@ -397,19 +397,19 @@
    "max_age_h": 12
   },
   "snap/coinglass_btc": {
-   "task": "coinglass",
+   "task": "readings",
    "kind": "coinglass",
    "what": "CoinGlass BTC funding, open interest and liquidations (read in the browser)",
    "max_age_h": 20
   },
   "snap/coinglass_eth": {
-   "task": "coinglass",
+   "task": "readings",
    "kind": "coinglass",
    "what": "CoinGlass ETH funding, open interest and liquidations (read in the browser)",
    "max_age_h": 20
   },
   "snap/cmc_quotes": {
-   "task": "daily-tv",
+   "task": "readings",
    "kind": "cmc_quotes",
    "what": "CoinMarketCap quotes for SOL (id 5426) and BNB (id 1839): price, rank, market cap, dominance, volume, % changes (BTC & ETH dashboard, SOL/BNB views)",
    "tool": "CoinMarketCap get_crypto_quotes_latest",
@@ -419,13 +419,13 @@
    "max_age_h": 12
   },
   "snap/coinglass_sol": {
-   "task": "coinglass",
+   "task": "readings",
    "kind": "coinglass",
    "what": "CoinGlass SOL funding, open interest and liquidations (read in the browser)",
    "max_age_h": 20
   },
   "snap/coinglass_bnb": {
-   "task": "coinglass",
+   "task": "readings",
    "kind": "coinglass",
    "what": "CoinGlass BNB funding, open interest and liquidations (read in the browser)",
    "max_age_h": 20

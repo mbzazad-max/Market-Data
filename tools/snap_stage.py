@@ -2,7 +2,7 @@
 usage: python tools/snap_stage.py <fetched_at unix seconds, taken BEFORE the first call> <name>=<file.json> [...]
 <name> is a snapshot id without "snap/" (e.g. tv_econ_us, cmc_global, coinglass_btc, coinglass_eth), listed in series.json.
 <file.json> is the tool answer saved unchanged (calendar, CoinMarketCap), or for CoinGlass the rows file
-{"as_of": ..., "rows": [...]} written as COINGLASS_TASK.md describes. Writes incoming/snap-<fetched_at>/."""
+{"as_of": ..., "rows": [...]} written as READINGS_TASK.md describes. Writes incoming/snap-<fetched_at>/."""
 import json
 import sys
 from pathlib import Path

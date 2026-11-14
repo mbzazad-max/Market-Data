@@ -22,6 +22,7 @@ import shutil
 import sys
 import time
 
+import snap_history
 from mdlib import (PERIOD, ROOT, check_snapshot, data_path, load_json, parse_csv, read_series,
                    same_values, save_json, series_registry, snap_path, snapshot_registry, write_csv)
 
@@ -57,6 +58,12 @@ def import_snapshots(b, meta, man, errors, changed, now):
         snaps[sid] = {"kind": reg[sid]["kind"], "fetched_at": fetched_at, "imported_at": now, "bytes": p.stat().st_size}
         changed.append(sid)
         print(f"{sid}: reading from {fetched_at} saved")
+        try:  # one CSV row per load in data/history/ (a failure here never blocks the reading itself)
+            h = snap_history.append(sid, fetched_at, payload)
+            if h:
+                print(f"{sid}: history row added to {h.relative_to(ROOT)}")
+        except Exception as e:
+            errors.append(f"{sid}: history CSV not updated ({e})")
 
 
 def big_change(a, b, limit=0.01):

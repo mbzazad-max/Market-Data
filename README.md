@@ -14,3 +14,11 @@ A Binance candle that already exists must never change; if it does, that upload 
 
 ## Check dashboards (on demand)
 Actions → **Check dashboards** → **Run workflow**. It compares every dashboard in `dashboards.json` with `manifest.json`: last closed candle and row count per series, reading times, the dashboard's last build, and the live page (`site`) against its repo. The report is on the run's **Summary** page; the run turns red when something needs attention. Tick "rebuild" to also restart every dashboard that is behind or failed. Script: `tools/check_dashboards.py`.
+
+## Readings history (CSV)
+CoinGlass and CoinMarketCap readings (loaded by the daily 11:30 task in READINGS_TASK.md, or any time with "Run now")
+are also kept as history, one row per load, in `data/history/`:
+`coinglass_btc.csv`, `coinglass_eth.csv`, `coinglass_sol.csv`, `coinglass_bnb.csv` (funding, open interest, liquidations),
+`cmc_global.csv` (market cap, volume, fear & greed, altcoin season, dominance, open interest, funding, ETF assets) and
+`cmc_quotes.csv` (SOL and BNB price, rank, market cap, volume, % changes). Plain numbers; `fetched_at` (unix s, UTC) is the key.
+The importer adds the rows (tools/snap_history.py); `python3 tools/snap_history.py backfill` rebuilds them from git history.
