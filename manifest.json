@@ -1,6 +1,6 @@
 {
  "errors_last_import": [],
- "generated_at": 1794621469,
+ "generated_at": 1794621860,
  "series": {
   "binance/AAVEUSDT/1D": {
    "added_last_import": 0,
@@ -1195,9 +1195,9 @@
  },
  "snapshots": {
   "snap/cmc_global": {
-   "bytes": 5150,
-   "fetched_at": 1794553942,
-   "imported_at": 1794553976,
+   "bytes": 5850,
+   "fetched_at": 1794621823,
+   "imported_at": 1794621860,
    "kind": "cmc_global"
   },
   "snap/cmc_quotes": {
