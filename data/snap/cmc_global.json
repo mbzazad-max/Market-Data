@@ -1,14 +1,14 @@
 {
- "fetched_at": 1794633201,
+ "fetched_at": 1794703050,
  "id": "snap/cmc_global",
  "payload": {
   "dominance": {
    "btc": {
-    "current": "+59.47%",
+    "current": "+59.51%",
     "history": {
-     "last_month": "+59.86%",
-     "last_week": "+59.87%",
-     "yesterday": "+60.08%"
+     "last_month": "+59.89%",
+     "last_week": "+59.96%",
+     "yesterday": "+59.61%"
     },
     "yearly": {
      "max": {
@@ -22,11 +22,11 @@
     }
    },
    "eth": {
-    "current": "+10.22%",
+    "current": "+9.94%",
     "history": {
-     "last_month": "+10.78%",
-     "last_week": "+10.74%",
-     "yesterday": "+10.32%"
+     "last_month": "+10.81%",
+     "last_week": "+10.76%",
+     "yesterday": "+10.23%"
     },
     "yearly": {
      "max": {
@@ -40,11 +40,11 @@
     }
    },
    "others": {
-    "current": "+30.31%",
+    "current": "+30.54%",
     "history": {
-     "last_month": "+29.36%",
-     "last_week": "+29.39%",
-     "yesterday": "+29.6%"
+     "last_month": "+29.3%",
+     "last_week": "+29.28%",
+     "yesterday": "+30.15%"
     },
     "yearly": {
      "max": {
@@ -58,52 +58,34 @@
     }
    }
   },
-  "last_updated": "14 November 2026 12:00 AM UTC+0",
+  "last_updated": "15 November 2026 12:00 AM UTC+0",
   "leverage": {
    "funding_rate": {
     "average": {
-     "current": "+0.0043102%",
+     "current": "-0.00093051%",
      "percent_change": {
-      "24h": "+2.81%",
-      "30d": "+45.85%",
-      "7d": "-40.75%"
+      "24h": "-111.18%",
+      "30d": "-119.22%",
+      "7d": "-111.5%"
      }
     },
-    "top_alts_minus_btc_spread_current": "-0.0012242"
+    "top_alts_minus_btc_spread_current": "-0.0033733"
    },
    "liquidations": {
     "btc": {
-     "percent_change24h": "-68.72%",
-     "total_usd24h": "281.93 M",
-     "total_usd30d": "4.47 B",
-     "total_usd7d": "1.8 B"
+     "percent_change24h": "-16.42%",
+     "total_usd24h": "586.42 M",
+     "total_usd30d": "4.82 B",
+     "total_usd7d": "2.22 B"
     }
    },
    "open_interest": {
     "futures": {
-     "current": "1.06 B",
+     "current": "1.05 B",
      "percent_change": {
-      "24h": "-4.04%",
-      "30d": "-12.16%",
-      "7d": "-10.12%"
-     },
-     "yearly": {
-      "max": {
-       "timestamp": "3 January 2026 12:00 AM UTC+0",
-       "value": "864.96 B"
-      },
-      "min": {
-       "timestamp": "11 November 2026 12:00 AM UTC+0",
-       "value": "1.11 B"
-      }
-     }
-    },
-    "perpetuals": {
-     "current": "322.97 B",
-     "percent_change": {
-      "24h": "-4.79%",
-      "30d": "-21.62%",
-      "7d": "-10.74%"
+      "24h": "-3.44%",
+      "30d": "-11.08%",
+      "7d": "-7.62%"
      },
      "yearly": {
       "max": {
@@ -111,17 +93,35 @@
        "value": "873.99 B"
       },
       "min": {
-       "timestamp": "26 September 2026 12:00 AM UTC+0",
-       "value": "1.08 B"
+       "timestamp": "15 November 2026 12:00 AM UTC+0",
+       "value": "1.05 B"
+      }
+     }
+    },
+    "perpetuals": {
+     "current": "305.12 B",
+     "percent_change": {
+      "24h": "-8.35%",
+      "30d": "-24.24%",
+      "7d": "-8.09%"
+     },
+     "yearly": {
+      "max": {
+       "timestamp": "3 January 2026 12:00 AM UTC+0",
+       "value": "864.96 B"
+      },
+      "min": {
+       "timestamp": "14 November 2026 12:00 AM UTC+0",
+       "value": "1.09 B"
       }
      }
     },
     "total": {
-     "current": "324.03 B",
+     "current": "306.17 B",
      "percent_change": {
-      "24h": "-4.78%",
-      "30d": "-21.59%",
-      "7d": "-10.73%"
+      "24h": "-8.33%",
+      "30d": "-24.2%",
+      "7d": "-8.08%"
      },
      "yearly": {
       "max": {
@@ -140,56 +140,56 @@
    "volume24h": {
     "derivatives": {
      "futures": {
-      "current": "761.69 M",
+      "current": "713.13 M",
       "percent_change": {
-       "24h": "+65.04%",
-       "30d": "+89.61%",
-       "7d": "+0.32%"
+       "24h": "+23.42%",
+       "30d": "+25.39%",
+       "7d": "+50.52%"
       }
      },
      "perpetuals": {
-      "current": "989.77 B",
+      "current": "904.51 B",
       "percent_change": {
-       "24h": "+40.02%",
-       "30d": "+28.62%",
-       "7d": "-25.26%"
+       "24h": "+13.82%",
+       "30d": "-12.37%",
+       "7d": "+10.81%"
       }
      },
      "total": {
-      "current": "990.53 B",
+      "current": "905.22 B",
       "percent_change": {
-       "24h": "+40.03%",
-       "30d": "+28.65%",
-       "7d": "-25.24%"
+       "24h": "+13.83%",
+       "30d": "-12.35%",
+       "7d": "+10.83%"
       }
      }
     },
     "spot": {
-     "current": "173.74 B",
+     "current": "183.53 B",
      "percent_change": {
-      "24h": "+45.33%",
-      "30d": "-2.8%",
-      "7d": "-18.44%"
+      "24h": "+31.82%",
+      "30d": "+21.62%",
+      "7d": "+31.62%"
      }
     },
-    "spot_vs_perp_ratio": "0.18",
+    "spot_vs_perp_ratio": "0.2",
     "total": {
-     "current": "85.95 B",
+     "current": "101.5 B",
      "percent_change": {
-      "24h": "+27.71%",
-      "30d": "+1.45%",
-      "7d": "+20.32%"
+      "24h": "+7.41%",
+      "30d": "-5.58%",
+      "7d": "+235.1%"
      }
     }
    }
   },
   "market_size": {
    "total_crypto_market_cap_usd": {
-    "current": "2.27 T",
+    "current": "2.15 T",
     "percent_change": {
-     "24h": "-1.69%",
-     "30d": "-18.92%",
-     "7d": "-11.01%"
+     "24h": "-6.43%",
+     "30d": "-21.35%",
+     "7d": "-15.2%"
     },
     "yearly": {
      "max": {
@@ -206,27 +206,27 @@
   "rotation": {
    "altcoin_season": {
     "current": {
-     "index": 49,
+     "index": 42,
      "value": ""
     },
     "history": {
      "last_month": {
-      "index": 55,
+      "index": 60,
       "value": ""
      },
      "last_week": {
-      "index": 38,
+      "index": 37,
       "value": ""
      },
      "yesterday": {
-      "index": 47,
+      "index": 41,
       "value": ""
      }
     },
     "percent_change": {
-     "24h": "+4.26%",
-     "30d": "-10.91%",
-     "7d": "+28.95%"
+     "24h": "+2.44%",
+     "30d": "-30%",
+     "7d": "+13.51%"
     },
     "yearly": {
      "max": {
@@ -245,20 +245,20 @@
   "sentiment": {
    "fear_greed": {
     "current": {
-     "index": 17,
+     "index": 12,
      "value": "Extreme fear"
     },
     "history": {
      "last_month": {
-      "index": 50,
+      "index": 51,
       "value": "Neutral"
      },
      "last_week": {
-      "index": 32,
+      "index": 29,
       "value": "Fear"
      },
      "yesterday": {
-      "index": 18,
+      "index": 14,
       "value": "Extreme fear"
      }
     },
@@ -281,7 +281,7 @@
     "btc": {
      "current": "98.03 B",
      "history": {
-      "last_month": "107.86 B",
+      "last_month": "107.8 B",
       "last_week": "104.05 B",
       "yesterday": "99 B"
      }
@@ -289,7 +289,7 @@
     "eth": {
      "current": "14.52 B",
      "history": {
-      "last_month": "14.59 B",
+      "last_month": "14.6 B",
       "last_week": "14.59 B",
       "yesterday": "14.53 B"
      }

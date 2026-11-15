@@ -1,8 +1,8 @@
 {
- "fetched_at": 1794633201,
+ "fetched_at": 1794703050,
  "id": "snap/coinglass_btc",
  "payload": {
-  "as_of": "2026-11-14T16:15:00+11:00",
+  "as_of": "2026-11-15T11:40:00+11:00",
   "rows": [
    {
     "group": "Snapshot",
@@ -11,82 +11,82 @@
     "note": "Read from coinglass.com/FundingRate, /LiquidationData and /open-interest/BTC.",
     "num": null,
     "signal": "\u2014",
-    "value": "14 Nov 2026, 16:15 AEDT"
+    "value": "15 Nov 2026, 11:40 AEDT"
    },
    {
     "group": "Funding",
     "id": "funding_oiw",
     "metric": "BTC OI-weighted funding (8h)",
     "note": "Well under the 0.01% baseline; longs not crowded.",
-    "num": 0.0021,
+    "num": 0.0033,
     "signal": "Cool",
-    "value": "0.0021%"
+    "value": "0.0033%"
    },
    {
     "group": "Funding",
     "id": "funding_vw",
     "metric": "BTC volume-weighted funding (8h)",
-    "note": "Binance 0.0018%, OKX 0.0017%, Bybit \u22120.0009%.",
-    "num": 0.0023,
+    "note": "Binance 0.0060%, OKX \u22120.0032%, Bybit 0.0034%.",
+    "num": 0.0035,
     "signal": "Cool",
-    "value": "0.0023%"
+    "value": "0.0035%"
    },
    {
     "group": "Open interest",
     "id": "oi_total",
     "metric": "BTC futures open interest",
-    "note": "1h +0.59%, 4h \u22122.49%, 24h \u22125.33%. Binance 140.55K BTC (24h \u22127.36%), CME 100.72K BTC (\u22121.58%), Bybit 82.51K BTC (\u22123.85%), OKX 47.10K BTC (\u22128.55%).",
-    "num": -2.49,
+    "note": "1h +0.56%, 4h \u22122.70%, 24h \u22127.22%. Binance 142.28K BTC (24h \u22126.85%), CME 102.10K BTC (\u22125.26%), Bybit 85.85K BTC (\u22122.66%), OKX 47.14K BTC (\u22126.42%).",
+    "num": -2.7,
     "num_note": "4h OI change, %",
-    "oi_chg_1h": 0.59,
-    "oi_chg_24h": -5.33,
-    "oi_usd": 45760000000,
+    "oi_chg_1h": 0.56,
+    "oi_chg_24h": -7.22,
+    "oi_usd": 43530000000,
     "signal": "Deleveraging",
-    "value": "681.02K BTC ($45.76B)"
+    "value": "683.71K BTC ($43.53B)"
    },
    {
     "group": "Liquidations",
     "id": "liq_btc_24h",
-    "long_1h": 518050,
-    "long_24h": 362160000,
-    "long_4h": 166460000,
+    "long_1h": 2580000,
+    "long_24h": 631910000,
+    "long_4h": 291020000,
     "metric": "BTC liquidations, 24h",
-    "note": "Longs $362.16M vs shorts $52.52M; last 4h longs $166.46M vs shorts $6.40M, last hour $518.05K vs $1.13M. BTC $67,171.6, \u22122.26% on the day.",
-    "num": 0.1267,
-    "price": 67171.6,
-    "price_chg_24h": -2.26,
-    "short_1h": 1130000,
-    "short_24h": 52520000,
-    "short_4h": 6400000,
+    "note": "Longs $631.91M vs shorts $61.69M; last 4h longs $291.02M vs shorts $21.73M, last hour $2.58M vs $7.18M. BTC $63,656.8, \u22126.65% on the day.",
+    "num": 0.0889,
+    "price": 63656.8,
+    "price_chg_24h": -6.65,
+    "short_1h": 7180000,
+    "short_24h": 61690000,
+    "short_4h": 21730000,
     "signal": "Fresh long flush",
-    "value": "$414.68M (87% longs)"
+    "value": "$693.60M (91.1% longs)"
    },
    {
     "group": "Liquidations",
     "id": "liq_mkt_24h",
-    "long_1h": 1790000,
-    "long_24h": 685980000,
-    "long_4h": 329880000,
-    "long_ratio": 49.62,
+    "long_1h": 5160000,
+    "long_24h": 1810000000,
+    "long_4h": 828710000,
+    "long_ratio": 49.37,
     "metric": "All-market liquidations, 24h",
-    "note": "136,343 traders liquidated; longs $685.98M vs shorts $149.01M (4h: longs $329.88M vs shorts $13.35M; 1h: $1.79M vs $2.48M); market-wide OI $115.26B (\u22123.27% 24h); long/short 49.62/50.38. Largest order: $17.81M ETHUSDT short on Binance.",
-    "num": 0.178,
-    "oi_chg_24h": -3.27,
-    "oi_usd": 115258998589,
-    "short_1h": 2480000,
-    "short_24h": 149010000,
-    "short_4h": 13350000,
+    "note": "318,413 traders liquidated; longs $1.81B vs shorts $136.42M (4h: longs $828.71M vs shorts $53.87M; 1h: $5.16M vs $13.28M); market-wide OI $107.88B (\u22128.12% 24h); long/short 49.37/50.63. Largest order: $16.17M ETHUSDT long on Binance.",
+    "num": 0.0701,
+    "oi_chg_24h": -8.12,
+    "oi_usd": 107879467862,
+    "short_1h": 13280000,
+    "short_24h": 136420000,
+    "short_4h": 53870000,
     "signal": "Fresh long flush",
-    "value": "$835.00M (82.2% longs)"
+    "value": "$1.95B (93.0% longs)"
    },
    {
     "group": "Read",
     "id": "read",
     "metric": "What it means",
-    "note": "A second long flush hit in the last 4h ($166M of BTC longs) as price slipped to about $67.2K, and open interest fell 2.5% in 4h and 5.3% on the day; funding is barely positive at 0.002%. The last hour is quiet, with more shorts than longs liquidated. For spot buyers: leverage is being cleared again, but let the quiet hour turn into a quiet 4h and price hold a support zone on a 4H close before adding.",
+    "note": "A heavy long flush hit BTC in the last 4h ($291M of longs) as price fell 6.7% to about $63.7K, and open interest dropped 2.7% in 4h and 7.2% on the day; funding stays mildly positive at 0.0033%. In the last hour more shorts than longs were liquidated and open interest ticked up 0.6%. For spot buyers: a lot of leverage has been cleared, but wait for a quiet 4h and price holding a support zone on a 4H close before adding.",
     "num": null,
     "signal": "Flush pausing",
-    "value": "Fresh flush, now quiet"
+    "value": "Big flush, last hour quieter"
    }
   ]
  }
