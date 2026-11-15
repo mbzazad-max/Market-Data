@@ -286,18 +286,6 @@
    "symbol": "ETHBTC",
    "tf": "4H"
   },
-  "tv/BYBIT_MNTUSDT/4H": {
-   "source": "tv",
-   "symbol": "BYBIT:MNTUSDT",
-   "tf": "4H",
-   "seed_count": 1000
-  },
-  "tv/BYBIT_MNTUSDT/1D": {
-   "source": "tv",
-   "symbol": "BYBIT:MNTUSDT",
-   "tf": "1D",
-   "seed_count": 1200
-  },
   "tv/CRYPTOCAP_TOTAL2ES/4H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:TOTAL2ES",
