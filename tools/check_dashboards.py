@@ -17,7 +17,8 @@ For every dashboard in dashboards.json:
   4. Upload age: how many candles behind "now" each used Binance/TradingView series is (your upload or the daily load).
   5. Due candles: Binance 1D within 3 h of the 11:00 Sydney close, Binance 4H at most 1 behind, TradingView candles
      closed before the daily 11:30 load (metals: weekend closure allowed), and any upload that held a closed candle
-     the importer did not take. Readings (CoinGlass, CoinMarketCap, calendar) not loaded by today's 11:30 tasks.
+     the importer did not take (if the series is still within that slack this is only a warning: the run passes and
+     the next upload brings it in). Readings (CoinGlass, CoinMarketCap, calendar) not loaded by today's 11:30 tasks.
 With --rebuild, every dashboard that is BEHIND, failed, or not deployed is asked to rebuild (exit 3).
 Writes a report to $GITHUB_STEP_SUMMARY (and prints it). Exit 1 when something needs attention.
 """
@@ -132,7 +133,7 @@ for d in dash:
         problems.append(name + ': ' + '; '.join(bad))
         if not running: to_rebuild.append((repo, wf, name))
 
-age_rows, late = [], []
+age_rows, late, warnings = [], [], []
 DAY = 86400
 
 
@@ -163,17 +164,25 @@ for sid, m in sorted(ages.items()):
         age_rows.append('| %s | %s | - | %s | stored history (frozen) |' % (sid, t2s(m['last_close']), t2s(m.get('fetched_at'))))
         continue
     behind = max(0, int((NOW - m['last_close']) // m['period_s']))
-    why = ''
+    why, note = '', ''
     nxt = m['last_close'] + m['period_s']
-    if m.get('checked_at', 0) >= nxt and m.get('forming_dropped_last_import'):
-        why = 'the last upload already had the next candle but it was not imported (saved inside the 5-min margin and not confirmed by 4H)'
-    else:
-        due = expected_close(sid, m)
-        if due is not None and m['last_close'] < due:
-            why = '%d candle(s) due but not loaded' % ((due - m['last_close']) // m['period_s'])
+    held = m.get('checked_at', 0) >= nxt and m.get('forming_dropped_last_import')
+    due = expected_close(sid, m)
+    overdue = due is not None and m['last_close'] < due
+    if overdue:
+        why = '%d candle(s) due but not loaded' % ((due - m['last_close']) // m['period_s'])
+        if held: why += ' (the last upload had the next candle but saved it inside the 5-min margin)'
+    elif held:
+        # Not a failure: the candle is still within the normal slack and the next upload brings it in.
+        note = 'next candle held back: the last upload saved it inside the 5-min margin; the next upload brings it in'
     if why: late.append('%s: %s' % (sid, why))
-    age_rows.append('| %s | %s | %s | %s | %s |' % (sid, t2s(m['last_close']), behind, t2s(m.get('fetched_at')), '**' + why + '**' if why else 'OK'))
-lines += ['## Upload age (Market-Data vs now)', '', ('**Not loaded on time:** ' + '; '.join(late)) if late else 'Every used series has every candle that is due.', '',
+    if note: warnings.append('%s: %s' % (sid, note))
+    age_rows.append('| %s | %s | %s | %s | %s |' % (sid, t2s(m['last_close']), behind, t2s(m.get('fetched_at')),
+                                                     '**' + why + '**' if why else ('warning: ' + note if note else 'OK')))
+lines += ['## Upload age (Market-Data vs now)', '', ('**Not loaded on time:** ' + '; '.join(late)) if late else 'Every used series has every candle that is due.', '']
+if warnings:
+    lines += ['**Warning (no action needed):** ' + '; '.join(warnings), '']
+lines += [
           '<details><summary>All %d series</summary>' % len(age_rows), '', '| Series | Last closed candle | Candles behind now | File saved | Due? |', '|---|---|---|---|---|'] + age_rows + ['', '</details>']
 lines += ['', 'Due = Binance 1D within 3 h of the 11:00 Sydney close; Binance 4H at most 1 candle behind; TradingView candles that closed before the daily 11:30 load (metals: weekend closure allowed).', '']
 if late:
@@ -199,7 +208,10 @@ if REBUILD and to_rebuild:
             lines.append('- ' + name + ': could not start a rebuild: ' + str(e))
     lines.append('')
 
-lines.insert(4, ('**All dashboards match Market-Data.**' if not problems else '**Needs attention:**\n' + '\n'.join('- ' + p for p in problems)) + '\n')
+lines.insert(4, ('**All dashboards match Market-Data.**' if not problems else '**Needs attention:**\n' + '\n'.join('- ' + p for p in problems)) + '\n'
+             + ('\n**Warnings (run still passes):**\n' + '\n'.join('- ' + w for w in warnings) + '\n' if warnings else ''))
+if warnings and os.environ.get('GITHUB_ACTIONS'):
+    for w in warnings: print('::warning::' + w)
 out = '\n'.join(lines)
 print(out)
 if os.environ.get('GITHUB_STEP_SUMMARY'):
