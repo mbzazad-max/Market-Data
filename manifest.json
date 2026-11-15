@@ -1,6 +1,6 @@
 {
  "errors_last_import": [],
- "generated_at": 1794760182,
+ "generated_at": 1794773043,
  "series": {
   "binance/AAVEUSDT/1D": {
    "added_last_import": 1,
@@ -241,13 +241,13 @@
    "tf": "4H"
   },
   "binance/ETHBTC/4H": {
-   "added_last_import": 1,
-   "checked_at": 1794759912,
+   "added_last_import": 0,
+   "checked_at": 1794772806,
    "fetched_at": 1794759912,
    "first_open": 1500004800,
-   "forming_dropped_last_import": 0,
+   "forming_dropped_last_import": 1,
    "gaps": 8,
-   "imported_at": 1794760182,
+   "imported_at": 1794773043,
    "last_close": 1794758400,
    "last_open": 1794744000,
    "period_s": 14400,
