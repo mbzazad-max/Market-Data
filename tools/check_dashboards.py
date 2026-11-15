@@ -63,7 +63,7 @@ def t2s(t):
 man = json.loads((ROOT / 'manifest.json').read_text())
 S, SNAP = man['series'], man.get('snapshots', {})
 dash = json.loads((ROOT / 'dashboards.json').read_text())['dashboards']
-lines = ['# Dashboards vs Market-Data', '', 'Checked ' + t2s(NOW) + '. Market-Data manifest generated ' + str(man.get('generated_at', '-')) + '.', '']
+lines = ['# Dashboards vs Market-Data', '', 'Checked ' + t2s(NOW) + '. Market-Data manifest generated ' + t2s(man.get('generated_at')) + '.', '']
 if man.get('errors_last_import'):
     lines += ['**Market-Data last import had errors:** ' + '; '.join(man['errors_last_import']), '']
 problems, to_rebuild, ages = [], [], {}
@@ -158,6 +158,10 @@ def expected_close(sid, m):
 
 
 FROZEN = {k for k, v in series_registry().items() if v.get('frozen')}  # stored history only, never loaded again
+# Binance 4H comes only from the laptop upload, run by hand. Until it has been this long since the last 4H candle
+# Market-Data holds, a 4H series that is behind is "waiting for the laptop upload" (a note, not a failure).
+LAPTOP_4H_GRACE_S = 24 * 3600
+waiting = []
 for sid, m in sorted(ages.items()):
     if sid in FROZEN:
         age_rows.append('| %s | %s | - | %s | stored history (frozen) |' % (sid, t2s(m['last_close']), t2s(m.get('fetched_at'))))
@@ -171,11 +175,23 @@ for sid, m in sorted(ages.items()):
         due = expected_close(sid, m)
         if due is not None and m['last_close'] < due:
             why = '%d candle(s) due but not loaded' % ((due - m['last_close']) // m['period_s'])
+            if sid.startswith('binance/') and m['tf'] == '4H' and NOW - m['last_close'] < LAPTOP_4H_GRACE_S:
+                waiting.append(sid)
+                age_rows.append('| %s | %s | %s | %s | waiting for laptop upload |' % (sid, t2s(m['last_close']), behind, t2s(m.get('fetched_at'))))
+                continue
     if why: late.append('%s: %s' % (sid, why))
     age_rows.append('| %s | %s | %s | %s | %s |' % (sid, t2s(m['last_close']), behind, t2s(m.get('fetched_at')), '**' + why + '**' if why else 'OK'))
-lines += ['## Upload age (Market-Data vs now)', '', ('**Not loaded on time:** ' + '; '.join(late)) if late else 'Every used series has every candle that is due.', '',
+wait_txt = ''
+if waiting:
+    oldest = min(ages[s]['last_close'] for s in waiting)
+    wait_txt = ('Waiting for the laptop 4H upload: %d Binance 4H series (newest candle loaded closed %s). Not a failure '
+                'until %d h after that candle; run UPLOAD.bat to load it.' % (len(waiting), t2s(oldest), LAPTOP_4H_GRACE_S // 3600))
+lines += ['## Upload age (Market-Data vs now)', '', ('**Not loaded on time:** ' + '; '.join(late)) if late else 'Every used series has every candle that is due.', '']
+if wait_txt:
+    lines += [wait_txt, '']
+lines += [
           '<details><summary>All %d series</summary>' % len(age_rows), '', '| Series | Last closed candle | Candles behind now | File saved | Due? |', '|---|---|---|---|---|'] + age_rows + ['', '</details>']
-lines += ['', 'Due = Binance 1D within 3 h of the 11:00 Sydney close; Binance 4H at most 1 candle behind; TradingView candles that closed before the daily 11:30 load (metals: weekend closure allowed).', '']
+lines += ['', 'Due = Binance 1D within 3 h of the 11:00 Sydney close; Binance 4H at most 1 candle behind (only a failure once the laptop upload is %d h overdue); TradingView' % (LAPTOP_4H_GRACE_S // 3600) + ' candles that closed before the daily 11:30 load (metals: weekend closure allowed).', '']
 if late:
     problems.append('Market-Data: ' + '; '.join(late))
 
@@ -199,7 +215,8 @@ if REBUILD and to_rebuild:
             lines.append('- ' + name + ': could not start a rebuild: ' + str(e))
     lines.append('')
 
-lines.insert(4, ('**All dashboards match Market-Data.**' if not problems else '**Needs attention:**\n' + '\n'.join('- ' + p for p in problems)) + '\n')
+lines.insert(4, ('**All dashboards match Market-Data.**' if not problems else '**Needs attention:**\n' + '\n'.join('- ' + p for p in problems)) +
+             ('\n\n' + wait_txt if wait_txt else '') + '\n')
 out = '\n'.join(lines)
 print(out)
 if os.environ.get('GITHUB_STEP_SUMMARY'):
