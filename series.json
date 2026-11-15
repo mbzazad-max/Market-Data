@@ -340,6 +340,22 @@
    "tf": "4H",
    "seed_count": 5000
   },
+  "tv/CRYPTOCAP_USDT.D/1D": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:USDT.D",
+   "tf": "1D",
+   "seed_count": 5000,
+   "frozen": true,
+   "note": "History only (TradingView answer of 13 Nov 2026, from 2015). Newer days are made from tv/CRYPTOCAP_USDT.D/4H (the day's 20:00 UTC candle close); the daily TradingView task does not fetch this series."
+  },
+  "tv/CRYPTOCAP_USDC.D/1D": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:USDC.D",
+   "tf": "1D",
+   "seed_count": 5000,
+   "frozen": true,
+   "note": "History only (TradingView answer of 13 Nov 2026, from Dec 2018). Newer days are made from tv/CRYPTOCAP_USDC.D/4H (the day's 20:00 UTC candle close); the daily TradingView task does not fetch this series."
+  },
   "tv/COINBASE_BTCUSD/1D": {
    "source": "tv",
    "symbol": "COINBASE:BTCUSD",
@@ -354,7 +370,7 @@
    "tf": "4H",
    "seed_count": 5000,
    "frozen": true,
-   "note": "History only (loaded once on 13 Nov 2026). New BTC candles come from binance/BTCUSDT; the daily TradingView task does not fetch this series."
+   "note": "History only (loaded once on 13 Nov 2026; Jan-Aug 2024 added from the TradingView answer of the same day). New BTC candles come from binance/BTCUSDT; the daily TradingView task does not fetch this series."
   },
   "tv/CRYPTOCAP_BTC.D/4H": {
    "source": "tv",
