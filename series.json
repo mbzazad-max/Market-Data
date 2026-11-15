@@ -286,6 +286,42 @@
    "symbol": "ETHBTC",
    "tf": "4H"
   },
+  "binance/AVAXUSDT/1D": {
+   "source": "binance",
+   "symbol": "AVAXUSDT",
+   "tf": "1D",
+   "note": "Added 16 Nov 2026 for BTC Correlations (btc-co): daily only. Arrives once the laptop Binance download has SPOT/HTF/AVAXUSDT_D.xlsx and UPLOAD.bat runs."
+  },
+  "binance/RENDERUSDT/1D": {
+   "source": "binance",
+   "symbol": "RENDERUSDT",
+   "tf": "1D",
+   "note": "Added 16 Nov 2026 for BTC Correlations (btc-co): daily only. Arrives once the laptop Binance download has SPOT/HTF/RENDERUSDT_D.xlsx and UPLOAD.bat runs."
+  },
+  "binance/ARBUSDT/1D": {
+   "source": "binance",
+   "symbol": "ARBUSDT",
+   "tf": "1D",
+   "note": "Added 16 Nov 2026 for BTC Correlations (btc-co): daily only. Arrives once the laptop Binance download has SPOT/HTF/ARBUSDT_D.xlsx and UPLOAD.bat runs."
+  },
+  "binance/FETUSDT/1D": {
+   "source": "binance",
+   "symbol": "FETUSDT",
+   "tf": "1D",
+   "note": "Added 16 Nov 2026 for BTC Correlations (btc-co): daily only. Arrives once the laptop Binance download has SPOT/HTF/FETUSDT_D.xlsx and UPLOAD.bat runs."
+  },
+  "binance/RAYUSDT/1D": {
+   "source": "binance",
+   "symbol": "RAYUSDT",
+   "tf": "1D",
+   "note": "Added 16 Nov 2026 for BTC Correlations (btc-co): daily only. Arrives once the laptop Binance download has SPOT/HTF/RAYUSDT_D.xlsx and UPLOAD.bat runs."
+  },
+  "binance/WIFUSDT/1D": {
+   "source": "binance",
+   "symbol": "WIFUSDT",
+   "tf": "1D",
+   "note": "Added 16 Nov 2026 for BTC Correlations (btc-co): daily only. Arrives once the laptop Binance download has SPOT/HTF/WIFUSDT_D.xlsx and UPLOAD.bat runs."
+  },
   "tv/CRYPTOCAP_TOTAL2ES/4H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:TOTAL2ES",
