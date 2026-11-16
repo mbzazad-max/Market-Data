@@ -388,18 +388,6 @@
    "tf": "4H",
    "seed_count": 5000
   },
-  "tv/TVC_GOLD/4H": {
-   "source": "tv",
-   "symbol": "TVC:GOLD",
-   "tf": "4H",
-   "seed_count": 5000
-  },
-  "tv/TVC_SILVER/4H": {
-   "source": "tv",
-   "symbol": "TVC:SILVER",
-   "tf": "4H",
-   "seed_count": 5000
-  },
   "tv/CRYPTOCAP_USDT.D/1D": {
    "source": "tv",
    "symbol": "CRYPTOCAP:USDT.D",

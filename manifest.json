@@ -1378,40 +1378,6 @@
    "source": "tv",
    "symbol": "CRYPTOCAP:USDT.D",
    "tf": "4H"
-  },
-  "tv/TVC_GOLD/4H": {
-   "added_last_import": 0,
-   "checked_at": 1794789267,
-   "fetched_at": 1794789267,
-   "first_open": 1692381600,
-   "forming_dropped_last_import": 1,
-   "gaps": null,
-   "imported_at": 1794789340,
-   "last_close": 1794610800,
-   "last_open": 1794596400,
-   "period_s": 14400,
-   "revised_last_import": 3,
-   "rows": 5011,
-   "source": "tv",
-   "symbol": "TVC:GOLD",
-   "tf": "4H"
-  },
-  "tv/TVC_SILVER/4H": {
-   "added_last_import": 0,
-   "checked_at": 1794789267,
-   "fetched_at": 1794789267,
-   "first_open": 1692381600,
-   "forming_dropped_last_import": 1,
-   "gaps": null,
-   "imported_at": 1794789340,
-   "last_close": 1794610800,
-   "last_open": 1794596400,
-   "period_s": 14400,
-   "revised_last_import": 3,
-   "rows": 5011,
-   "source": "tv",
-   "symbol": "TVC:SILVER",
-   "tf": "4H"
   }
  },
  "snapshots": {
