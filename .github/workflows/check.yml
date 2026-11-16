@@ -39,7 +39,15 @@ jobs:
             if [ $status -eq 3 ]; then
               echo "Rebuilds started; checking again in 3 minutes." | tee -a "$GITHUB_STEP_SUMMARY"
               sleep 180
-              git pull -q --depth 1 origin main || true
+              # Bring this checkout up to the newest Market-Data: an import may have landed while waiting, and the
+              # rebuilt dashboards are built from it. fetch + reset cannot "diverge" on a 1-commit checkout the
+              # way git pull does. If it cannot be refreshed, say so plainly; do not compare with old data.
+              fresh() { git fetch -q --depth 1 origin main && git reset -q --hard FETCH_HEAD; }
+              if ! fresh && ! { sleep 20; fresh; }; then
+                echo "::error::Could not refresh Market-Data before the second check, so it was not run. This is a problem with the check itself, not with the dashboards. Run Check dashboards again."
+                echo "**Second check not run:** could not refresh Market-Data. Run Check dashboards again." >> "$GITHUB_STEP_SUMMARY"
+                exit 1
+              fi
               echo "# Second check (after the rebuilds)" >> "$GITHUB_STEP_SUMMARY"
               python check_dashboards.py
             else

@@ -165,7 +165,10 @@ for sid, m in sorted(ages.items()):
     behind = max(0, int((NOW - m['last_close']) // m['period_s']))
     why = ''
     nxt = m['last_close'] + m['period_s']
-    if m.get('checked_at', 0) >= nxt and m.get('forming_dropped_last_import'):
+    # Daily candles only: a 1D candle left out because the file was saved inside the 5-min margin stays missing for a
+    # day unless it is uploaded again. A 4H candle left out the same way arrives with the next upload, so 4H follows
+    # the normal rule below (one candle of slack) and is reported only once it is really overdue.
+    if m['tf'] == '1D' and m.get('checked_at', 0) >= nxt and m.get('forming_dropped_last_import'):
         why = 'the last upload already had the next candle but it was not imported (saved inside the 5-min margin and not confirmed by 4H)'
     else:
         due = expected_close(sid, m)
