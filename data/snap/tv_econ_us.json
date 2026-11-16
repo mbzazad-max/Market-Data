@@ -1,5 +1,5 @@
 {
- "fetched_at": 1794731387,
+ "fetched_at": 1794789267,
  "id": "snap/tv_econ_us",
  "payload": {
   "result": [
@@ -186,6 +186,51 @@
     "ticker": "ECONOMICS:USDGO",
     "title": "Durable Goods Orders MoM",
     "unit": "%"
+   },
+   {
+    "actual": null,
+    "actualRaw": null,
+    "category": "bsnss",
+    "country": "US",
+    "currency": "USD",
+    "date": "2026-12-01T15:00:00.000Z",
+    "forecast": null,
+    "forecastRaw": null,
+    "id": "1001650049604",
+    "importance": 1,
+    "indicator": "ISM Manufacturing PMI",
+    "period": "Nov. 2026",
+    "previous": 55.5,
+    "previousRaw": 55.5,
+    "referenceDate": "2026-11-30T00:00:00Z",
+    "referencePeriod": "Nov 2026",
+    "source": "Institute for Supply Management",
+    "source_url": "https://www.ismworld.org",
+    "ticker": "ECONOMICS:USBCOI",
+    "title": "ISM Manufacturing PMI"
+   },
+   {
+    "actual": null,
+    "actualRaw": null,
+    "category": "lbr",
+    "country": "US",
+    "currency": "USD",
+    "date": "2026-12-01T15:00:00.000Z",
+    "forecast": null,
+    "forecastRaw": null,
+    "id": "1001668385001",
+    "importance": 1,
+    "indicator": "JOLTS Job Openings",
+    "period": "Oct. 2026",
+    "previous": 7.523,
+    "previousRaw": 7523000,
+    "referenceDate": "2026-10-31T00:00:00Z",
+    "referencePeriod": "Oct 2026",
+    "scale": "M",
+    "source": "Bureau of Labour Statistics",
+    "source_url": "http://www.bls.gov",
+    "ticker": "ECONOMICS:USJO",
+    "title": "JOLTs Job Openings"
    }
   ],
   "status": "ok"
