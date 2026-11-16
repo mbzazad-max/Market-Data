@@ -1,6 +1,6 @@
 {
  "errors_last_import": [],
- "generated_at": 1794789681,
+ "generated_at": 1794790564,
  "series": {
   "binance/AAVEUSDT/1D": {
    "added_last_import": 1,
@@ -751,13 +751,13 @@
    "tf": "4H"
   },
   "binance/RAYUSDT/1D": {
-   "added_last_import": 1924,
+   "added_last_import": 0,
    "checked_at": 1794788063,
    "fetched_at": 1794788063,
    "first_open": 1628553600,
    "forming_dropped_last_import": 0,
    "gaps": 0,
-   "imported_at": 1794788366,
+   "imported_at": 1794790564,
    "last_close": 1794787200,
    "last_open": 1794700800,
    "period_s": 86400,
@@ -766,6 +766,23 @@
    "source": "binance",
    "symbol": "RAYUSDT",
    "tf": "1D"
+  },
+  "binance/RAYUSDT/4H": {
+   "added_last_import": 11543,
+   "checked_at": 1794787928,
+   "fetched_at": 1794787928,
+   "first_open": 1628568000,
+   "forming_dropped_last_import": 0,
+   "gaps": 0,
+   "imported_at": 1794790564,
+   "last_close": 1794787200,
+   "last_open": 1794772800,
+   "period_s": 14400,
+   "revised_last_import": 0,
+   "rows": 11543,
+   "source": "binance",
+   "symbol": "RAYUSDT",
+   "tf": "4H"
   },
   "binance/RENDERUSDT/1D": {
    "added_last_import": 843,
@@ -783,6 +800,23 @@
    "source": "binance",
    "symbol": "RENDERUSDT",
    "tf": "1D"
+  },
+  "binance/RENDERUSDT/4H": {
+   "added_last_import": 5056,
+   "checked_at": 1794787917,
+   "fetched_at": 1794787917,
+   "first_open": 1721980800,
+   "forming_dropped_last_import": 0,
+   "gaps": 0,
+   "imported_at": 1794790564,
+   "last_close": 1794787200,
+   "last_open": 1794772800,
+   "period_s": 14400,
+   "revised_last_import": 0,
+   "rows": 5056,
+   "source": "binance",
+   "symbol": "RENDERUSDT",
+   "tf": "4H"
   },
   "binance/SOLUSDT/1D": {
    "added_last_import": 1,
@@ -921,13 +955,13 @@
    "tf": "4H"
   },
   "binance/WIFUSDT/1D": {
-   "added_last_import": 986,
+   "added_last_import": 0,
    "checked_at": 1794788065,
    "fetched_at": 1794788065,
    "first_open": 1709596800,
    "forming_dropped_last_import": 0,
    "gaps": 0,
-   "imported_at": 1794788366,
+   "imported_at": 1794790564,
    "last_close": 1794787200,
    "last_open": 1794700800,
    "period_s": 86400,
