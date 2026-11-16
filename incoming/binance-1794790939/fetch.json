@@ -1,0 +1,11 @@
+{
+ "source": "binance",
+ "fetched_at": 1794787881,
+ "margin_s": 300,
+ "files": {
+  "AVAXUSDT_4H.csv": 1794787881,
+  "ARBUSDT_4H.csv": 1794787945,
+  "FETUSDT_4H.csv": 1794787922,
+  "WIFUSDT_4H.csv": 1794787939
+ }
+}
