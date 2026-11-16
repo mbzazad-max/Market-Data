@@ -425,8 +425,42 @@
    "symbol": "CRYPTOCAP:BTC.D",
    "tf": "4H",
    "seed_count": 5000,
-   "frozen": true,
-   "note": "Stored only (loaded once on 13 Nov 2026), no longer fetched: the BTC & ETH dashboard uses CRYPTOCAP_TOTAL2ES, which the daily task already loads, and leaves BTC dominance out."
+   "note": "Bitcoin dominance. Fetched daily again from 17 Nov 2026 (owner's gauge list); was stored-only from 13 Nov."
+  },
+  "tv/CRYPTOCAP_OTHERS/4H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:OTHERS",
+   "tf": "4H",
+   "seed_count": 5000,
+   "note": "Market cap outside the top 10 coins. Added 17 Nov 2026 (owner's gauge list). Loaded by the daily TradingView task."
+  },
+  "tv/CRYPTOCAP_TOTALES/4H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:TOTALES",
+   "tf": "4H",
+   "seed_count": 5000,
+   "note": "Total market cap excluding stablecoins. Added 17 Nov 2026 (owner's gauge list). Loaded by the daily TradingView task."
+  },
+  "tv/CRYPTOCAP_BTC/4H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:BTC",
+   "tf": "4H",
+   "seed_count": 5000,
+   "note": "Bitcoin market cap. Added 17 Nov 2026 (owner's gauge list). Loaded by the daily TradingView task."
+  },
+  "tv/CRYPTOCAP_STABLE.C/4H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:STABLE.C",
+   "tf": "4H",
+   "seed_count": 5000,
+   "note": "Total stablecoin market cap (index history starts May 2025). Added 17 Nov 2026 (owner's gauge list). Loaded by the daily TradingView task."
+  },
+  "tv/CRYPTOCAP_MEME.C/4H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:MEME.C",
+   "tf": "4H",
+   "seed_count": 5000,
+   "note": "Meme coin market cap (index history starts May 2025). Added 17 Nov 2026 (owner's gauge list). Loaded by the daily TradingView task."
   },
   "tv/CRYPTOCAP_TOTAL2/4H": {
    "source": "tv",
