@@ -1,6 +1,6 @@
 {
  "errors_last_import": [],
- "generated_at": 1794820468,
+ "generated_at": 1794854442,
  "series": {
   "binance/AAVEUSDT/1D": {
    "added_last_import": 1,
@@ -1174,6 +1174,23 @@
    "source": "binance",
    "symbol": "ZECUSDT",
    "tf": "4H"
+  },
+  "tv/BITSTAMP_XRPUSD/1D": {
+   "added_last_import": 1714,
+   "checked_at": 1794820748,
+   "fetched_at": 1794820748,
+   "first_open": 1375574400,
+   "forming_dropped_last_import": 0,
+   "gaps": null,
+   "imported_at": 1794854442,
+   "last_close": 1525996800,
+   "last_open": 1525910400,
+   "period_s": 86400,
+   "revised_last_import": 0,
+   "rows": 1714,
+   "source": "tv",
+   "symbol": "BITSTAMP:XRPUSD",
+   "tf": "1D"
   },
   "tv/COINBASE_BTCUSD/1D": {
    "added_last_import": 4331,
