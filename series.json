@@ -447,7 +447,7 @@
    "seed_count": 5000,
    "frozen": true,
    "note": "Stored only (loaded once on 13 Nov 2026), no longer fetched: the BTC & ETH dashboard uses CRYPTOCAP_TOTAL2ES, which the daily task already loads, and leaves BTC dominance out."
-  }
+  }, "tv/BITSTAMP_XRPUSD/1D": {"source": "tv", "symbol": "BITSTAMP:XRPUSD", "tf": "1D", "seed_count": 5000, "frozen": true, "note": "History only (loaded once on 16 Nov 2026 for the Cycle Map: Bitstamp XRPUSD daily, Aug 2013 to 10 May 2018, the years before Binance XRPUSDT starts on 4 May 2018). New XRP candles come from binance/XRPUSDT; the daily TradingView task does not fetch this series."}
  },
  "_about_snapshots": "Non-candle readings, one JSON file each in data/snap/<name>.json, newest valid reading wins (older or invalid uploads are rejected, last good kept). task = who loads it: 'daily-tv' = the 11:30 Claude task (TV_TASK.md), 'coinglass' = the CoinGlass Claude task on the owner's computer (COINGLASS_TASK.md).",
  "snapshots": {
