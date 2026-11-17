@@ -1,0 +1,47 @@
+name: Fetch Fear & Greed
+# Pulls the whole alternative.me Crypto Fear & Greed history and writes data/history/altme_fng.csv.
+# Runs daily (after the 11:30 Sydney loads), on demand, and whenever the fetcher or this file is pushed.
+# alternative.me returns the full history every call, so the CSV is rewritten each run (idempotent, self-healing).
+on:
+  schedule:
+    - cron: '50 1 * * *'   # 12:50 Sydney summer time (11:50 winter)
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/fng.yml', 'tools/fetch_fng.py']
+permissions:
+  contents: write
+concurrency:
+  group: market-data-fng
+  cancel-in-progress: false
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch and write the CSV, commit if changed
+        shell: bash
+        run: |
+          set -uo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            python3 -I tools/fetch_fng.py && break
+            [ $attempt -eq 3 ] && { echo "::error::fetch_fng.py failed after 3 attempts"; exit 1; }
+            sleep $((attempt * 5))
+          done
+          git add data/history/altme_fng.csv
+          if git diff --cached --quiet; then echo "Fear & Greed CSV already current."; exit 0; fi
+          for attempt in 1 2 3 4 5; do
+            git fetch --depth 1 origin main -q && git rebase -q origin/main || true
+            git commit -q -m "Fetch Fear & Greed history" 2>/dev/null || true
+            if git push -q origin HEAD:main; then echo "Published Fear & Greed CSV."; exit 0; fi
+            sleep $((attempt * 3))
+          done
+          echo "::error::Could not publish after 5 attempts"; exit 1
