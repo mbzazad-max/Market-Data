@@ -1,11 +1,11 @@
 {
- "fetched_at": 1794875669,
+ "fetched_at": 1794962061,
  "id": "snap/tv_econ_us",
  "payload": {
   "result": [
    {
-    "actual": null,
-    "actualRaw": null,
+    "actual": 0.2,
+    "actualRaw": 0.2,
     "category": "cnsm",
     "country": "US",
     "currency": "USD",
@@ -231,6 +231,27 @@
     "source_url": "http://www.bls.gov",
     "ticker": "ECONOMICS:USJO",
     "title": "JOLTs Job Openings"
+   },
+   {
+    "actual": null,
+    "actualRaw": null,
+    "category": "bsnss",
+    "country": "US",
+    "currency": "USD",
+    "date": "2026-12-03T15:00:00.000Z",
+    "forecast": null,
+    "forecastRaw": null,
+    "id": "1001650998403",
+    "importance": 1,
+    "indicator": "ISM N-Mfg PMI",
+    "period": "Nov. 2026",
+    "previous": 54.5,
+    "previousRaw": 54.5,
+    "referenceDate": "2026-11-30T00:00:00Z",
+    "referencePeriod": "Nov 2026",
+    "source": "Institute for Supply Management",
+    "source_url": "https://www.ismworld.org",
+    "title": "ISM Services PMI"
    }
   ],
   "status": "ok"
