@@ -1,6 +1,6 @@
 {
  "errors_last_import": [],
- "generated_at": 1795074162,
+ "generated_at": 1795075620,
  "series": {
   "binance/AAVEUSDT/1D": {
    "added_last_import": 1,
@@ -1226,6 +1226,23 @@
    "symbol": "COINBASE:BTCUSD",
    "tf": "4H"
   },
+  "tv/CRYPTOCAP_BTC.D/1H": {
+   "added_last_import": 1903,
+   "checked_at": 1795074899,
+   "fetched_at": 1795074899,
+   "first_open": 1788220800,
+   "forming_dropped_last_import": 1,
+   "gaps": null,
+   "imported_at": 1795075620,
+   "last_close": 1795071600,
+   "last_open": 1795068000,
+   "period_s": 3600,
+   "revised_last_import": 0,
+   "rows": 1903,
+   "source": "tv",
+   "symbol": "CRYPTOCAP:BTC.D",
+   "tf": "1H"
+  },
   "tv/CRYPTOCAP_BTC.D/4H": {
    "added_last_import": 1,
    "checked_at": 1795072036,
@@ -1242,6 +1259,23 @@
    "source": "tv",
    "symbol": "CRYPTOCAP:BTC.D",
    "tf": "4H"
+  },
+  "tv/CRYPTOCAP_BTC/1H": {
+   "added_last_import": 1999,
+   "checked_at": 1795074899,
+   "fetched_at": 1795074899,
+   "first_open": 1787875200,
+   "forming_dropped_last_import": 1,
+   "gaps": null,
+   "imported_at": 1795075620,
+   "last_close": 1795071600,
+   "last_open": 1795068000,
+   "period_s": 3600,
+   "revised_last_import": 0,
+   "rows": 1999,
+   "source": "tv",
+   "symbol": "CRYPTOCAP:BTC",
+   "tf": "1H"
   },
   "tv/CRYPTOCAP_BTC/4H": {
    "added_last_import": 1,
@@ -1260,6 +1294,23 @@
    "symbol": "CRYPTOCAP:BTC",
    "tf": "4H"
   },
+  "tv/CRYPTOCAP_MEME.C/1H": {
+   "added_last_import": 1999,
+   "checked_at": 1795074899,
+   "fetched_at": 1795074899,
+   "first_open": 1787875200,
+   "forming_dropped_last_import": 1,
+   "gaps": null,
+   "imported_at": 1795075620,
+   "last_close": 1795071600,
+   "last_open": 1795068000,
+   "period_s": 3600,
+   "revised_last_import": 0,
+   "rows": 1999,
+   "source": "tv",
+   "symbol": "CRYPTOCAP:MEME.C",
+   "tf": "1H"
+  },
   "tv/CRYPTOCAP_MEME.C/4H": {
    "added_last_import": 1,
    "checked_at": 1795072036,
@@ -1276,6 +1327,23 @@
    "source": "tv",
    "symbol": "CRYPTOCAP:MEME.C",
    "tf": "4H"
+  },
+  "tv/CRYPTOCAP_OTHERS/1H": {
+   "added_last_import": 1999,
+   "checked_at": 1795074899,
+   "fetched_at": 1795074899,
+   "first_open": 1787875200,
+   "forming_dropped_last_import": 1,
+   "gaps": null,
+   "imported_at": 1795075620,
+   "last_close": 1795071600,
+   "last_open": 1795068000,
+   "period_s": 3600,
+   "revised_last_import": 0,
+   "rows": 1999,
+   "source": "tv",
+   "symbol": "CRYPTOCAP:OTHERS",
+   "tf": "1H"
   },
   "tv/CRYPTOCAP_OTHERS/4H": {
    "added_last_import": 1,
@@ -1294,6 +1362,23 @@
    "symbol": "CRYPTOCAP:OTHERS",
    "tf": "4H"
   },
+  "tv/CRYPTOCAP_STABLE.C/1H": {
+   "added_last_import": 1999,
+   "checked_at": 1795074899,
+   "fetched_at": 1795074899,
+   "first_open": 1787875200,
+   "forming_dropped_last_import": 1,
+   "gaps": null,
+   "imported_at": 1795075620,
+   "last_close": 1795071600,
+   "last_open": 1795068000,
+   "period_s": 3600,
+   "revised_last_import": 0,
+   "rows": 1999,
+   "source": "tv",
+   "symbol": "CRYPTOCAP:STABLE.C",
+   "tf": "1H"
+  },
   "tv/CRYPTOCAP_STABLE.C/4H": {
    "added_last_import": 1,
    "checked_at": 1795072036,
@@ -1310,6 +1395,23 @@
    "source": "tv",
    "symbol": "CRYPTOCAP:STABLE.C",
    "tf": "4H"
+  },
+  "tv/CRYPTOCAP_TOTAL/1H": {
+   "added_last_import": 1999,
+   "checked_at": 1795074899,
+   "fetched_at": 1795074899,
+   "first_open": 1787875200,
+   "forming_dropped_last_import": 1,
+   "gaps": null,
+   "imported_at": 1795075620,
+   "last_close": 1795071600,
+   "last_open": 1795068000,
+   "period_s": 3600,
+   "revised_last_import": 0,
+   "rows": 1999,
+   "source": "tv",
+   "symbol": "CRYPTOCAP:TOTAL",
+   "tf": "1H"
   },
   "tv/CRYPTOCAP_TOTAL/4H": {
    "added_last_import": 1,
@@ -1345,6 +1447,23 @@
    "symbol": "CRYPTOCAP:TOTAL2",
    "tf": "4H"
   },
+  "tv/CRYPTOCAP_TOTAL2ES/1H": {
+   "added_last_import": 1999,
+   "checked_at": 1795074899,
+   "fetched_at": 1795074899,
+   "first_open": 1787875200,
+   "forming_dropped_last_import": 1,
+   "gaps": null,
+   "imported_at": 1795075620,
+   "last_close": 1795071600,
+   "last_open": 1795068000,
+   "period_s": 3600,
+   "revised_last_import": 0,
+   "rows": 1999,
+   "source": "tv",
+   "symbol": "CRYPTOCAP:TOTAL2ES",
+   "tf": "1H"
+  },
   "tv/CRYPTOCAP_TOTAL2ES/4H": {
    "added_last_import": 1,
    "checked_at": 1795072036,
@@ -1362,6 +1481,23 @@
    "symbol": "CRYPTOCAP:TOTAL2ES",
    "tf": "4H"
   },
+  "tv/CRYPTOCAP_TOTAL3ES/1H": {
+   "added_last_import": 1999,
+   "checked_at": 1795074899,
+   "fetched_at": 1795074899,
+   "first_open": 1787875200,
+   "forming_dropped_last_import": 1,
+   "gaps": null,
+   "imported_at": 1795075620,
+   "last_close": 1795071600,
+   "last_open": 1795068000,
+   "period_s": 3600,
+   "revised_last_import": 0,
+   "rows": 1999,
+   "source": "tv",
+   "symbol": "CRYPTOCAP:TOTAL3ES",
+   "tf": "1H"
+  },
   "tv/CRYPTOCAP_TOTAL3ES/4H": {
    "added_last_import": 1,
    "checked_at": 1795072036,
@@ -1378,6 +1514,23 @@
    "source": "tv",
    "symbol": "CRYPTOCAP:TOTAL3ES",
    "tf": "4H"
+  },
+  "tv/CRYPTOCAP_TOTALES/1H": {
+   "added_last_import": 1999,
+   "checked_at": 1795074899,
+   "fetched_at": 1795074899,
+   "first_open": 1787875200,
+   "forming_dropped_last_import": 1,
+   "gaps": null,
+   "imported_at": 1795075620,
+   "last_close": 1795071600,
+   "last_open": 1795068000,
+   "period_s": 3600,
+   "revised_last_import": 0,
+   "rows": 1999,
+   "source": "tv",
+   "symbol": "CRYPTOCAP:TOTALES",
+   "tf": "1H"
   },
   "tv/CRYPTOCAP_TOTALES/4H": {
    "added_last_import": 1,
@@ -1413,6 +1566,23 @@
    "symbol": "CRYPTOCAP:USDC.D",
    "tf": "1D"
   },
+  "tv/CRYPTOCAP_USDC.D/1H": {
+   "added_last_import": 1903,
+   "checked_at": 1795074899,
+   "fetched_at": 1795074899,
+   "first_open": 1788220800,
+   "forming_dropped_last_import": 1,
+   "gaps": null,
+   "imported_at": 1795075620,
+   "last_close": 1795071600,
+   "last_open": 1795068000,
+   "period_s": 3600,
+   "revised_last_import": 0,
+   "rows": 1903,
+   "source": "tv",
+   "symbol": "CRYPTOCAP:USDC.D",
+   "tf": "1H"
+  },
   "tv/CRYPTOCAP_USDC.D/4H": {
    "added_last_import": 1,
    "checked_at": 1795072036,
@@ -1446,6 +1616,23 @@
    "source": "tv",
    "symbol": "CRYPTOCAP:USDT.D",
    "tf": "1D"
+  },
+  "tv/CRYPTOCAP_USDT.D/1H": {
+   "added_last_import": 1903,
+   "checked_at": 1795074899,
+   "fetched_at": 1795074899,
+   "first_open": 1788220800,
+   "forming_dropped_last_import": 1,
+   "gaps": null,
+   "imported_at": 1795075620,
+   "last_close": 1795071600,
+   "last_open": 1795068000,
+   "period_s": 3600,
+   "revised_last_import": 0,
+   "rows": 1903,
+   "source": "tv",
+   "symbol": "CRYPTOCAP:USDT.D",
+   "tf": "1H"
   },
   "tv/CRYPTOCAP_USDT.D/4H": {
    "added_last_import": 1,
