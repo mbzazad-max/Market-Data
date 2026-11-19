@@ -1,10 +1,10 @@
 {
- "fetched_at": 1795073863,
+ "fetched_at": 1795073993,
  "id": "snap/cmc_global",
  "payload": {
   "dominance": {
    "btc": {
-    "current": "+58.89%",
+    "current": "+58.91%",
     "history": {
      "last_month": "+60.12%",
      "last_week": "+60.61%",
@@ -40,7 +40,7 @@
     }
    },
    "others": {
-    "current": "+30.96%",
+    "current": "+30.95%",
     "history": {
      "last_month": "+29.15%",
      "last_week": "+29.15%",
