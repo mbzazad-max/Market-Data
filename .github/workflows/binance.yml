@@ -38,7 +38,7 @@ jobs:
         run: |
           set -uo pipefail
           args=""; [ "${{ inputs.dry_run }}" = "true" ] && args="--dry-run"
-          status=0; (cd tools && python3 -I binance_fetch.py $args) || status=$?
+          status=0; (cd tools && python3 binance_fetch.py $args) || status=$?
           echo "status=$status" >> "$GITHUB_OUTPUT"
           if ls incoming/binance-*/fetch.json >/dev/null 2>&1; then echo "staged=1" >> "$GITHUB_OUTPUT"; fi
       - name: Upload to incoming/ in one commit
