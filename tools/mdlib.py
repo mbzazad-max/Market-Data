@@ -6,7 +6,7 @@ import math
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PERIOD = {"4H": 4 * 3600, "1D": 86400}
+PERIOD = {"1H": 3600, "4H": 4 * 3600, "1D": 86400}
 HEADER = ["time", "open", "high", "low", "close", "volume"]
 
 

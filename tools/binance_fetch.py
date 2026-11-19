@@ -1,8 +1,10 @@
 """Top up the Binance series from Binance's public market-data API (run by .github/workflows/binance.yml).
 
 It does the same job as the laptop uploader, from GitHub instead of the laptop:
-1. Reads series.json and manifest.json. Only Binance series that already exist in the manifest are
-   topped up (no new series, no history download).
+1. Reads series.json and manifest.json. Binance series that already exist in the manifest are topped up.
+   A Binance series that is in series.json but not in the manifest yet is SEEDED here when it has a
+   "seed_count" (that many most recent closed candles, fetched 1,000 per call); without seed_count it is
+   left for the laptop uploader as before. (Seeding and 1H added 19 Nov 2026 for the Structure Shift board.)
 2. For each one that has a newly closed candle due, asks Binance for the candles from 5 before the
    stored last candle onwards (the 5 overlapping candles are the check that the data matches).
 3. Writes them into incoming/binance-<time>/ with fetch.json, exactly like the laptop uploader.
@@ -29,7 +31,7 @@ import urllib.request
 from mdlib import PERIOD, ROOT, load_json, read_series, same_values
 
 HOSTS = ["https://data-api.binance.vision", "https://api.binance.com"]
-INTERVAL = {"4H": "4h", "1D": "1d"}
+INTERVAL = {"1H": "1h", "4H": "4h", "1D": "1d"}
 OVERLAP = 5
 MARGIN_S = 60  # a candle counts as closed only 60 s after its close time
 
@@ -58,6 +60,26 @@ def get_klines(symbol, interval, start_ms):
     raise RuntimeError(last_err or "no host answered")
 
 
+def seed_rows(symbol, interval, P, count, now):
+    """The newest `count` candles (closed ones; the importer drops the forming one), oldest first."""
+    start = ((now // P) - count - 1) * P
+    rows, host = {}, None
+    while start < now:
+        kl, host = get_klines(symbol, interval, start * 1000)
+        if not kl:
+            break
+        for k in kl:
+            t = int(k[0]) // 1000
+            if t % P == 0:
+                rows[t] = [str(t), k[1], k[2], k[3], k[4], k[5]]
+        nxt = int(kl[-1][0]) // 1000 + P
+        if nxt <= start or len(kl) < 1000:
+            break
+        start = nxt
+        time.sleep(0.3)
+    return [rows[t] for t in sorted(rows)], host
+
+
 def main():
     dry = "--dry-run" in sys.argv
     series = load_json(ROOT / "series.json")["series"]
@@ -70,10 +92,32 @@ def main():
         if s["source"] != "binance" or s["tf"] not in INTERVAL:
             continue
         m = man.get(sid)
-        if not m or m.get("last_open") is None:
-            report.append(f"{sid}: not in manifest yet, skipped (laptop seeds new series)")
-            continue
         P = PERIOD[s["tf"]]
+        if not m or m.get("last_open") is None:
+            if not s.get("seed_count"):
+                report.append(f"{sid}: not in manifest yet, skipped (laptop seeds new series)")
+                continue
+            if dry:
+                report.append(f"{sid}: would be seeded with {s['seed_count']} candles")
+                continue
+            try:
+                rows, host = seed_rows(s["symbol"], INTERVAL[s["tf"]], P, int(s["seed_count"]), now)
+            except RuntimeError as e:
+                errors.append(f"{sid}: could not seed ({e})")
+                continue
+            if not rows:
+                errors.append(f"{sid}: Binance returned no candles to seed")
+                continue
+            hosts[host] = hosts.get(host, 0) + 1
+            out = io.StringIO()
+            w = csv.writer(out, lineterminator="\n")
+            w.writerow(["time", "open", "high", "low", "close", "volume"])
+            w.writerows(rows)
+            name = f"{s['symbol']}_{s['tf']}.csv"
+            files[name] = out.getvalue()
+            fetched[name] = int(time.time())
+            report.append(f"{sid}: seeded {len(rows)} candles (new series)")
+            continue
         last = m["last_open"]
         if last + 2 * P > now - MARGIN_S and not dry:  # the next candle has not closed yet
             report.append(f"{sid}: current (last {last}), nothing due")

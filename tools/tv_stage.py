@@ -8,7 +8,7 @@ from pathlib import Path
 
 from mdlib import ROOT, series_registry, write_csv
 
-TF = {"4h": "4H", "240": "4H", "1D": "1D", "D": "1D"}
+TF = {"1h": "1H", "60": "1H", "4h": "4H", "240": "4H", "1D": "1D", "D": "1D"}
 
 
 def main():

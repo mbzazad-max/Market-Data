@@ -154,6 +154,11 @@ def expected_close(sid, m):
         return due
     if src == 'binance' and m['tf'] == '1D':
         return newest if NOW >= newest + 3 * 3600 else newest - P  # daily upload due within 3 h of the 11:00 Sydney close
+    if src == 'binance' and m['tf'] == '1H':
+        # 1H arrives with the GitHub Binance fetch every 4 hours (7 min after each 4H close): due = the 1H candles
+        # that closed at the last 4H boundary at least 30 min ago, with one 4H run of slack.
+        b4 = ((int(NOW) - 1800) // 14400) * 14400
+        return b4 - 14400
     return newest - P  # Binance 4H: one candle of slack (the laptop uploads a few times a day)
 
 
@@ -175,7 +180,7 @@ for sid, m in sorted(ages.items()):
     age_rows.append('| %s | %s | %s | %s | %s |' % (sid, t2s(m['last_close']), behind, t2s(m.get('fetched_at')), '**' + why + '**' if why else 'OK'))
 lines += ['## Upload age (Market-Data vs now)', '', ('**Not loaded on time:** ' + '; '.join(late)) if late else 'Every used series has every candle that is due.', '',
           '<details><summary>All %d series</summary>' % len(age_rows), '', '| Series | Last closed candle | Candles behind now | File saved | Due? |', '|---|---|---|---|---|'] + age_rows + ['', '</details>']
-lines += ['', 'Due = Binance 1D within 3 h of the 11:00 Sydney close; Binance 4H at most 1 candle behind; TradingView candles that closed before the daily 11:30 load (metals: weekend closure allowed).', '']
+lines += ['', 'Due = Binance 1D within 3 h of the 11:00 Sydney close; Binance 4H at most 1 candle behind; Binance 1H up to one 4-hour fetch behind; TradingView candles that closed before the daily 11:30 load (metals: weekend closure allowed).', '']
 if late:
     problems.append('Market-Data: ' + '; '.join(late))
 

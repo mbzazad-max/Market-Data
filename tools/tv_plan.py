@@ -11,7 +11,7 @@ import datetime as dt
 
 from mdlib import PERIOD, ROOT, load_json, series_registry, snapshot_registry
 
-TV_INTERVAL = {"4H": "4h", "1D": "1D"}
+TV_INTERVAL = {"1H": "1h", "4H": "4h", "1D": "1D"}
 
 
 def main():

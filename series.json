@@ -469,7 +469,379 @@
    "seed_count": 5000,
    "frozen": true,
    "note": "Stored only (loaded once on 13 Nov 2026), no longer fetched: the BTC & ETH dashboard uses CRYPTOCAP_TOTAL2ES, which the daily task already loads, and leaves BTC dominance out."
-  }, "tv/BITSTAMP_XRPUSD/1D": {"source": "tv", "symbol": "BITSTAMP:XRPUSD", "tf": "1D", "seed_count": 5000, "frozen": true, "note": "History only (loaded once on 16 Nov 2026 for the Cycle Map: Bitstamp XRPUSD daily, Aug 2013 to 10 May 2018, the years before Binance XRPUSDT starts on 4 May 2018). New XRP candles come from binance/XRPUSDT; the daily TradingView task does not fetch this series."}
+  },
+  "tv/BITSTAMP_XRPUSD/1D": {
+   "source": "tv",
+   "symbol": "BITSTAMP:XRPUSD",
+   "tf": "1D",
+   "seed_count": 5000,
+   "frozen": true,
+   "note": "History only (loaded once on 16 Nov 2026 for the Cycle Map: Bitstamp XRPUSD daily, Aug 2013 to 10 May 2018, the years before Binance XRPUSDT starts on 4 May 2018). New XRP candles come from binance/XRPUSDT; the daily TradingView task does not fetch this series."
+  },
+  "binance/BTCUSDT/1H": {
+   "source": "binance",
+   "symbol": "BTCUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/ETHUSDT/1H": {
+   "source": "binance",
+   "symbol": "ETHUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/SOLUSDT/1H": {
+   "source": "binance",
+   "symbol": "SOLUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/BNBUSDT/1H": {
+   "source": "binance",
+   "symbol": "BNBUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/XRPUSDT/1H": {
+   "source": "binance",
+   "symbol": "XRPUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/ADAUSDT/1H": {
+   "source": "binance",
+   "symbol": "ADAUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/DOGEUSDT/1H": {
+   "source": "binance",
+   "symbol": "DOGEUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/AVAXUSDT/1H": {
+   "source": "binance",
+   "symbol": "AVAXUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/LINKUSDT/1H": {
+   "source": "binance",
+   "symbol": "LINKUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/LTCUSDT/1H": {
+   "source": "binance",
+   "symbol": "LTCUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/XLMUSDT/1H": {
+   "source": "binance",
+   "symbol": "XLMUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/TRXUSDT/1H": {
+   "source": "binance",
+   "symbol": "TRXUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/SHIBUSDT/1H": {
+   "source": "binance",
+   "symbol": "SHIBUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/SUIUSDT/1H": {
+   "source": "binance",
+   "symbol": "SUIUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/NEARUSDT/1H": {
+   "source": "binance",
+   "symbol": "NEARUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/ICPUSDT/1H": {
+   "source": "binance",
+   "symbol": "ICPUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/AAVEUSDT/1H": {
+   "source": "binance",
+   "symbol": "AAVEUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/UNIUSDT/1H": {
+   "source": "binance",
+   "symbol": "UNIUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/ENAUSDT/1H": {
+   "source": "binance",
+   "symbol": "ENAUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/TAOUSDT/1H": {
+   "source": "binance",
+   "symbol": "TAOUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/RENDERUSDT/1H": {
+   "source": "binance",
+   "symbol": "RENDERUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/FETUSDT/1H": {
+   "source": "binance",
+   "symbol": "FETUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/ONDOUSDT/1H": {
+   "source": "binance",
+   "symbol": "ONDOUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/JUPUSDT/1H": {
+   "source": "binance",
+   "symbol": "JUPUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/RAYUSDT/1H": {
+   "source": "binance",
+   "symbol": "RAYUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/PEPEUSDT/1H": {
+   "source": "binance",
+   "symbol": "PEPEUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/WIFUSDT/1H": {
+   "source": "binance",
+   "symbol": "WIFUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/ARBUSDT/1H": {
+   "source": "binance",
+   "symbol": "ARBUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/LDOUSDT/1H": {
+   "source": "binance",
+   "symbol": "LDOUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/INJUSDT/1H": {
+   "source": "binance",
+   "symbol": "INJUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/WLDUSDT/1H": {
+   "source": "binance",
+   "symbol": "WLDUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/ZECUSDT/1H": {
+   "source": "binance",
+   "symbol": "ZECUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/PUMPUSDT/1H": {
+   "source": "binance",
+   "symbol": "PUMPUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/ASTERUSDT/1H": {
+   "source": "binance",
+   "symbol": "ASTERUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/GRAMUSDT/1H": {
+   "source": "binance",
+   "symbol": "GRAMUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/HYPEUSDT/1H": {
+   "source": "binance",
+   "symbol": "HYPEUSDT",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/ETHBTC/1H": {
+   "source": "binance",
+   "symbol": "ETHBTC",
+   "tf": "1H",
+   "seed_count": 1500,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/TRXUSDT/4H": {
+   "source": "binance",
+   "symbol": "TRXUSDT",
+   "tf": "4H",
+   "seed_count": 5000,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/TRXUSDT/1D": {
+   "source": "binance",
+   "symbol": "TRXUSDT",
+   "tf": "1D",
+   "seed_count": 2000,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/SHIBUSDT/4H": {
+   "source": "binance",
+   "symbol": "SHIBUSDT",
+   "tf": "4H",
+   "seed_count": 5000,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "binance/SHIBUSDT/1D": {
+   "source": "binance",
+   "symbol": "SHIBUSDT",
+   "tf": "1D",
+   "seed_count": 2000,
+   "note": "Structure Shift board (added 19 Nov 2026). Seeded and topped up by the GitHub Binance fetch (binance.yml)."
+  },
+  "tv/CRYPTOCAP_TOTAL2ES/1H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:TOTAL2ES",
+   "tf": "1H",
+   "seed_count": 2000,
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+  },
+  "tv/CRYPTOCAP_TOTAL3ES/1H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:TOTAL3ES",
+   "tf": "1H",
+   "seed_count": 2000,
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+  },
+  "tv/CRYPTOCAP_OTHERS/1H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:OTHERS",
+   "tf": "1H",
+   "seed_count": 2000,
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+  },
+  "tv/CRYPTOCAP_TOTAL/1H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:TOTAL",
+   "tf": "1H",
+   "seed_count": 2000,
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+  },
+  "tv/CRYPTOCAP_TOTALES/1H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:TOTALES",
+   "tf": "1H",
+   "seed_count": 2000,
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+  },
+  "tv/CRYPTOCAP_BTC/1H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:BTC",
+   "tf": "1H",
+   "seed_count": 2000,
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+  },
+  "tv/CRYPTOCAP_BTC.D/1H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:BTC.D",
+   "tf": "1H",
+   "seed_count": 2000,
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+  },
+  "tv/CRYPTOCAP_USDT.D/1H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:USDT.D",
+   "tf": "1H",
+   "seed_count": 2000,
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+  },
+  "tv/CRYPTOCAP_USDC.D/1H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:USDC.D",
+   "tf": "1H",
+   "seed_count": 2000,
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+  },
+  "tv/CRYPTOCAP_STABLE.C/1H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:STABLE.C",
+   "tf": "1H",
+   "seed_count": 2000,
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+  },
+  "tv/CRYPTOCAP_MEME.C/1H": {
+   "source": "tv",
+   "symbol": "CRYPTOCAP:MEME.C",
+   "tf": "1H",
+   "seed_count": 2000,
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+  }
  },
  "_about_snapshots": "Non-candle readings, one JSON file each in data/snap/<name>.json, newest valid reading wins (older or invalid uploads are rejected, last good kept). task = who loads it: 'daily-tv' = the 11:30 Claude task (TV_TASK.md), 'coinglass' = the CoinGlass Claude task on the owner's computer (COINGLASS_TASK.md).",
  "snapshots": {
