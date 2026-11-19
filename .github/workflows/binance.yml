@@ -1,0 +1,68 @@
+name: Fetch Binance candles
+# Every 4 hours, a few minutes after each 4H candle closes (00, 04, 08, 12, 16, 20 UTC =
+# 11:07, 15:07, 19:07, 23:07, 03:07, 07:07 Sydney summer time), tops up every Binance series that is
+# already in manifest.json with the newly closed candles (tools/binance_fetch.py).
+# It only drops an upload into incoming/, the same way the laptop uploader does, and starts the
+# existing "Import market data" workflow, which merges, checks and rebuilds the dashboards as before.
+# If Binance cannot be reached from GitHub the run fails (GitHub emails you): upload from the laptop.
+# Run it by hand: Actions -> Fetch Binance candles -> Run workflow (tick "dry run" to only test).
+on:
+  schedule:
+    - cron: '7 0,4,8,12,16,20 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run: fetch and compare with stored candles, upload nothing'
+        type: boolean
+        default: false
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: market-data-binance
+  cancel-in-progress: false
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch new closed candles from Binance
+        id: fetch
+        shell: bash
+        run: |
+          set -uo pipefail
+          args=""; [ "${{ inputs.dry_run }}" = "true" ] && args="--dry-run"
+          status=0; (cd tools && python3 -I binance_fetch.py $args) || status=$?
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          if ls incoming/binance-*/fetch.json >/dev/null 2>&1; then echo "staged=1" >> "$GITHUB_OUTPUT"; fi
+      - name: Upload to incoming/ in one commit
+        if: steps.fetch.outputs.staged == '1'
+        shell: bash
+        run: |
+          set -uo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add incoming
+          git commit -q -m "Upload Binance candles (GitHub fetch)"
+          for attempt in 1 2 3 4 5 6; do
+            if git push -q origin HEAD:main; then echo "Uploaded."; exit 0; fi
+            sleep $((attempt * 3))
+            git fetch --depth 1 origin main -q && git rebase -q origin/main || { echo "::error::Rebase failed"; exit 1; }
+          done
+          echo "::error::Could not push after 6 attempts"; exit 1
+      - name: Start the import
+        if: steps.fetch.outputs.staged == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run import.yml -R "${{ github.repository }}" --ref main && echo "Import started."
+      - name: Fail if any series could not be fetched
+        if: steps.fetch.outputs.status != '0'
+        run: |
+          echo "::error::Some Binance series were not fetched from GitHub (see the log above). Upload them from the laptop."
+          exit 1
