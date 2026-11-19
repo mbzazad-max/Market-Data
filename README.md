@@ -5,9 +5,16 @@ columns `time,open,high,low,close,volume`, time = candle open in unix seconds UT
 
 - `series.json`: every series this repo keeps. `dashboards.json`: which dashboard repos rebuild when their series change.
 - `manifest.json`: per series, last closed candle, fetch time and row count. Check it before fetching anything; fetch only what is stale.
-- **Binance** candles come from the laptop uploader (`uploader/`, see its README.txt). One upload = one commit.
-- **TradingView** candles come from the daily Claude task (`TV_TASK.md`). One load = one commit.
-- `.github/workflows/import.yml` (the only workflow) merges `incoming/` into `data/`, updates the manifest and asks dashboards to rebuild.
+- Every dashboard reads its candles from this repo only; no dashboard fetches Binance or TradingView itself.
+- Timeframes: **1H**, **4H** and **1D** (1W and longer are built by each dashboard from 1D).
+- **Binance** candles: the GitHub workflow `binance.yml` (`tools/binance_fetch.py`) fetches them from the Binance klines API
+  (data-api.binance.vision first, api.binance.com second) every 4 hours, 7 min after each 4H close, for every Binance series in
+  `series.json`: 1H, 4H and 1D are topped up together (1H arrives four candles at a time). A new Binance series with a
+  `seed_count` is seeded there too (its newest N closed candles), so adding a coin is one line in `series.json`.
+  The laptop uploader (`uploader/`, see its README.txt) still works as the fallback for any Binance series.
+- **TradingView** candles (market gauges, 1H and 4H) come from the daily 11:30 Sydney Claude task (`TV_TASK.md`). One load = one commit.
+- `.github/workflows/import.yml` merges `incoming/` into `data/`, updates the manifest and asks the dashboards in
+  `dashboards.json` that use a changed series to rebuild. Other workflows: `binance.yml` (above), `check.yml` (Check dashboards), `fng.yml`.
 
 Closed candles only: a candle is kept only if it had closed by the data's own fetch time (never the time the import runs).
 A Binance candle that already exists must never change; if it does, that upload is rejected and the last good data stays.
