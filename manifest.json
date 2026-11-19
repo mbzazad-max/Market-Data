@@ -1,6 +1,6 @@
 {
  "errors_last_import": [],
- "generated_at": 1795072125,
+ "generated_at": 1795073901,
  "series": {
   "binance/AAVEUSDT/1D": {
    "added_last_import": 1,
@@ -1467,15 +1467,15 @@
  },
  "snapshots": {
   "snap/cmc_global": {
-   "bytes": 5840,
-   "fetched_at": 1794962221,
-   "imported_at": 1794962413,
+   "bytes": 5845,
+   "fetched_at": 1795073863,
+   "imported_at": 1795073901,
    "kind": "cmc_global"
   },
   "snap/cmc_quotes": {
-   "bytes": 2540,
-   "fetched_at": 1794962221,
-   "imported_at": 1794962413,
+   "bytes": 2555,
+   "fetched_at": 1795073863,
+   "imported_at": 1795073901,
    "kind": "cmc_quotes"
   },
   "snap/coinglass_bnb": {
