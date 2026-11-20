@@ -12,7 +12,10 @@ columns `time,open,high,low,close,volume`, time = candle open in unix seconds UT
   `series.json`: 1H, 4H and 1D are topped up together (1H arrives four candles at a time). A new Binance series with a
   `seed_count` is seeded there too (its newest N closed candles), so adding a coin is one line in `series.json`.
   The laptop uploader (`uploader/`, see its README.txt) still works as the fallback for any Binance series.
-- **TradingView** candles (market gauges, 1H and 4H) come from the daily 11:30 Sydney Claude task (`TV_TASK.md`). One load = one commit.
+- **TradingView** candles (market gauges, 1H and 4H) come from the owner's PC every 4 hours (since 20 Nov 2026):
+  the TradingView Desktop downloader + `upload_gauges.py` (folder `SPOT\tvdl`, `download_and_upload.bat`) send only new candles
+  as `incoming/tv-<time>/`, one commit per run ("Upload TradingView gauges from desktop"). The daily 11:30 Sydney Claude task
+  (`TV_TASK.md`) now loads only the US economic calendar and reports if the PC uploads look stalled; it no longer fetches candles.
 - `.github/workflows/import.yml` merges `incoming/` into `data/`, updates the manifest and asks the dashboards in
   `dashboards.json` that use a changed series to rebuild. Other workflows: `binance.yml` (above), `check.yml` (Check dashboards), `fng.yml`.
 

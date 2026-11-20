@@ -29,6 +29,9 @@ REBUILD = '--rebuild' in sys.argv
 NOW = float(os.environ.get('CHECK_NOW') or time.time())  # CHECK_NOW: test the rules at another time
 
 
+FROZEN_IDS = {k for k, v in series_registry().items() if v.get('frozen')}  # stored history only
+
+
 def api(path, raw=False, method='GET', body=None):
     req = urllib.request.Request('https://api.github.com/' + path, method=method,
                                  data=json.dumps(body).encode() if body is not None else None,
@@ -89,6 +92,13 @@ for d in dash:
         else:
             res = 'OK' if built == m['last_open'] else ('BEHIND' if (built or 0) < m['last_open'] else 'AHEAD')
             if res == 'OK' and s.get('rows') and s['rows'] != m['rows']: res = 'ROWS DIFFER'
+            sib = S.get(sid.rsplit('/', 1)[0] + '/4H')
+            if res == 'AHEAD' and sid in FROZEN_IDS and sid.endswith('/1D') and sib:
+                # A frozen daily series that the dashboard extends with days made from closed 4H candles
+                # (e.g. Fib USDT.D then_days_from_4h): compare with the last full day the 4H series holds.
+                want = (sib['last_close'] // 86400) * 86400 - 86400
+                res = 'OK' if built == want else ('BEHIND' if built < want else 'AHEAD')
+                label += ' (days after the frozen history made from 4H)'
             ages[sid] = m
         if res != 'OK': bad.append(label + ' ' + res)
         rows.append('| %s | %s | %s | %s / %s | %s |' % (label, t2s(m['last_open']) if m else '-', t2s(built), m['rows'] if m else '-', s.get('rows', '-'),

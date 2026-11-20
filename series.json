@@ -1,5 +1,5 @@
 {
- "_about": "Every series stored in this repo. id = <source>/<file symbol>/<timeframe>. Binance series arrive from the laptop uploader; tv series arrive from the daily Claude TradingView task. Add a line here to add a series.",
+ "_about": "Every series stored in this repo. id = <source>/<file symbol>/<timeframe>. Binance series arrive from the laptop uploader; tv series arrive from the owner's PC (TradingView Desktop downloader, every 4 hours, since 20 Nov 2026). Add a line here to add a series.",
  "series": {
   "binance/BTCUSDT/4H": {
    "source": "binance",
@@ -425,42 +425,42 @@
    "symbol": "CRYPTOCAP:BTC.D",
    "tf": "4H",
    "seed_count": 5000,
-   "note": "Bitcoin dominance. Fetched daily again from 17 Nov 2026 (owner's gauge list); was stored-only from 13 Nov."
+   "note": "Bitcoin dominance. Fetched again from 17 Nov 2026 (owner's gauge list); was stored-only from 13 Nov. Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   },
   "tv/CRYPTOCAP_OTHERS/4H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:OTHERS",
    "tf": "4H",
    "seed_count": 5000,
-   "note": "Market cap outside the top 10 coins. Added 17 Nov 2026 (owner's gauge list). Loaded by the daily TradingView task."
+   "note": "Market cap outside the top 10 coins. Added 17 Nov 2026 (owner's gauge list). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   },
   "tv/CRYPTOCAP_TOTALES/4H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:TOTALES",
    "tf": "4H",
    "seed_count": 5000,
-   "note": "Total market cap excluding stablecoins. Added 17 Nov 2026 (owner's gauge list). Loaded by the daily TradingView task."
+   "note": "Total market cap excluding stablecoins. Added 17 Nov 2026 (owner's gauge list). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   },
   "tv/CRYPTOCAP_BTC/4H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:BTC",
    "tf": "4H",
    "seed_count": 5000,
-   "note": "Bitcoin market cap. Added 17 Nov 2026 (owner's gauge list). Loaded by the daily TradingView task."
+   "note": "Bitcoin market cap. Added 17 Nov 2026 (owner's gauge list). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   },
   "tv/CRYPTOCAP_STABLE.C/4H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:STABLE.C",
    "tf": "4H",
    "seed_count": 5000,
-   "note": "Total stablecoin market cap (index history starts May 2025). Added 17 Nov 2026 (owner's gauge list). Loaded by the daily TradingView task."
+   "note": "Total stablecoin market cap (index history starts May 2025). Added 17 Nov 2026 (owner's gauge list). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   },
   "tv/CRYPTOCAP_MEME.C/4H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:MEME.C",
    "tf": "4H",
    "seed_count": 5000,
-   "note": "Meme coin market cap (index history starts May 2025). Added 17 Nov 2026 (owner's gauge list). Loaded by the daily TradingView task."
+   "note": "Meme coin market cap (index history starts May 2025). Added 17 Nov 2026 (owner's gauge list). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   },
   "tv/CRYPTOCAP_TOTAL2/4H": {
    "source": "tv",
@@ -770,77 +770,77 @@
    "symbol": "CRYPTOCAP:TOTAL2ES",
    "tf": "1H",
    "seed_count": 2000,
-   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   },
   "tv/CRYPTOCAP_TOTAL3ES/1H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:TOTAL3ES",
    "tf": "1H",
    "seed_count": 2000,
-   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   },
   "tv/CRYPTOCAP_OTHERS/1H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:OTHERS",
    "tf": "1H",
    "seed_count": 2000,
-   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   },
   "tv/CRYPTOCAP_TOTAL/1H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:TOTAL",
    "tf": "1H",
    "seed_count": 2000,
-   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   },
   "tv/CRYPTOCAP_TOTALES/1H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:TOTALES",
    "tf": "1H",
    "seed_count": 2000,
-   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   },
   "tv/CRYPTOCAP_BTC/1H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:BTC",
    "tf": "1H",
    "seed_count": 2000,
-   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   },
   "tv/CRYPTOCAP_BTC.D/1H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:BTC.D",
    "tf": "1H",
    "seed_count": 2000,
-   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   },
   "tv/CRYPTOCAP_USDT.D/1H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:USDT.D",
    "tf": "1H",
    "seed_count": 2000,
-   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   },
   "tv/CRYPTOCAP_USDC.D/1H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:USDC.D",
    "tf": "1H",
    "seed_count": 2000,
-   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   },
   "tv/CRYPTOCAP_STABLE.C/1H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:STABLE.C",
    "tf": "1H",
    "seed_count": 2000,
-   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   },
   "tv/CRYPTOCAP_MEME.C/1H": {
    "source": "tv",
    "symbol": "CRYPTOCAP:MEME.C",
    "tf": "1H",
    "seed_count": 2000,
-   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded by the daily TradingView task."
+   "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
   }
  },
  "_about_snapshots": "Non-candle readings, one JSON file each in data/snap/<name>.json, newest valid reading wins (older or invalid uploads are rejected, last good kept). task = who loads it: 'daily-tv' = the 11:30 Claude task (TV_TASK.md), 'coinglass' = the CoinGlass Claude task on the owner's computer (COINGLASS_TASK.md).",

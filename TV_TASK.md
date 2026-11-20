@@ -1,5 +1,9 @@
 # Daily TradingView load (for the scheduled Claude task)
 
+**Since 20 Nov 2026 this task loads the US economic calendar only (step 6).** TradingView gauge candles come from the owner's PC
+every 4 hours (TradingView Desktop downloader + upload_gauges.py). Skip steps 4-5: never call mcp-tv-get-ohlcv and never stage
+incoming/tv-* here, even if `tv_plan.py` lists candle jobs. The scheduled task's own prompt is the authority.
+
 Claude only LOADS data here. It does not calculate anything for any dashboard.
 
 1. Clone this repo (`mbzazad-max/market-data`, push access) and `cd` into it.
