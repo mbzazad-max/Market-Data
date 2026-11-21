@@ -1,6 +1,6 @@
 {
  "errors_last_import": [],
- "generated_at": 1795219416,
+ "generated_at": 1795221300,
  "series": {
   "binance/AAVEUSDT/1D": {
    "added_last_import": 1,
@@ -2387,9 +2387,9 @@
    "kind": "coinglass"
   },
   "snap/tv_econ_us": {
-   "bytes": 6891,
-   "fetched_at": 1795134850,
-   "imported_at": 1795135024,
+   "bytes": 6888,
+   "fetched_at": 1795221264,
+   "imported_at": 1795221300,
    "kind": "tv_econ"
   }
  }
