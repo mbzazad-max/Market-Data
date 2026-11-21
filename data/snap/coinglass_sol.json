@@ -1,8 +1,8 @@
 {
- "fetched_at": 1795135044,
+ "fetched_at": 1795242812,
  "id": "snap/coinglass_sol",
  "payload": {
-  "as_of": "2026-11-20T11:37:00+11:00",
+  "as_of": "2026-11-21T17:38:00+11:00",
   "rows": [
    {
     "group": "Snapshot",
@@ -11,82 +11,82 @@
     "note": "Read from coinglass.com/FundingRate/SOL, /LiquidationData and /open-interest/SOL. CoinGlass shows no OI-weighted rate for SOL; both funding rows use its average rate across exchanges.",
     "num": null,
     "signal": "\u2014",
-    "value": "20 Nov 2026, 11:37 AEDT"
+    "value": "21 Nov 2026, 17:38 AEDT"
    },
    {
     "group": "Funding",
     "id": "funding_oiw",
     "metric": "SOL average funding (8h)",
-    "note": "Positive but well under the 0.01% baseline; longs not crowded.",
-    "num": 0.0005,
-    "signal": "Cool",
-    "value": "0.0005%"
+    "note": "Negative: shorts are paying longs; no long crowding.",
+    "num": -0.0061,
+    "signal": "Negative",
+    "value": "-0.0061%"
    },
    {
     "group": "Funding",
     "id": "funding_vw",
     "metric": "SOL funding by exchange (8h)",
-    "note": "Binance 0.0014%, OKX \u22120.0023%, Bybit \u22120.0065%, KuCoin \u22120.0094%, Gate \u22120.0004%, Bitget \u22120.0053%; Hyperliquid \u22120.0003% (1h).",
-    "num": 0.0005,
-    "signal": "Cool",
-    "value": "0.0005%"
+    "note": "Binance \u22120.0110%, OKX \u22120.0111%, Bybit \u22120.0158%, KuCoin \u22120.0192%, Gate \u22120.0079%, Bitget \u22120.0057%; Hyperliquid \u22120.0028% (1h).",
+    "num": -0.0061,
+    "signal": "Negative",
+    "value": "-0.0061%"
    },
    {
     "group": "Open interest",
     "id": "oi_total",
     "metric": "SOL futures open interest",
-    "note": "1h \u22120.09%, 4h \u22120.11%, 24h +0.66%; OI/24h volume 0.8146. Binance 10.55M SOL (24h \u22120.06%), Bybit 5.88M SOL (+0.36%), CME 5.70M SOL (+6.34%), OKX 3.51M SOL (\u22122.34%).",
-    "num": -0.11,
+    "note": "1h +0.60%, 4h \u22125.45%, 24h \u22128.37%; OI/24h volume 0.4224. Binance 10.58M SOL (24h \u22129.51%), CME 5.82M SOL (\u22129.47%), Bybit 5.79M SOL (\u22129.07%), OKX 3.68M SOL (\u22124.66%).",
+    "num": -5.45,
     "num_note": "4h OI change, %",
-    "oi_chg_1h": -0.09,
-    "oi_chg_24h": 0.66,
-    "oi_usd": 4070000000,
-    "signal": "Flat",
-    "value": "55.91M SOL ($4.07B)"
+    "oi_chg_1h": 0.6,
+    "oi_chg_24h": -8.37,
+    "oi_usd": 3710000000,
+    "signal": "Falling",
+    "value": "56.07M SOL ($3.71B)"
    },
    {
     "group": "Liquidations",
     "id": "liq_btc_24h",
-    "long_1h": 49760,
-    "long_24h": 6400000,
-    "long_4h": 1450000,
+    "long_1h": 1320000,
+    "long_24h": 60110000,
+    "long_4h": 22840000,
     "metric": "SOL liquidations, 24h",
-    "note": "Longs $6.40M vs shorts $4.35M; last 4h longs $1.45M vs shorts $161.48K, last hour $49.76K vs $11.63K. SOL $72.72, \u22121.14% on the day.",
-    "num": 0.4047,
-    "price": 72.72,
-    "price_chg_24h": -1.14,
-    "short_1h": 11630,
-    "short_24h": 4350000,
-    "short_4h": 161480,
-    "signal": "Longs flushed 4h",
-    "value": "$10.75M (59.5% longs)"
+    "note": "Longs $60.11M vs shorts $3.64M; last 4h longs $22.84M vs shorts $855.35K, last hour $1.32M vs $139.65K. SOL $66.25, \u22128.88% on the day.",
+    "num": 0.0571,
+    "price": 66.25,
+    "price_chg_24h": -8.88,
+    "short_1h": 139650,
+    "short_24h": 3640000,
+    "short_4h": 855350,
+    "signal": "Longs flushed",
+    "value": "$63.75M (94.3% longs)"
    },
    {
     "group": "Liquidations",
     "id": "liq_mkt_24h",
-    "long_1h": 7950000,
-    "long_24h": 422410000,
-    "long_4h": 151520000,
-    "long_ratio": 50.77,
+    "long_1h": 57930000,
+    "long_24h": 2260000000,
+    "long_4h": 728150000,
+    "long_ratio": 47.38,
     "metric": "All-market liquidations, 24h",
-    "note": "112,638 traders liquidated; longs $422.41M vs shorts $105.70M (4h: longs $151.52M vs shorts $9.09M; 1h: $7.95M vs $1.93M); market-wide OI $109.31B (\u22121.46% 24h); long/short 50.77/49.23. Largest order: $9.26M BTCUSD long on Bybit.",
-    "num": 0.2001,
-    "oi_chg_24h": -1.46,
-    "oi_usd": 109313045788,
-    "short_1h": 1930000,
-    "short_24h": 105700000,
-    "short_4h": 9090000,
+    "note": "353,544 traders liquidated; longs $2.26B vs shorts $180.42M (4h: longs $728.15M vs shorts $37.06M; 1h: $57.93M vs $9.26M); market-wide OI $99.04B (\u22129.75% 24h); long/short 47.38/52.62. Largest order: $51.71M BTCUSDT long on Binance.",
+    "num": 0.0739,
+    "oi_chg_24h": -9.75,
+    "oi_usd": 99042180876,
+    "short_1h": 9260000,
+    "short_24h": 180420000,
+    "short_4h": 37060000,
     "signal": "Longs flushed",
-    "value": "$528.11M (80.0% longs)"
+    "value": "$2.44B (92.6% longs)"
    },
    {
     "group": "Read",
     "id": "read",
     "metric": "What it means",
-    "note": "SOL is down 1.1% at about $72.7; $1.45M of longs were liquidated over 4h versus $161K of shorts, and the last hour was small. Open interest is flat and funding is near zero. For spot buyers: leverage is light and not crowded; wait for a 4H close holding support rather than buying into the drop.",
+    "note": "SOL is down 8.9% at about $66.3; $22.8M of longs were liquidated over 4h against $0.9M of shorts, and the last hour still saw $1.3M of longs. Open interest fell 5.5% over 4h and funding is negative. For spot buyers: leverage has been cut sharply; wait for liquidations to quieten and a 4H close holding support before buying.",
     "num": null,
-    "signal": "Calm",
-    "value": "Longs flushed 4h, calm"
+    "signal": "Flush",
+    "value": "Long flush 4h, funding negative"
    }
   ]
  }

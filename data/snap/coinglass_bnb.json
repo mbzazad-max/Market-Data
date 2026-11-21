@@ -1,8 +1,8 @@
 {
- "fetched_at": 1795135044,
+ "fetched_at": 1795242812,
  "id": "snap/coinglass_bnb",
  "payload": {
-  "as_of": "2026-11-20T11:37:00+11:00",
+  "as_of": "2026-11-21T17:38:00+11:00",
   "rows": [
    {
     "group": "Snapshot",
@@ -11,82 +11,82 @@
     "note": "Read from coinglass.com/FundingRate/BNB, /LiquidationData and /open-interest/BNB. CoinGlass shows no OI-weighted rate for BNB; both funding rows use its average rate across exchanges.",
     "num": null,
     "signal": "\u2014",
-    "value": "20 Nov 2026, 11:37 AEDT"
+    "value": "21 Nov 2026, 17:38 AEDT"
    },
    {
     "group": "Funding",
     "id": "funding_oiw",
     "metric": "BNB average funding (8h)",
-    "note": "Positive but under the 0.01% baseline; longs not crowded.",
-    "num": 0.0043,
+    "note": "Flat at zero; no long crowding.",
+    "num": 0.0,
     "signal": "Cool",
-    "value": "0.0043%"
+    "value": "-0.0000%"
    },
    {
     "group": "Funding",
     "id": "funding_vw",
     "metric": "BNB funding by exchange (8h)",
-    "note": "Binance 0.0021%, OKX 0.0065%, Bybit 0.0100%, KuCoin 0.0100%, Gate \u22120.0028%, Bitget 0.0092%; Hyperliquid 0.0013% (1h).",
-    "num": 0.0043,
+    "note": "Binance 0.0000%, OKX \u22120.0083%, Bybit \u22120.0032%, KuCoin \u22120.0117%, Gate \u22120.0064%, Bitget \u22120.0051%; Hyperliquid \u22120.0029% (1h).",
+    "num": 0.0,
     "signal": "Cool",
-    "value": "0.0043%"
+    "value": "-0.0000%"
    },
    {
     "group": "Open interest",
     "id": "oi_total",
     "metric": "BNB futures open interest",
-    "note": "1h +0.10%, 4h +0.02%, 24h \u22120.71%; OI/24h volume 1.8394. Binance 731.93K BNB (24h \u22121.72%), Bybit 138.44K BNB (\u22120.01%), OKX 59.97K BNB (+0.37%); no CME row.",
-    "num": 0.02,
+    "note": "1h \u22120.42%, 4h \u22125.49%, 24h \u221213.08%; OI/24h volume 0.6418. Binance 725.82K BNB (24h \u221212.26%), Gate 218.47K BNB (\u221215.86%), Bybit 140.97K BNB (\u22129.98%), OKX 62.10K BNB (\u221210.99%).",
+    "num": -5.49,
     "num_note": "4h OI change, %",
-    "oi_chg_1h": 0.1,
-    "oi_chg_24h": -0.71,
-    "oi_usd": 952750000,
-    "signal": "Flat",
-    "value": "1.64M BNB ($952.75M)"
+    "oi_chg_1h": -0.42,
+    "oi_chg_24h": -13.08,
+    "oi_usd": 838860000,
+    "signal": "Falling",
+    "value": "1.64M BNB ($838.86M)"
    },
    {
     "group": "Liquidations",
     "id": "liq_btc_24h",
-    "long_1h": 3890,
-    "long_24h": 534560,
-    "long_4h": 224420,
+    "long_1h": 801950,
+    "long_24h": 21520000,
+    "long_4h": 8280000,
     "metric": "BNB liquidations, 24h",
-    "note": "Longs $534.56K vs shorts $100.78K; last 4h longs $224.42K vs shorts $3.36K, last hour $3.89K vs $0. BNB $580.35, \u22120.59% on the day.",
-    "num": 0.1586,
-    "price": 580.35,
-    "price_chg_24h": -0.59,
-    "short_1h": 0,
-    "short_24h": 100780,
-    "short_4h": 3360,
-    "signal": "Longs flushed 4h",
-    "value": "$635.34K (84.1% longs)"
+    "note": "Longs $21.52M vs shorts $425.08K; last 4h longs $8.28M vs shorts $81.34K, last hour $801.95K vs $19.94K. BNB $513.33, \u221210.11% on the day.",
+    "num": 0.0194,
+    "price": 513.33,
+    "price_chg_24h": -10.11,
+    "short_1h": 19940,
+    "short_24h": 425080,
+    "short_4h": 81340,
+    "signal": "Longs flushed",
+    "value": "$21.95M (98.1% longs)"
    },
    {
     "group": "Liquidations",
     "id": "liq_mkt_24h",
-    "long_1h": 7950000,
-    "long_24h": 422410000,
-    "long_4h": 151520000,
-    "long_ratio": 50.77,
+    "long_1h": 57930000,
+    "long_24h": 2260000000,
+    "long_4h": 728150000,
+    "long_ratio": 47.38,
     "metric": "All-market liquidations, 24h",
-    "note": "112,638 traders liquidated; longs $422.41M vs shorts $105.70M (4h: longs $151.52M vs shorts $9.09M; 1h: $7.95M vs $1.93M); market-wide OI $109.31B (\u22121.46% 24h); long/short 50.77/49.23. Largest order: $9.26M BTCUSD long on Bybit.",
-    "num": 0.2001,
-    "oi_chg_24h": -1.46,
-    "oi_usd": 109313045788,
-    "short_1h": 1930000,
-    "short_24h": 105700000,
-    "short_4h": 9090000,
+    "note": "353,544 traders liquidated; longs $2.26B vs shorts $180.42M (4h: longs $728.15M vs shorts $37.06M; 1h: $57.93M vs $9.26M); market-wide OI $99.04B (\u22129.75% 24h); long/short 47.38/52.62. Largest order: $51.71M BTCUSDT long on Binance.",
+    "num": 0.0739,
+    "oi_chg_24h": -9.75,
+    "oi_usd": 99042180876,
+    "short_1h": 9260000,
+    "short_24h": 180420000,
+    "short_4h": 37060000,
     "signal": "Longs flushed",
-    "value": "$528.11M (80.0% longs)"
+    "value": "$2.44B (92.6% longs)"
    },
    {
     "group": "Read",
     "id": "read",
     "metric": "What it means",
-    "note": "BNB is down 0.6% at about $580; liquidations are tiny ($224K of longs over 4h, almost no shorts). Open interest is flat and funding is mildly positive. For spot buyers: leverage is not driving price here; the spot trend and support levels matter more than derivatives right now.",
+    "note": "BNB is down 10.1% at about $513; $8.3M of longs were liquidated over 4h against $81K of shorts, and $0.8M more in the last hour. Open interest dropped 5.5% over 4h and 13.1% on the day while funding sits at zero. For spot buyers: leverage is being cleared out; wait for a 4H close holding support rather than catching the drop.",
     "num": null,
-    "signal": "Calm",
-    "value": "Quiet, little leverage"
+    "signal": "Flush",
+    "value": "Long flush 4h, funding flat"
    }
   ]
  }
