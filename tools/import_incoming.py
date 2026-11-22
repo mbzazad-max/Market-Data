@@ -71,6 +71,40 @@ def big_change(a, b, limit=0.01):
     return any(abs(float(y) - float(x)) > limit * max(abs(float(x)), 1e-12) for x, y in zip(a[1:5], b[1:5]))
 
 
+INTRADAY_GAP = 0.05
+
+
+def broken_open(old, closed, source, tf):
+    """TradingView indices are continuous: each 1H/4H candle opens where the previous one closed (largest gap
+    seen in the stored history: 1.5%). A new candle that opens far from the previous close is another chart's
+    data (22 Nov 2026: the desktop downloader saved TOTAL2ES 4H under every gauge name). Returns the first bad time."""
+    if source != "tv" or tf not in ("1H", "4H"):
+        return None
+    rows = dict(old); rows.update(closed)
+    ts = sorted(rows)
+    for a, b in zip(ts, ts[1:]):
+        if b in old or b not in closed:
+            continue
+        pc, o = float(rows[a][4]), float(rows[b][1])
+        if pc > 0 and abs(o / pc - 1) > INTRADAY_GAP:
+            return b
+    return None
+
+
+def copied_series(batch_rows):
+    """Different symbols in one upload with exactly the same new candles: the downloader read one chart for all."""
+    seen, bad = {}, set()
+    for sid, closed in batch_rows.items():
+        if len(closed) < 2:
+            continue
+        key = tuple(sorted(tuple(r[1:5]) + (t,) for t, r in closed.items()))
+        seen.setdefault(key, []).append(sid)
+    for sids in seen.values():
+        if len({s.split("/")[1] for s in sids}) > 1:
+            bad.update(sids)
+    return bad
+
+
 def confirm_daily_from_4h(source, symbol, tf, P, inc, closed, f_fetched):
     """A Binance 1D candle that closed before the file was saved but inside the safety margin
     (the laptop download ran a few seconds after 00:00 UTC) is accepted only if its open, high, low
@@ -94,6 +128,25 @@ def confirm_daily_from_4h(source, symbol, tf, P, inc, closed, f_fetched):
     return out
 
 
+def peek_batch(b, source, reg, meta, margin):
+    """New closed candles per series in one upload, for the copied-series check."""
+    out = {}
+    for f in b.glob("*.csv"):
+        if "_" not in f.stem:
+            continue
+        symbol, tf = f.stem.rsplit("_", 1)
+        sid = f"{source}/{symbol}/{tf}"
+        if sid not in reg or tf not in PERIOD:
+            continue
+        try:
+            inc, old = parse_csv(f.read_text(encoding="utf-8"), f.name), read_series(sid)
+        except ValueError:
+            continue
+        cutoff = int(meta.get("files", {}).get(f.name, meta["fetched_at"])) - margin
+        out[sid] = {t: r for t, r in inc.items() if t + PERIOD[tf] <= cutoff and t not in old}
+    return out
+
+
 def main():
     reg = series_registry()
     man = load_json(ROOT / "manifest.json", {"series": {}})
@@ -114,6 +167,7 @@ def main():
             continue
         source, fetched_at, margin = meta["source"], meta["fetched_at"], int(meta.get("margin_s", 0))
         cutoff = fetched_at - margin
+        copied = copied_series(peek_batch(b, source, reg, meta, margin))
         for f in sorted(b.glob("*.csv"), key=lambda p: (not p.stem.endswith("_4H"), p.name)):  # 4H first, so a 1D candle can be checked against 4H candles from the same upload
             stem = f.stem
             if "_" not in stem:
@@ -140,6 +194,15 @@ def main():
                 closed.update(confirmed)
                 print(f"{sid}: {len(confirmed)} candle(s) inside the safety margin accepted, they match the stored closed 4H candles")
             dropped = len(inc) - len(closed)
+            new_closed = {t: r for t, r in closed.items() if t not in old}
+            bad_t = broken_open(old, new_closed, source, tf)
+            if sid in copied or bad_t is not None:
+                msg = ("same new candles as another symbol in this upload" if sid in copied else
+                       f"candle {bad_t} opens more than {INTRADAY_GAP:.0%} away from the previous close") + \
+                      " (wrong chart read?); upload rejected, kept last good data"
+                errors.append(f"{sid}: {msg}")
+                man["series"].setdefault(sid, {})["last_error"] = msg
+                continue
             conflict, revised, added = [], 0, 0
             merged = dict(old)
             for t, r in closed.items():
