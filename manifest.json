@@ -1,6 +1,6 @@
 {
  "errors_last_import": [],
- "generated_at": 1795411390,
+ "generated_at": 1795423301,
  "series": {
   "binance/AAVEUSDT/1D": {
    "added_last_import": 1,
@@ -1924,13 +1924,13 @@
    "tf": "4H"
   },
   "tv/CRYPTOCAP_BTC.D/1H": {
-   "added_last_import": 5,
+   "added_last_import": 0,
    "checked_at": 1795410119,
    "fetched_at": 1795410119,
    "first_open": 1788220800,
    "forming_dropped_last_import": 1,
    "gaps": null,
-   "imported_at": 1795410481,
+   "imported_at": 1795423301,
    "last_close": 1795406400,
    "last_open": 1795402800,
    "period_s": 3600,
@@ -1958,13 +1958,13 @@
    "tf": "4H"
   },
   "tv/CRYPTOCAP_BTC/1H": {
-   "added_last_import": 4,
+   "added_last_import": 0,
    "checked_at": 1795410202,
    "fetched_at": 1795410202,
    "first_open": 1787875200,
    "forming_dropped_last_import": 1,
    "gaps": null,
-   "imported_at": 1795410481,
+   "imported_at": 1795423301,
    "last_close": 1795406400,
    "last_open": 1795402800,
    "period_s": 3600,
@@ -1992,13 +1992,13 @@
    "tf": "4H"
   },
   "tv/CRYPTOCAP_MEME.C/1H": {
-   "added_last_import": 4,
+   "added_last_import": 0,
    "checked_at": 1795410274,
    "fetched_at": 1795410274,
    "first_open": 1787875200,
    "forming_dropped_last_import": 1,
    "gaps": null,
-   "imported_at": 1795410481,
+   "imported_at": 1795423301,
    "last_close": 1795406400,
    "last_open": 1795402800,
    "period_s": 3600,
@@ -2026,13 +2026,13 @@
    "tf": "4H"
   },
   "tv/CRYPTOCAP_OTHERS/1H": {
-   "added_last_import": 5,
+   "added_last_import": 0,
    "checked_at": 1795410144,
    "fetched_at": 1795410144,
    "first_open": 1787875200,
    "forming_dropped_last_import": 1,
    "gaps": null,
-   "imported_at": 1795410481,
+   "imported_at": 1795423301,
    "last_close": 1795406400,
    "last_open": 1795402800,
    "period_s": 3600,
@@ -2060,13 +2060,13 @@
    "tf": "4H"
   },
   "tv/CRYPTOCAP_STABLE.C/1H": {
-   "added_last_import": 4,
+   "added_last_import": 0,
    "checked_at": 1795410228,
    "fetched_at": 1795410228,
    "first_open": 1787875200,
    "forming_dropped_last_import": 1,
    "gaps": null,
-   "imported_at": 1795410481,
+   "imported_at": 1795423301,
    "last_close": 1795406400,
    "last_open": 1795402800,
    "period_s": 3600,
@@ -2145,18 +2145,18 @@
    "tf": "4H"
   },
   "tv/CRYPTOCAP_TOTAL2ES/1H": {
-   "added_last_import": 5,
-   "checked_at": 1795406810,
-   "fetched_at": 1795406810,
+   "added_last_import": 4,
+   "checked_at": 1795423237,
+   "fetched_at": 1795423237,
    "first_open": 1787875200,
    "forming_dropped_last_import": 0,
    "gaps": null,
-   "imported_at": 1795410481,
-   "last_close": 1795406400,
-   "last_open": 1795402800,
+   "imported_at": 1795423301,
+   "last_close": 1795420800,
+   "last_open": 1795417200,
    "period_s": 3600,
    "revised_last_import": 0,
-   "rows": 2092,
+   "rows": 2096,
    "source": "tv",
    "symbol": "CRYPTOCAP:TOTAL2ES",
    "tf": "1H"
@@ -2264,13 +2264,13 @@
    "tf": "1D"
   },
   "tv/CRYPTOCAP_USDC.D/1H": {
-   "added_last_import": 5,
+   "added_last_import": 0,
    "checked_at": 1795410079,
    "fetched_at": 1795410079,
    "first_open": 1788220800,
    "forming_dropped_last_import": 1,
    "gaps": null,
-   "imported_at": 1795410481,
+   "imported_at": 1795423301,
    "last_close": 1795406400,
    "last_open": 1795402800,
    "period_s": 3600,
