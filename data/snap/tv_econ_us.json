@@ -1,5 +1,5 @@
 {
- "fetched_at": 1795394092,
+ "fetched_at": 1795480459,
  "id": "snap/tv_econ_us",
  "payload": {
   "result": [
@@ -251,6 +251,51 @@
     "source_url": "http://www.sca.isr.umich.edu/",
     "ticker": "ECONOMICS:USCCI",
     "title": "Michigan Consumer Sentiment Prel"
+   },
+   {
+    "actual": null,
+    "actualRaw": null,
+    "category": "hse",
+    "country": "US",
+    "currency": "USD",
+    "date": "2026-12-09T15:00:00.000Z",
+    "forecast": null,
+    "forecastRaw": null,
+    "id": "1001658836001",
+    "importance": 1,
+    "indicator": "Existing Home Sales",
+    "period": "Nov. 2026",
+    "previous": 3.75,
+    "previousRaw": 3750000,
+    "referenceDate": "2026-11-30T00:00:00Z",
+    "referencePeriod": "Nov 2026",
+    "scale": "M",
+    "source": "National Association of Realtors",
+    "source_url": "https://www.nar.realtor",
+    "ticker": "ECONOMICS:USEHS",
+    "title": "Existing Home Sales"
+   },
+   {
+    "actual": null,
+    "actualRaw": null,
+    "category": "mny",
+    "country": "US",
+    "currency": "USD",
+    "date": "2026-12-09T19:00:00.000Z",
+    "forecast": null,
+    "forecastRaw": null,
+    "id": "1001609056301",
+    "importance": 1,
+    "indicator": "FOMC Decision Fed Funds Tgt Rate",
+    "period": "Dec. 9, 2026",
+    "previous": null,
+    "previousRaw": null,
+    "referenceDate": "2026-12-09T00:00:00Z",
+    "source": "Federal Reserve",
+    "source_url": "http://www.federalreserve.gov/",
+    "ticker": "ECONOMICS:USINTR",
+    "title": "Interest Rate",
+    "unit": "%"
    }
   ],
   "status": "ok"
