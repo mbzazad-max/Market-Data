@@ -8,7 +8,7 @@ name: Fetch Binance candles
 # Run it by hand: Actions -> Fetch Binance candles -> Run workflow (tick "dry run" to only test).
 on:
   schedule:
-    - cron: '7 0,4,8,12,16,20 * * *'
+    - cron: '7 * * * *'
   workflow_dispatch:
     inputs:
       dry_run:
