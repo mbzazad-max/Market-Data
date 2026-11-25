@@ -1,6 +1,6 @@
 {
  "errors_last_import": [],
- "generated_at": 1795592557,
+ "generated_at": 1795592579,
  "series": {
   "binance/AAVEUSDT/1D": {
    "added_last_import": 1,
@@ -2363,27 +2363,27 @@
    "kind": "cmc_quotes"
   },
   "snap/coinglass_bnb": {
-   "bytes": 3328,
-   "fetched_at": 1795592387,
-   "imported_at": 1795592557,
+   "bytes": 3318,
+   "fetched_at": 1795592404,
+   "imported_at": 1795592579,
    "kind": "coinglass"
   },
   "snap/coinglass_btc": {
-   "bytes": 3313,
-   "fetched_at": 1795592387,
-   "imported_at": 1795592557,
+   "bytes": 3344,
+   "fetched_at": 1795592404,
+   "imported_at": 1795592579,
    "kind": "coinglass"
   },
   "snap/coinglass_eth": {
-   "bytes": 3248,
-   "fetched_at": 1795592387,
-   "imported_at": 1795592557,
+   "bytes": 3273,
+   "fetched_at": 1795592404,
+   "imported_at": 1795592579,
    "kind": "coinglass"
   },
   "snap/coinglass_sol": {
-   "bytes": 3352,
-   "fetched_at": 1795592387,
-   "imported_at": 1795592557,
+   "bytes": 3321,
+   "fetched_at": 1795592404,
+   "imported_at": 1795592579,
    "kind": "coinglass"
   },
   "snap/tv_econ_us": {

@@ -1,8 +1,8 @@
 {
- "fetched_at": 1795592387,
+ "fetched_at": 1795592404,
  "id": "snap/coinglass_bnb",
  "payload": {
-  "as_of": "2026-11-25T18:39:00+11:00",
+  "as_of": "2026-11-25T18:40:00+11:00",
   "rows": [
    {
     "group": "Snapshot",
@@ -11,7 +11,7 @@
     "note": "Read from coinglass.com/FundingRate/BNB, /LiquidationData and /open-interest/BNB. CoinGlass shows no OI-weighted rate for BNB; both funding rows use its average rate across exchanges.",
     "num": null,
     "signal": "\u2014",
-    "value": "25 Nov 2026, 18:39 AEDT"
+    "value": "25 Nov 2026, 18:40 AEDT"
    },
    {
     "group": "Funding",
@@ -26,7 +26,7 @@
     "group": "Funding",
     "id": "funding_vw",
     "metric": "BNB funding by exchange (8h)",
-    "note": "Binance 0.0000%, OKX 0.0060%, Bybit 0.0015%, KuCoin 0.0100%, Gate 0.0046%, Bitget 0.0022%, BingX 0.0060%, MEXC 0.0000%, Bitunix 0.0005%, LBank 0.0000%; Hyperliquid 0.0002% (1h).",
+    "note": "Binance 0.0000%, OKX 0.0060%, Bybit 0.0015%, KuCoin 0.0100%, Gate 0.0046%, Bitget 0.0022%; Hyperliquid 0.0002% (1h).",
     "num": 0.0025,
     "signal": "Positive",
     "value": "0.0025%"
@@ -35,14 +35,14 @@
     "group": "Open interest",
     "id": "oi_total",
     "metric": "BNB futures open interest",
-    "note": "1h \u22120.56%, 4h \u22120.74%, 24h \u22122.43%; OI/24h volume 1.4733. Binance 718.62K BNB (24h \u22121.39%), Bybit 130.91K BNB (+0.03%), OKX 54.94K BNB (\u22120.09%).",
+    "note": "1h \u22120.56%, 4h \u22120.74%, 24h \u22122.43%; OI/24h volume 1.4727. Binance 718.57K BNB (24h \u22121.39%), Bybit 130.92K BNB (+0.01%), OKX 54.94K BNB (\u22120.03%).",
     "num": -0.74,
     "num_note": "4h OI change, %",
     "oi_chg_1h": -0.56,
     "oi_chg_24h": -2.43,
-    "oi_usd": 843370000,
+    "oi_usd": 843410000,
     "signal": "Falling",
-    "value": "1.56M BNB ($843.37M)"
+    "value": "1.56M BNB ($843.41M)"
    },
    {
     "group": "Liquidations",
@@ -51,10 +51,10 @@
     "long_24h": 662880,
     "long_4h": 205340,
     "metric": "BNB liquidations, 24h",
-    "note": "Longs $662.88K vs shorts $82.07K; last 4h longs $205.34K vs shorts $6.22K, last hour $204.77K vs $6.22K; 12h longs $434.98K vs shorts $7.49K; BNB $539.59, \u22122.52% on the day.",
+    "note": "Longs $662.88K vs shorts $82.07K; last 4h longs $205.34K vs shorts $6.22K, last hour $204.77K vs $6.22K; 12h longs $434.98K vs shorts $7.49K; BNB $539.3, \u22122.51% on the day.",
     "num": 0.1102,
-    "price": 539.59,
-    "price_chg_24h": -2.52,
+    "price": 539.3,
+    "price_chg_24h": -2.51,
     "short_1h": 6220,
     "short_24h": 82070,
     "short_4h": 6220,
@@ -67,12 +67,12 @@
     "long_1h": 51640000,
     "long_24h": 297190000,
     "long_4h": 61750000,
-    "long_ratio": 48.84,
+    "long_ratio": 48.81,
     "metric": "All-market liquidations, 24h",
-    "note": "107,272 traders liquidated; longs $297.19M vs shorts $65.68M (4h: longs $61.75M vs shorts $5.96M; 1h: $51.64M vs $2.46M; 12h: longs $111.33M vs shorts $16.02M); market-wide OI $100.28B (\u22123.31% 24h); long/short 48.84/51.16. Largest order: $2.02M BTCUSDT long on Binance.",
+    "note": "107,272 traders liquidated; longs $297.19M vs shorts $65.68M (4h: longs $61.75M vs shorts $5.96M; 1h: $51.64M vs $2.46M; 12h: longs $111.41M vs shorts $16.06M); market-wide OI $100.30B (\u22123.28% 24h); long/short 48.81/51.19. Largest order: $2.02M BTCUSDT long on Binance.",
     "num": 0.181,
-    "oi_chg_24h": -3.31,
-    "oi_usd": 100279925230,
+    "oi_chg_24h": -3.28,
+    "oi_usd": 100303761389,
     "short_1h": 2460000,
     "short_24h": 65680000,
     "short_4h": 5960000,
@@ -83,10 +83,10 @@
     "group": "Read",
     "id": "read",
     "metric": "What it means",
-    "note": "BNB is down 2.5% at about $540. Its liquidations are small and mostly longs, open interest is down 0.7% over 4h and funding is near zero. For spot buyers: leverage in BNB is light; the wider market is flushing longs, so a 4H close holding support would make an entry more reliable.",
+    "note": "BNB is down 2.51% at about $539. Liquidations are small (under $1M on the day) and mostly longs, nearly all of the last 4h in the last hour. Open interest is down 0.7% over 4h and funding is near zero. For spot buyers: leverage is light, but the wider market is flushing longs now; a 4H close holding support would make an entry more reliable.",
     "num": null,
-    "signal": "Calm",
-    "value": "Small, long-side liquidations"
+    "signal": "Flushing",
+    "value": "Small long flush"
    }
   ]
  }
