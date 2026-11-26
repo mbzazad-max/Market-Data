@@ -1,6 +1,6 @@
 {
  "errors_last_import": [],
- "generated_at": 1795694767,
+ "generated_at": 1795695370,
  "series": {
   "binance/AAVEUSDT/1D": {
    "added_last_import": 1,
@@ -2346,6 +2346,57 @@
    "rows": 6360,
    "source": "tv",
    "symbol": "CRYPTOCAP:USDT.D",
+   "tf": "4H"
+  },
+  "tv/SP_SPX/1D": {
+   "added_last_import": 4020,
+   "checked_at": 1795694005,
+   "fetched_at": 1795694005,
+   "first_open": 1291248000,
+   "forming_dropped_last_import": 0,
+   "gaps": null,
+   "imported_at": 1795695370,
+   "last_close": 1795651200,
+   "last_open": 1795564800,
+   "period_s": 86400,
+   "revised_last_import": 0,
+   "rows": 4020,
+   "source": "tv",
+   "symbol": "SP:SPX",
+   "tf": "1D"
+  },
+  "tv/SP_SPX/1H": {
+   "added_last_import": 20892,
+   "checked_at": 1795694005,
+   "fetched_at": 1795694005,
+   "first_open": 1420209000,
+   "forming_dropped_last_import": 0,
+   "gaps": null,
+   "imported_at": 1795695370,
+   "last_close": 1795642200,
+   "last_open": 1795638600,
+   "period_s": 3600,
+   "revised_last_import": 0,
+   "rows": 20892,
+   "source": "tv",
+   "symbol": "SP:SPX",
+   "tf": "1H"
+  },
+  "tv/SP_SPX/4H": {
+   "added_last_import": 7752,
+   "checked_at": 1795694005,
+   "fetched_at": 1795694005,
+   "first_open": 1307971800,
+   "forming_dropped_last_import": 0,
+   "gaps": null,
+   "imported_at": 1795695370,
+   "last_close": 1795645800,
+   "last_open": 1795631400,
+   "period_s": 14400,
+   "revised_last_import": 0,
+   "rows": 7752,
+   "source": "tv",
+   "symbol": "SP:SPX",
    "tf": "4H"
   }
  },
