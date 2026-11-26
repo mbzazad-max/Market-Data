@@ -1,8 +1,8 @@
 {
- "fetched_at": 1795688259,
+ "fetched_at": 1795727791,
  "id": "snap/coinglass_eth",
  "payload": {
-  "as_of": "2026-11-26T21:17:00+11:00",
+  "as_of": "2026-11-27T08:16:00+11:00",
   "rows": [
    {
     "group": "Snapshot",
@@ -11,79 +11,79 @@
     "note": "Read from coinglass.com/FundingRate, /LiquidationData and /open-interest/ETH. Loaded by load_readings.py (manual run).",
     "num": null,
     "signal": "\u2014",
-    "value": "26 Nov 2026, 21:17 AEDT"
+    "value": "27 Nov 2026, 08:16 AEDT"
    },
    {
     "group": "Funding",
     "id": "funding_oiw",
     "metric": "ETH OI-weighted funding (8h)",
     "note": "Slightly positive, near zero; no long crowding.",
-    "num": 0.0048,
+    "num": 0.0061,
     "signal": "Positive",
-    "value": "0.0048%"
+    "value": "0.0061%"
    },
    {
     "group": "Funding",
     "id": "funding_vw",
     "metric": "ETH volume-weighted funding (8h)",
-    "note": "Binance +0.0046%, OKX +0.0059%, Bybit +0.0089%, KuCoin +0.0100%, MEXC +0.0045%, BingX +0.0096%, Gate +0.0008%, Bitunix +0.0042%, Bitget +0.0045%, WhiteBIT \u22120.0006%, LBank +0.0046%.",
-    "num": 0.0051,
+    "note": "Binance +0.0077%, OKX +0.0068%, Bybit +0.0076%, KuCoin +0.0054%, MEXC +0.0077%, BingX +0.0077%, Gate +0.0063%, Bitunix +0.0076%, Bitget +0.0064%, WhiteBIT +0.0100%, LBank +0.0077%.",
+    "num": 0.0069,
     "signal": "Positive",
-    "value": "0.0051%"
+    "value": "0.0069%"
    },
    {
     "group": "Open interest",
     "id": "oi_total",
     "metric": "ETH futures open interest",
-    "note": "1h +0.37%, 4h +0.92%, 24h \u22126.84%; OI/24h volume 0.5487. Binance 3.96M ETH (24h +2.09%), CME 1.22M ETH (\u22124.08%), Bybit 858.71K ETH (+2.89%), OKX 825.63K ETH (+0.63%).",
-    "num": 0.92,
+    "note": "1h +0.15%, 4h +0.27%, 24h \u22129.13%; OI/24h volume 0.9482. Binance 3.96M ETH (24h +1.39%), CME 1.22M ETH (\u22120.97%), Bybit 851.50K ETH (+1.98%), OKX 816.35K ETH (+2.80%).",
+    "num": 0.27,
     "num_note": "4h OI change, %",
-    "oi_chg_1h": 0.37,
-    "oi_chg_24h": -6.84,
-    "oi_usd": 20080000000.0,
+    "oi_chg_1h": 0.15,
+    "oi_chg_24h": -9.13,
+    "oi_usd": 19960000000.0,
     "signal": "Flat",
-    "value": "11.79M ETH ($20.08B)"
+    "value": "11.72M ETH ($19.96B)"
    },
    {
     "group": "Liquidations",
     "id": "liq_btc_24h",
-    "long_1h": 2120.0,
-    "long_24h": 40460000.0,
-    "long_4h": 103500.0,
+    "long_1h": 45.96,
+    "long_24h": 14950000.0,
+    "long_4h": 51250.0,
     "metric": "ETH liquidations, 24h",
-    "note": "Longs $40.46M vs shorts $67.12M; last 4h longs $103.50K vs shorts $1.16M, last hour $2.12K vs $84.15K; 12h longs $4.43M vs shorts $22.70M; ETH $1702.02, +3.39% on the day.",
-    "num": 0.6239,
-    "price": 1702.02,
-    "price_chg_24h": 3.39,
-    "short_1h": 84150.0,
-    "short_24h": 67120000.0,
-    "short_4h": 1160000.0,
-    "signal": "Mixed",
-    "value": "$107.58M (37.6% longs)"
+    "note": "Longs $14.95M vs shorts $32.11M; last 4h longs $51.25K vs shorts $3.64M, last hour $45.96 vs $55.66K; 12h longs $10.47M vs shorts $9.35M; ETH $1703.39, +1.01% on the day.",
+    "num": 0.6823,
+    "price": 1703.39,
+    "price_chg_24h": 1.01,
+    "short_1h": 55660.0,
+    "short_24h": 32110000.0,
+    "short_4h": 3640000.0,
+    "signal": "Shorts squeezed",
+    "value": "$47.06M (31.8% longs)"
    },
    {
     "group": "Liquidations",
     "id": "liq_mkt_24h",
-    "long_1h": 449320.0,
-    "long_24h": 305030000.0,
-    "long_4h": 2920000.0,
-    "long_ratio": 49.93,
+    "long_1h": 218810.0,
+    "long_24h": 67050000.0,
+    "long_4h": 1930000.0,
+    "long_ratio": 49.83,
     "metric": "All-market liquidations, 24h",
-    "note": "127,318 traders liquidated; longs $305.03M vs shorts $312.59M (4h: longs $2.92M vs shorts $6.12M; 1h: $449.32K vs $766.67K; 12h: longs $21.13M vs shorts $102.73M); market-wide OI $104.13B (+3.45% 24h); long/short 49.93/50.07. Largest order: $11.71M BTCUSDT long on Binance.",
-    "num": 0.5061,
-    "oi_chg_24h": 3.45,
-    "oi_usd": 104125861563.0,
-    "short_1h": 766670.0,
-    "short_24h": 312590000.0,
-    "short_4h": 6120000.0,
-    "signal": "Mixed",
-    "value": "$617.62M (49.4% longs)"
+    "note": "59,914 traders liquidated; longs $67.05M vs shorts $132.71M (4h: longs $1.93M vs shorts $9.44M; 1h: $218.81K vs $1.35M; 12h: longs $45.93M vs shorts $28.30M); market-wide OI $104.38B (+0.45% 24h); long/short 49.83/50.17. Largest order: $3.88M ETH-USD short on Hyperliquid.",
+    "num": 0.6643,
+    "oi_chg_24h": 0.45,
+    "oi_usd": 104379512936.0,
+    "short_1h": 1350000.0,
+    "short_24h": 132710000.00000001,
+    "short_4h": 9440000.0,
+    "signal": "Shorts squeezed",
+    "value": "$199.76M (33.6% longs)"
    },
    {
     "group": "Read",
     "id": "read",
     "metric": "What it means",
-    "note": "ETH is up 3.39% on the day at about $1.7K. ETH liquidations were mixed between longs and shorts. Open interest is up 0.9% over 4h and 6.8% lower on the day, with funding positive. For spot buyers: no forced selling is under way right now; the derivatives side is not pushing price either way.",
+    "note": "ETH is up 1.01% on the day at about $1.7K. Most of the day's ETH liquidations were shorts (68%). Open interest is up 0.3% over 4h and 9.1% lower on the day, with funding positive. For spot buyers: no forced selling is under way right now; the derivatives side is not pushing price either way.",
     "num": null,
     "signal": "Calm",
     "value": "No forced selling"
