@@ -16,6 +16,10 @@ columns `time,open,high,low,close,volume`, time = candle open in unix seconds UT
   the TradingView Desktop downloader + `upload_gauges.py` (folder `SPOT\tvdl`, `download_and_upload.bat`) send only new candles
   as `incoming/tv-<time>/`, one commit per run ("Upload TradingView gauges from desktop"). The daily 11:30 Sydney Claude task
   (`TV_TASK.md`) now loads only the US economic calendar and reports if the PC uploads look stalled; it no longer fetches candles.
+- **S&P 500** (`tv/SP_SPX`, 1H, 4H, 1D; added 26 Nov 2026): seeded from the owner's TradingView export, topped up by the
+  same PC run as the gauges (folder `SPOT\Market_gauge_Upload`). US market hours only, so it has overnight, weekend and holiday
+  gaps; the importer's open-gap guard skips session breaks and the check flags it only after 4 days with nothing new.
+  1D time = 00:00 UTC of the New York trading date. Used by the BTC & ETH dashboard (S&P 500 tab) and the Structure Shift board.
 - `.github/workflows/import.yml` merges `incoming/` into `data/`, updates the manifest and asks the dashboards in
   `dashboards.json` that use a changed series to rebuild. Other workflows: `binance.yml` (above), `check.yml` (Check dashboards), `fng.yml`.
 

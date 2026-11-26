@@ -77,7 +77,8 @@ INTRADAY_GAP = 0.05
 def broken_open(old, closed, source, tf):
     """TradingView indices are continuous: each 1H/4H candle opens where the previous one closed (largest gap
     seen in the stored history: 1.5%). A new candle that opens far from the previous close is another chart's
-    data (22 Nov 2026: the desktop downloader saved TOTAL2ES 4H under every gauge name). Returns the first bad time."""
+    data (22 Nov 2026: the desktop downloader saved TOTAL2ES 4H under every gauge name). Returns the first bad time.
+    Only candles exactly one period apart are compared, so market-hours series (tv/SP_SPX) can gap between sessions."""
     if source != "tv" or tf not in ("1H", "4H"):
         return None
     rows = dict(old); rows.update(closed)
@@ -85,6 +86,8 @@ def broken_open(old, closed, source, tf):
     for a, b in zip(ts, ts[1:]):
         if b in old or b not in closed:
             continue
+        if b - a != PERIOD[tf]:
+            continue  # a session break (S&P 500: overnight, weekends, holidays) may gap; crypto indices never skip a candle
         pc, o = float(rows[a][4]), float(rows[b][1])
         if pc > 0 and abs(o / pc - 1) > INTRADAY_GAP:
             return b

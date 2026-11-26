@@ -22,7 +22,8 @@
         "tv/CRYPTOCAP_USDT.D/",
         "tv/CRYPTOCAP_USDC.D/",
         "tv/CRYPTOCAP_TOTAL2ES/",
-        "snap/"
+        "snap/",
+        "tv/SP_SPX/"
       ]
     },
     {
@@ -199,7 +200,8 @@
         "tv/CRYPTOCAP_USDT.D/",
         "tv/CRYPTOCAP_USDC.D/",
         "tv/CRYPTOCAP_STABLE.C/",
-        "tv/CRYPTOCAP_MEME.C/"
+        "tv/CRYPTOCAP_MEME.C/",
+        "tv/SP_SPX/"
       ]
     }
   ]

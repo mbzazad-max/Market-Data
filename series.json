@@ -841,6 +841,30 @@
    "tf": "1H",
    "seed_count": 2000,
    "note": "Structure Shift board market gauge, 1H (added 19 Nov 2026). Loaded every 4 hours from the owner's PC (TradingView Desktop, since 20 Nov 2026)."
+  },
+  "tv/SP_SPX/1H": {
+   "source": "tv",
+   "symbol": "SP:SPX",
+   "tf": "1H",
+   "seed_count": 5000,
+   "market_hours": "us_equity",
+   "note": "S&P 500 index, 1H (US cash session 09:30-16:00 New York; last candle of the day is 30 min). Seeded 26 Nov 2026 from the owner's TradingView export (from Jan 2015); newer candles from the owner's PC (Market_gauge_Upload, every 4 hours)."
+  },
+  "tv/SP_SPX/4H": {
+   "source": "tv",
+   "symbol": "SP:SPX",
+   "tf": "4H",
+   "seed_count": 5000,
+   "market_hours": "us_equity",
+   "note": "S&P 500 index, 4H (two session candles a day, 09:30 and 13:30 New York; the second is 2.5 h). Seeded 26 Nov 2026 from the owner's TradingView export (from Jun 2011); newer candles from the owner's PC (Market_gauge_Upload, every 4 hours)."
+  },
+  "tv/SP_SPX/1D": {
+   "source": "tv",
+   "symbol": "SP:SPX",
+   "tf": "1D",
+   "seed_count": 5000,
+   "market_hours": "us_equity",
+   "note": "S&P 500 index, daily. Time = 00:00 UTC of the New York trading date (not TradingView's session-open time), so a day counts as closed at 00:00 UTC, 3-4 h after the US close. Seeded 26 Nov 2026 from the owner's TradingView export (from Dec 2010); newer days from the owner's PC (Market_gauge_Upload, every 4 hours)."
   }
  },
  "_about_snapshots": "Non-candle readings, one JSON file each in data/snap/<name>.json, newest valid reading wins (older or invalid uploads are rejected, last good kept). task = who loads it: 'daily-tv' = the 11:30 Claude task (TV_TASK.md), 'coinglass' = the CoinGlass Claude task on the owner's computer (COINGLASS_TASK.md).",

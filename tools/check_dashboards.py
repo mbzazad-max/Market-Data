@@ -151,6 +151,10 @@ def expected_close(sid, m):
     P = m['period_s']
     newest = (int(NOW) // P) * P  # close of the newest candle that has closed on the exchange
     src, sym = sid.split('/')[0], sid.split('/')[1]
+    if src == 'tv' and series_registry().get(sid, {}).get('market_hours') == 'us_equity':
+        # S&P 500 (added 26 Nov 2026): no trading at night, at weekends or on US holidays, and the PC loads it
+        # with the gauges every 4 hours. Flag it only when nothing new arrived for 4 days.
+        return m['last_close'] + P if NOW - m['last_close'] > 4 * DAY else None
     if src == 'tv':
         # TradingView loads once a day at 11:30 Sydney (~00:30 UTC): only candles closed before that load are due.
         load = (int(NOW) // DAY) * DAY + 1800
