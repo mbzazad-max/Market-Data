@@ -243,7 +243,16 @@
         "tv/CRYPTOCAP_STABLE.C/",
         "tv/CRYPTOCAP_TOTAL2ES/",
         "tv/CRYPTOCAP_USDC.D/",
-        "tv/CRYPTOCAP_USDT.D/"
+        "tv/CRYPTOCAP_USDT.D/",
+        "binance/ETHBTC/",
+        "tv/CRYPTOCAP_TOTAL3ES/",
+        "tv/CRYPTOCAP_OTHERS/",
+        "tv/CRYPTOCAP_TOTAL/",
+        "tv/CRYPTOCAP_TOTALES/",
+        "tv/CRYPTOCAP_BTC/",
+        "tv/CRYPTOCAP_BTC.D/",
+        "tv/CRYPTOCAP_MEME.C/",
+        "tv/SP_SPX/"
       ]
     }
   ]
