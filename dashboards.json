@@ -203,6 +203,48 @@
         "tv/CRYPTOCAP_MEME.C/",
         "tv/SP_SPX/"
       ]
+    },
+    {
+      "repo": "mbzazad-max/Breakout",
+      "workflow": "build.yml",
+      "site": "https://dashboards.mbzazad.workers.dev/breakout/",
+      "uses": [
+        "binance/AAVEUSDT/",
+        "binance/ADAUSDT/",
+        "binance/ASTERUSDT/",
+        "binance/AVAXUSDT/",
+        "binance/BNBUSDT/",
+        "binance/BTCUSDT/",
+        "binance/DOGEUSDT/",
+        "binance/ENAUSDT/",
+        "binance/ETHUSDT/",
+        "binance/HYPEUSDT/",
+        "binance/ICPUSDT/",
+        "binance/INJUSDT/",
+        "binance/JUPUSDT/",
+        "binance/LINKUSDT/",
+        "binance/LTCUSDT/",
+        "binance/NEARUSDT/",
+        "binance/ONDOUSDT/",
+        "binance/PEPEUSDT/",
+        "binance/PUMPUSDT/",
+        "binance/RAYUSDT/",
+        "binance/RENDERUSDT/",
+        "binance/SHIBUSDT/",
+        "binance/SOLUSDT/",
+        "binance/SUIUSDT/",
+        "binance/TAOUSDT/",
+        "binance/TRXUSDT/",
+        "binance/UNIUSDT/",
+        "binance/WLDUSDT/",
+        "binance/XLMUSDT/",
+        "binance/XRPUSDT/",
+        "binance/ZECUSDT/",
+        "tv/CRYPTOCAP_STABLE.C/",
+        "tv/CRYPTOCAP_TOTAL2ES/",
+        "tv/CRYPTOCAP_USDC.D/",
+        "tv/CRYPTOCAP_USDT.D/"
+      ]
     }
   ]
 }
