@@ -1,11 +1,11 @@
 {
- "fetched_at": 1795588010,
+ "fetched_at": 1795653277,
  "id": "snap/tv_econ_us",
  "payload": {
   "result": [
    {
-    "actual": null,
-    "actualRaw": null,
+    "actual": 0.3,
+    "actualRaw": 0.3,
     "category": "cnsm",
     "country": "US",
     "currency": "USD",
@@ -16,8 +16,8 @@
     "importance": 1,
     "indicator": "Consumption, Adjusted MM*",
     "period": "Oct. 2026",
-    "previous": 0.5,
-    "previousRaw": 0.5,
+    "previous": 0.6,
+    "previousRaw": 0.6,
     "referenceDate": "2026-10-31T00:00:00Z",
     "referencePeriod": "Oct 2026",
     "source": "Bureau of Economics Analysis",
@@ -27,8 +27,8 @@
     "unit": "%"
    },
    {
-    "actual": null,
-    "actualRaw": null,
+    "actual": 0.3,
+    "actualRaw": 0.3,
     "category": "prce",
     "country": "US",
     "currency": "USD",
@@ -50,8 +50,8 @@
     "unit": "%"
    },
    {
-    "actual": null,
-    "actualRaw": null,
+    "actual": 0.7,
+    "actualRaw": 0.7,
     "category": "cnsm",
     "country": "US",
     "currency": "USD",
@@ -62,8 +62,8 @@
     "importance": 1,
     "indicator": "Personal Income MM*",
     "period": "Oct. 2026",
-    "previous": 0.2,
-    "previousRaw": 0.2,
+    "previous": 0.3,
+    "previousRaw": 0.3,
     "referenceDate": "2026-10-31T00:00:00Z",
     "referencePeriod": "Oct 2026",
     "source": "Bureau of Economics Analysis",
@@ -73,8 +73,8 @@
     "unit": "%"
    },
    {
-    "actual": null,
-    "actualRaw": null,
+    "actual": 4.3,
+    "actualRaw": 4.3,
     "category": "gdp",
     "country": "US",
     "currency": "USD",
@@ -96,8 +96,8 @@
     "unit": "%"
    },
    {
-    "actual": null,
-    "actualRaw": null,
+    "actual": 0.2,
+    "actualRaw": 0.2,
     "category": "bsnss",
     "country": "US",
     "currency": "USD",
