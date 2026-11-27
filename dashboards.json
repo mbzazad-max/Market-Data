@@ -23,7 +23,15 @@
         "tv/CRYPTOCAP_USDC.D/",
         "tv/CRYPTOCAP_TOTAL2ES/",
         "snap/",
-        "tv/SP_SPX/"
+        "tv/SP_SPX/",
+        "binance/XRPUSDT/1D",
+        "binance/DOGEUSDT/1D",
+        "binance/LINKUSDT/1D",
+        "binance/UNIUSDT/1D",
+        "binance/ARBUSDT/1D",
+        "binance/XLMUSDT/1D",
+        "binance/TRXUSDT/1D",
+        "tv/BITSTAMP_XRPUSD/1D"
       ]
     },
     {
