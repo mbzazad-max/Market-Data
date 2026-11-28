@@ -1,0 +1,35 @@
+{
+ "fetched_at": 1795866021,
+ "time_utc": "2026-11-28 11:40",
+ "fomc": {
+  "ok": true,
+  "ranges": 6,
+  "meetings": 8,
+  "current_range": "375-400",
+  "next": {
+   "meeting_date": "2026-12-09",
+   "probabilities": [
+    1.6,
+    98.4,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "p_cut": 0,
+   "p_hold": 1.6,
+   "p_hike": 98.4
+  }
+ },
+ "treasuries": {
+  "ok": true,
+  "companies_listed": 54,
+  "loaded": 54,
+  "purchases": 534,
+  "failed": {}
+ },
+ "staged": [
+  "btc_treasuries",
+  "fomc_odds"
+ ]
+}
