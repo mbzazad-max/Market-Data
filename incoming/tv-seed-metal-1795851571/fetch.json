@@ -1,0 +1,10 @@
+{
+ "source": "tv",
+ "fetched_at": 1795851571,
+ "margin_s": 300,
+ "files": {
+  "TVC_GOLD_1D.csv": 1795851571,
+  "TVC_SILVER_1D.csv": 1795851571
+ },
+ "note": "One-time seed 28 Nov 2026: TradingView TVC:GOLD and TVC:SILVER 1D from Jan 2008 (the same answer the Metal Cycle artifact's own Refresh uses). Time = 00:00 UTC of the trading date."
+}

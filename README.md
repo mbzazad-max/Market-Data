@@ -20,6 +20,11 @@ columns `time,open,high,low,close,volume`, time = candle open in unix seconds UT
   same PC run as the gauges (folder `SPOT\Market_gauge_Upload`). US market hours only, so it has overnight, weekend and holiday
   gaps; the importer's open-gap guard skips session breaks and the check flags it only after 4 days with nothing new.
   1D time = 00:00 UTC of the New York trading date. Used by the BTC & ETH dashboard (S&P 500 tab) and the Structure Shift board.
+- **Gold and silver** (`tv/TVC_GOLD/1D`, `tv/TVC_SILVER/1D`; added 28 Nov 2026, `market_hours: "metals"`): seeded once from
+  TradingView (daily from Jan 2008), topped up by the owner's PC **once a day** with `metals_daily.bat` in `SPOT\Market_gauge_Upload`
+  (daily only; the 4-hourly gauge run skips them). 1D time = 00:00 UTC of the trading date (TradingView stamps the bar at the
+  22:00/23:00 UTC session open the evening before; the uploader moves it). Closed Friday ~22:00 to Sunday ~23:00 UTC, so the check
+  flags them only after 4 days with nothing new. Used by the Metal Cycle dashboard (repo `metal`, `/metal/`).
 - `.github/workflows/import.yml` merges `incoming/` into `data/`, updates the manifest and asks the dashboards in
   `dashboards.json` that use a changed series to rebuild. Other workflows: `binance.yml` (above), `check.yml` (Check dashboards), `fng.yml`.
 

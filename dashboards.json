@@ -262,6 +262,15 @@
         "tv/CRYPTOCAP_MEME.C/",
         "tv/SP_SPX/"
       ]
+    },
+    {
+      "repo": "mbzazad-max/metal",
+      "workflow": "build.yml",
+      "site": "https://dashboards.mbzazad.workers.dev/metal/",
+      "uses": [
+        "tv/TVC_GOLD/",
+        "tv/TVC_SILVER/"
+      ]
     }
   ]
 }

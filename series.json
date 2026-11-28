@@ -865,6 +865,22 @@
    "seed_count": 5000,
    "market_hours": "us_equity",
    "note": "S&P 500 index, daily. Time = 00:00 UTC of the New York trading date (not TradingView's session-open time), so a day counts as closed at 00:00 UTC, 3-4 h after the US close. Seeded 26 Nov 2026 from the owner's TradingView export (from Dec 2010); newer days from the owner's PC (Market_gauge_Upload, every 4 hours)."
+  },
+  "tv/TVC_GOLD/1D": {
+   "source": "tv",
+   "symbol": "TVC:GOLD",
+   "tf": "1D",
+   "seed_count": 5000,
+   "market_hours": "metals",
+   "note": "Gold spot (TradingView TVC:GOLD), daily, for the Metal Cycle dashboard (added 28 Nov 2026). Time = 00:00 UTC of the trading date (TradingView stamps the bar at the 22:00/23:00 UTC session open the evening before). Seeded 28 Nov 2026 from TradingView (Jan 2008 on); newer days from the owner's PC once a day (Market_gauge_Upload, metals_daily.bat). No trading Friday ~22:00 to Sunday ~23:00 UTC; the check flags it only after 4 days with nothing new."
+  },
+  "tv/TVC_SILVER/1D": {
+   "source": "tv",
+   "symbol": "TVC:SILVER",
+   "tf": "1D",
+   "seed_count": 5000,
+   "market_hours": "metals",
+   "note": "Silver spot (TradingView TVC:SILVER), daily, for the Metal Cycle dashboard (added 28 Nov 2026). Time = 00:00 UTC of the trading date (TradingView stamps the bar at the 22:00/23:00 UTC session open the evening before). Seeded 28 Nov 2026 from TradingView (Jan 2008 on); newer days from the owner's PC once a day (Market_gauge_Upload, metals_daily.bat). No trading Friday ~22:00 to Sunday ~23:00 UTC; the check flags it only after 4 days with nothing new."
   }
  },
  "_about_snapshots": "Non-candle readings, one JSON file each in data/snap/<name>.json, newest valid reading wins (older or invalid uploads are rejected, last good kept). task = who loads it: 'daily-tv' = the 11:30 Claude task (TV_TASK.md), 'coinglass' = the CoinGlass Claude task on the owner's computer (COINGLASS_TASK.md).",
