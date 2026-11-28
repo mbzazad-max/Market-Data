@@ -1,6 +1,6 @@
 {
  "errors_last_import": [],
- "generated_at": 1795850395,
+ "generated_at": 1795853106,
  "series": {
   "binance/AAVEUSDT/1D": {
    "added_last_import": 1,
@@ -2398,6 +2398,40 @@
    "source": "tv",
    "symbol": "SP:SPX",
    "tf": "4H"
+  },
+  "tv/TVC_GOLD/1D": {
+   "added_last_import": 4769,
+   "checked_at": 1795851571,
+   "fetched_at": 1795851571,
+   "first_open": 1199232000,
+   "forming_dropped_last_import": 0,
+   "gaps": null,
+   "imported_at": 1795853106,
+   "last_close": 1795737600,
+   "last_open": 1795651200,
+   "period_s": 86400,
+   "revised_last_import": 0,
+   "rows": 4769,
+   "source": "tv",
+   "symbol": "TVC:GOLD",
+   "tf": "1D"
+  },
+  "tv/TVC_SILVER/1D": {
+   "added_last_import": 4768,
+   "checked_at": 1795851571,
+   "fetched_at": 1795851571,
+   "first_open": 1199232000,
+   "forming_dropped_last_import": 0,
+   "gaps": null,
+   "imported_at": 1795853106,
+   "last_close": 1795737600,
+   "last_open": 1795651200,
+   "period_s": 86400,
+   "revised_last_import": 0,
+   "rows": 4768,
+   "source": "tv",
+   "symbol": "TVC:SILVER",
+   "tf": "1D"
   }
  },
  "snapshots": {
