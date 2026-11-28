@@ -1,0 +1,77 @@
+{
+ "fetched_at": 1795865669,
+ "time_utc": "2026-11-28 11:34",
+ "symbols": {
+  "BTC": {
+   "ok": true,
+   "days": 21,
+   "first": "2026-10-29",
+   "last": "2026-11-27",
+   "last_musd": -389.0316
+  },
+  "ETH": {
+   "ok": true,
+   "days": 22,
+   "first": "2026-10-29",
+   "last": "2026-11-27",
+   "last_musd": -69.271
+  },
+  "SOL": {
+   "ok": true,
+   "days": 21,
+   "first": "2026-10-29",
+   "last": "2026-11-27",
+   "last_musd": -0.8717
+  },
+  "XRP": {
+   "ok": true,
+   "days": 21,
+   "first": "2026-10-29",
+   "last": "2026-11-27",
+   "last_musd": 5.3977
+  },
+  "DOGE": {
+   "ok": true,
+   "days": 21,
+   "first": "2026-10-29",
+   "last": "2026-11-27",
+   "last_musd": 0.0
+  },
+  "LINK": {
+   "ok": true,
+   "days": 21,
+   "first": "2026-10-29",
+   "last": "2026-11-27",
+   "last_musd": 0.0
+  },
+  "LTC": {
+   "ok": true,
+   "days": 21,
+   "first": "2026-10-29",
+   "last": "2026-11-27",
+   "last_musd": -0.2142
+  },
+  "HBAR": {
+   "ok": true,
+   "days": 21,
+   "first": "2026-10-29",
+   "last": "2026-11-27",
+   "last_musd": 0.0
+  },
+  "AVAX": {
+   "ok": true,
+   "days": 20,
+   "first": "2026-10-29",
+   "last": "2026-11-27",
+   "last_musd": 0.0
+  },
+  "DOT": {
+   "ok": true,
+   "days": 21,
+   "first": "2026-10-29",
+   "last": "2026-11-27",
+   "last_musd": 0.0
+  }
+ },
+ "staged": true
+}
