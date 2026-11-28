@@ -44,6 +44,23 @@ def merge_flows(old, new):
     return out
 
 
+def merge_treasuries(old, new):
+    """Company BTC purchases: keep every stored (ticker, date) row, a newer upload replaces a row; names and
+    listing from the new upload."""
+    out = dict(new)
+    comps = {}
+    for t in set((old or {}).get("companies", {})) | set(new["companies"]):
+        o, n = (old or {}).get("companies", {}).get(t, {}), new["companies"].get(t, {})
+        rows = {r[0]: r for r in o.get("purchases", [])}
+        rows.update({r[0]: r for r in n.get("purchases", [])})
+        c = dict(o)
+        c.update(n)
+        c["purchases"] = [rows[d] for d in sorted(rows)]
+        comps[t] = c
+    out["companies"] = comps
+    return out
+
+
 def import_snapshots(b, meta, man, errors, changed, now):
     reg = snapshot_registry()
     fetched_at = meta["fetched_at"]
@@ -73,6 +90,8 @@ def import_snapshots(b, meta, man, errors, changed, now):
         p.parent.mkdir(parents=True, exist_ok=True)
         if reg[sid]["kind"] == "etf_flows":  # an upload holds only recent days: merge it into the stored history
             payload = merge_flows(load_json(p)["payload"] if p.exists() else None, payload)
+        if reg[sid]["kind"] == "btc_treasuries":  # purchase history: keep every stored purchase, add new ones
+            payload = merge_treasuries(load_json(p)["payload"] if p.exists() else None, payload)
         save_json(p, {"id": sid, "fetched_at": fetched_at, "payload": payload})
         snaps[sid] = {"kind": reg[sid]["kind"], "fetched_at": fetched_at, "imported_at": now, "bytes": p.stat().st_size}
         changed.append(sid)

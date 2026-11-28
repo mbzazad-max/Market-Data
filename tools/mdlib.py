@@ -143,6 +143,27 @@ def check_snapshot(kind, payload):
                         and isinstance(d[1], (int, float)) and not isinstance(d[1], bool) and abs(d[1]) < 50000):
                     return f"{sym}: each day must be [\"YYYY-MM-DD\", flow in US$ millions], got {d!r}"
         return None
+    if kind == "fomc_odds":
+        rr, ms = payload.get("rate_ranges"), payload.get("meetings")
+        if not isinstance(rr, list) or not rr or not isinstance(ms, list) or not ms:
+            return "no rate_ranges / meetings"
+        for m in ms:
+            if not isinstance(m, dict) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(m.get("meeting_date"))):
+                return "meeting without a yyyy-mm-dd date"
+            ps = m.get("probabilities")
+            if not isinstance(ps, list) or len(ps) != len(rr) or any(p is not None and not isinstance(p, (int, float)) for p in ps):
+                return f"meeting {m.get('meeting_date')}: probabilities must be numbers or null, one per rate range"
+        return None
+    if kind == "btc_treasuries":
+        cs = payload.get("companies")
+        if not isinstance(cs, dict) or not cs:
+            return "no companies"
+        for t, c in cs.items():
+            for r in (c or {}).get("purchases", []):
+                if not (isinstance(r, list) and len(r) == 5 and re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(r[0]))
+                        and all(v is None or isinstance(v, (int, float)) for v in r[1:])):
+                    return f"{t}: bad purchase row {r!r}"
+        return None
     if kind == "cmc_quotes":
         # get_crypto_quotes_latest answer for 2+ ids: {"headers": [...], "rows": [[...], ...]}; 1 id: a list of objects
         if isinstance(payload.get("headers"), list) and isinstance(payload.get("rows"), list) and payload["rows"]:

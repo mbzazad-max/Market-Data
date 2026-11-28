@@ -941,10 +941,22 @@
    "max_age_h": 20
   },
   "snap/etf_flows": {
-   "task": "readings",
+   "task": "readings + sosovalue",
    "kind": "etf_flows",
    "what": "US spot ETF daily net flows (US$ millions) for BTC, ETH, SOL, ZEC (Farside) and HYPE (SoSoValue), read in the browser. The importer merges each upload into the stored history (one value per asset and US trading day; a newer upload replaces a day's value).",
    "max_age_h": 30
+  },
+  "snap/fomc_odds": {
+   "task": "sosovalue",
+   "kind": "fomc_odds",
+   "what": "SoSoValue API /macro/fomc-probabilities: market-implied odds per Fed target range for the next ~11 FOMC meetings, plus the current range from SOFR and p_cut / p_hold / p_hike per meeting (tools/sosovalue_macro.py, workflow sosovalue.yml, twice a day). History: data/history/fomc_odds.csv (next meeting, one row per load).",
+   "max_age_h": 30
+  },
+  "snap/btc_treasuries": {
+   "task": "sosovalue",
+   "kind": "btc_treasuries",
+   "what": "SoSoValue API /btc-treasuries + purchase-history: BTC bought by listed companies (date, BTC acquired, holding, cost). The importer merges each upload into the stored history (ticker + date). Loaded once a day (02:40 UTC run).",
+   "max_age_h": 50
   }
  }
 }

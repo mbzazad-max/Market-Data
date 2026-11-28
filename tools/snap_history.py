@@ -4,6 +4,7 @@ data/history/coinglass_<coin>.csv   CoinGlass per coin (btc, eth, sol, bnb): fun
 data/history/cmc_global.csv         CoinMarketCap whole market: market cap, volume, fear & greed, altcoin season,
                                     dominance, open interest, funding, BTC liquidations, US spot ETF assets
 data/history/cmc_quotes.csv         CoinMarketCap per coin quotes (SOL, BNB): price, rank, market cap, volume, % changes
+data/history/fomc_odds.csv          SoSoValue FOMC odds for the next meeting: cut / hold / hike %, top range, SOFR
 
 The stored reading (data/snap/<name>.json) stays the source; these files only flatten it. Numbers are plain
 (no $, %, K/M/B/T); an empty cell = not shown that day. fetched_at (unix s, UTC) is the key: a load is written once.
@@ -159,6 +160,21 @@ def cmc_quote_rows(fetched_at, p):
     return out
 
 
+FO_COLS = ["fetched_at", "time_utc", "meeting_date", "current_range", "p_cut_pct", "p_hold_pct", "p_hike_pct",
+           "top_range", "top_pct", "sofr_pct"]
+
+
+def fomc_row(fetched_at, p):
+    """Next FOMC meeting's odds, one row per load (data/history/fomc_odds.csv)."""
+    m = (p.get("meetings") or [{}])[0]
+    ps, rr = m.get("probabilities") or [], p.get("rate_ranges") or []
+    top = max(((v, i) for i, v in enumerate(ps) if v is not None), default=(None, None))
+    return {"fetched_at": fetched_at, "time_utc": utc(fetched_at), "meeting_date": m.get("meeting_date"),
+            "current_range": p.get("current_range"), "p_cut_pct": m.get("p_cut"), "p_hold_pct": m.get("p_hold"),
+            "p_hike_pct": m.get("p_hike"), "top_range": rr[top[1]] if top[1] is not None and top[1] < len(rr) else None,
+            "top_pct": top[0], "sofr_pct": (p.get("sofr") or {}).get("value")}
+
+
 def target(sid):
     """(csv file, columns, rows function) for a reading id, or None if it has no history file."""
     name = sid.split("/", 1)[1]
@@ -166,6 +182,8 @@ def target(sid):
         return HIST / f"{name}.csv", CG_COLS, lambda t, p: [coinglass_row(t, p)]
     if name == "cmc_global":
         return HIST / "cmc_global.csv", GL_COLS, lambda t, p: [cmc_global_row(t, p)]
+    if name == "fomc_odds":
+        return HIST / "fomc_odds.csv", FO_COLS, lambda t, p: [fomc_row(t, p)]
     if name == "cmc_quotes":
         return HIST / "cmc_quotes.csv", QT_COLS, cmc_quote_rows
     return None

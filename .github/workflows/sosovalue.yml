@@ -2,13 +2,19 @@ name: Fetch ETF flows (SoSoValue)
 # Twice a day after the US close (22:40 and 02:40 UTC = 09:40 and 13:40 Sydney summer time): US spot ETF daily net
 # flows for BTC, ETH, SOL, XRP, DOGE, LINK, LTC, HBAR, AVAX and DOT from the SoSoValue API (tools/sosovalue_flows.py,
 # secret SOSOVALUE_API_KEY). Drops snap/etf_flows into incoming/ and starts the import, like binance.yml.
-# data/status/sosovalue.json records what each symbol returned. ZEC and HYPE come from the owner's PC readings script.
+# Then FOMC odds (each run) and company BTC purchases (02:40 UTC run) from the same API (tools/sosovalue_macro.py).
+# data/status/sosovalue.json and sosovalue_macro.json record what each call returned. ZEC and HYPE come from the owner's PC readings script.
 # Run it by hand: Actions -> Fetch ETF flows (SoSoValue) -> Run workflow.
 on:
   schedule:
     - cron: '40 22 * * *'
     - cron: '40 2 * * *'
   workflow_dispatch:
+    inputs:
+      treasuries:
+        description: 'Also load company BTC purchases now (normally only the 02:40 UTC run)'
+        type: boolean
+        default: false
 permissions:
   contents: write
   actions: write
@@ -18,7 +24,7 @@ concurrency:
 jobs:
   fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -36,13 +42,24 @@ jobs:
           status=0; (cd tools && python3 sosovalue_flows.py) || status=$?
           echo "status=$status" >> "$GITHUB_OUTPUT"
           if ls incoming/snap-*/etf_flows.json >/dev/null 2>&1; then echo "staged=1" >> "$GITHUB_OUTPUT"; fi
+      - name: FOMC odds and company BTC purchases from SoSoValue
+        id: macro
+        env:
+          SOSOVALUE_API_KEY: ${{ secrets.SOSOVALUE_API_KEY }}
+          TREASURIES: ${{ inputs.treasuries && '1' || '0' }}
+        shell: bash
+        run: |
+          set -uo pipefail
+          (cd tools && python3 sosovalue_macro.py) || echo "::warning::FOMC odds / company purchases not loaded (see data/status/sosovalue_macro.json)"
+          if ls incoming/snap-*/fomc_odds.json incoming/snap-*/btc_treasuries.json >/dev/null 2>&1; then echo "staged=1" >> "$GITHUB_OUTPUT"; fi
+          true
       - name: Save the upload and the status in one commit
         shell: bash
         run: |
           set -uo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add incoming data/status/sosovalue.json
+          git add incoming data/status/sosovalue.json data/status/sosovalue_macro.json
           git diff --cached --quiet && { echo "Nothing to commit."; exit 0; }
           git commit -q -m "ETF flows load (SoSoValue API)"
           for attempt in 1 2 3 4 5 6; do
@@ -52,7 +69,7 @@ jobs:
           done
           echo "::error::Could not push after 6 attempts"; exit 1
       - name: Start the import
-        if: steps.fetch.outputs.staged == '1'
+        if: steps.fetch.outputs.staged == '1' || steps.macro.outputs.staged == '1'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run import.yml -R "${{ github.repository }}" --ref main && echo "Import started."
