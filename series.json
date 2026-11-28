@@ -939,6 +939,12 @@
    "kind": "coinglass",
    "what": "CoinGlass BNB funding, open interest and liquidations (read in the browser)",
    "max_age_h": 20
+  },
+  "snap/etf_flows": {
+   "task": "readings",
+   "kind": "etf_flows",
+   "what": "US spot ETF daily net flows (US$ millions) for BTC, ETH, SOL, ZEC (Farside) and HYPE (SoSoValue), read in the browser. The importer merges each upload into the stored history (one value per asset and US trading day; a newer upload replaces a day's value).",
+   "max_age_h": 30
   }
  }
 }

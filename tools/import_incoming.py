@@ -27,6 +27,23 @@ from mdlib import (PERIOD, ROOT, check_snapshot, data_path, load_json, parse_csv
                    same_values, save_json, series_registry, snap_path, snapshot_registry, write_csv)
 
 
+def merge_flows(old, new):
+    """ETF flows: keep every stored day, add the new days, a newer upload replaces a day's value (Farside restates late
+    funds). Other fields (as_of, source notes, net assets) come from the new upload."""
+    out = dict(new)
+    assets = {}
+    for sym in set((old or {}).get("assets", {})) | set(new["assets"]):
+        o, n = (old or {}).get("assets", {}).get(sym, {}), new["assets"].get(sym, {})
+        days = {d: v for d, v in o.get("days", [])}
+        days.update({d: v for d, v in n.get("days", [])})
+        a = dict(o)
+        a.update(n)
+        a["days"] = [[d, days[d]] for d in sorted(days)]
+        assets[sym] = a
+    out["assets"] = assets
+    return out
+
+
 def import_snapshots(b, meta, man, errors, changed, now):
     reg = snapshot_registry()
     fetched_at = meta["fetched_at"]
@@ -54,6 +71,8 @@ def import_snapshots(b, meta, man, errors, changed, now):
             continue
         p = snap_path(sid)
         p.parent.mkdir(parents=True, exist_ok=True)
+        if reg[sid]["kind"] == "etf_flows":  # an upload holds only recent days: merge it into the stored history
+            payload = merge_flows(load_json(p)["payload"] if p.exists() else None, payload)
         save_json(p, {"id": sid, "fetched_at": fetched_at, "payload": payload})
         snaps[sid] = {"kind": reg[sid]["kind"], "fetched_at": fetched_at, "imported_at": now, "bytes": p.stat().st_size}
         changed.append(sid)

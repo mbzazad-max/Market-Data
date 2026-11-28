@@ -1,8 +1,8 @@
 # Daily readings load: CoinMarketCap + CoinGlass (one scheduled Claude task, 11:30 Sydney, on the owner's computer)
 
 Claude only LOADS data here. Every run loads everything, whenever it runs (the 11:30 schedule or "Run now"): there is
-NO age check and no "already current" stop. It stores eight readings: `snap/cmc_global`, `snap/cmc_quotes` (SOL, BNB),
-`snap/coinglass_btc`, `snap/coinglass_eth`, `snap/coinglass_sol`, `snap/coinglass_bnb`. Each load also becomes one row in
+NO age check and no "already current" stop. It stores seven readings: `snap/cmc_global`, `snap/cmc_quotes` (SOL, BNB),
+`snap/coinglass_btc`, `snap/coinglass_eth`, `snap/coinglass_sol`, `snap/coinglass_bnb` and `snap/etf_flows` (US spot ETF net flows). Each load also becomes one row in
 the history CSVs in data/history/ (see tools/snap_history.py). It does not calculate anything for any dashboard and never
 suggests futures trades. Never use CryptoRank. Work unattended; do not ask questions.
 
@@ -47,9 +47,25 @@ suggests futures trades. Never use CryptoRank. Work unattended; do not ask quest
    The dashboard's spot buy checklist uses long_1h and long_4h ("flush over").
    In "read", describe what the numbers mean for a spot buyer in plain words; the dashboard adds the spot buy checklist itself. Copy numbers exactly as read; if a table does not load,
    leave that coin out of this run (its last good reading stays) rather than guessing.
-8. `python3 tools/snap_stage.py FETCHED_AT cmc_global=cmc_global.json cmc_quotes=cmc_quotes.json coinglass_btc=coinglass_btc.json coinglass_eth=coinglass_eth.json coinglass_sol=coinglass_sol.json coinglass_bnb=coinglass_bnb.json`
+7b. US spot ETF net flows (added 28 Nov 2026), in the same built-in browser session (skip with the CoinGlass steps if the browser
+   cannot be reached):
+   - Farside: open https://farside.co.uk/btc/ (wait ~4 s), then read /btc/, /eth/, /sol/ and /zec/ in ONE JavaScript call from that tab:
+     for each page `fetch('/<coin>/')`, parse it with DOMParser, take its largest table, keep rows whose first cell is a date like
+     "27 Nov 2026" and read the LAST cell (Total, US$ millions). Brackets mean negative: "(389.0)" -> -389.0, "1,045.0" -> 1045.0.
+     A "-" cell (no data yet for that day) is left out. Each page shows about the last 14 trading days: keep them all.
+   - HYPE: open https://sosovalue.com/assets/etf/us-hype-spot (wait ~6 s) and read from `document.body.innerText` the
+     "Daily Total Net Inflow" value and the "As of <Mon DD>" date after it (e.g. "-$1.03M" "As of Nov 27" -> ["2026-11-27", -1.03];
+     $K -> /1000, $B -> x1000), and "Total Net Assets" in US$ millions.
+   - Write etf_flows.json:
+     `{"as_of": "<ISO time with +11:00>", "unit": "US$ millions, net flow per US trading day (negative = outflow)", "assets": {
+       "BTC": {"source": "Farside (farside.co.uk/btc/), Total column", "days": [["2026-11-27", -389.0], ...]},
+       "ETH": {...}, "SOL": {...}, "ZEC": {...},
+       "HYPE": {"source": "SoSoValue (sosovalue.com/assets/etf/us-hype-spot), Daily Total Net Inflow", "days": [["2026-11-27", -1.03]], "net_assets_musd": 283.22}}}`
+     Dates are the US trading day as shown (YYYY-MM-DD). Copy numbers exactly; leave out an asset whose page does not load rather
+     than guessing. Only recent days are needed: the importer merges them into the stored history (a newer value replaces a day).
+8. `python3 tools/snap_stage.py FETCHED_AT cmc_global=cmc_global.json cmc_quotes=cmc_quotes.json coinglass_btc=coinglass_btc.json coinglass_eth=coinglass_eth.json coinglass_sol=coinglass_sol.json coinglass_bnb=coinglass_bnb.json etf_flows=etf_flows.json`
    (leave out anything not loaded this run), commit only incoming/snap-FETCHED_AT/ in ONE commit ("Readings load FETCHED_AT")
    and push to main (fetch and rebase on origin/main first if the push is rejected). GitHub then imports it, adds one row per
    reading to the CSV files in data/history/, and the dashboards rebuild themselves.
-9. Report: CoinMarketCap (fear & greed, total market cap, BTC dominance; SOL and BNB price and rank), then one line per coin
+9. Report: ETF flows (latest day per coin, and BTC's 5-day total), then CoinMarketCap (fear & greed, total market cap, BTC dominance; SOL and BNB price and rank), then one line per coin
    (BTC, ETH, SOL, BNB): funding, open interest 4h/24h, 24h liquidations (long/short), or why something was not loaded.

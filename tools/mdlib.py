@@ -3,6 +3,7 @@ import csv
 import io
 import json
 import math
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -128,6 +129,19 @@ def check_snapshot(kind, payload):
             for k in ("long_1h", "short_1h", "long_4h", "short_4h", "long_24h", "short_24h"):
                 if k in r and (not isinstance(r[k], (int, float)) or r[k] < 0):
                     return f"row {r.get('id')}: {k} must be a dollar amount (number, not text)"
+        return None
+    if kind == "etf_flows":
+        assets = payload.get("assets")
+        if not isinstance(assets, dict) or not assets:
+            return "no assets"
+        for sym, a in assets.items():
+            days = a.get("days") if isinstance(a, dict) else None
+            if not isinstance(days, list) or not days:
+                return f"{sym}: no days"
+            for d in days:
+                if not (isinstance(d, list) and len(d) == 2 and isinstance(d[0], str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", d[0])
+                        and isinstance(d[1], (int, float)) and not isinstance(d[1], bool) and abs(d[1]) < 50000):
+                    return f"{sym}: each day must be [\"YYYY-MM-DD\", flow in US$ millions], got {d!r}"
         return None
     if kind == "cmc_quotes":
         # get_crypto_quotes_latest answer for 2+ ids: {"headers": [...], "rows": [[...], ...]}; 1 id: a list of objects
