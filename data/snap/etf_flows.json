@@ -1,8 +1,8 @@
 {
- "fetched_at": 1795863508,
+ "fetched_at": 1795864458,
  "id": "snap/etf_flows",
  "payload": {
-  "as_of": "2026-11-28T22:10:00+11:00",
+  "as_of": "2026-11-28T22:14:18+11:00",
   "assets": {
    "BTC": {
     "days": [
