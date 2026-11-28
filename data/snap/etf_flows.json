@@ -1,8 +1,8 @@
 {
- "fetched_at": 1795865669,
+ "fetched_at": 1795865990,
  "id": "snap/etf_flows",
  "payload": {
-  "as_of": "2026-11-28T11:34:29Z",
+  "as_of": "2026-11-28T11:39:50Z",
   "assets": {
    "AVAX": {
     "days": [

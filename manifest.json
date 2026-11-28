@@ -1,6 +1,6 @@
 {
  "errors_last_import": [],
- "generated_at": 1795865713,
+ "generated_at": 1795866225,
  "series": {
   "binance/AAVEUSDT/1D": {
    "added_last_import": 1,
@@ -2435,6 +2435,12 @@
   }
  },
  "snapshots": {
+  "snap/btc_treasuries": {
+   "bytes": 53543,
+   "fetched_at": 1795866022,
+   "imported_at": 1795866225,
+   "kind": "btc_treasuries"
+  },
   "snap/cmc_global": {
    "bytes": 3744,
    "fetched_at": 1795864458,
@@ -2473,9 +2479,15 @@
   },
   "snap/etf_flows": {
    "bytes": 47310,
-   "fetched_at": 1795865669,
-   "imported_at": 1795865713,
+   "fetched_at": 1795865990,
+   "imported_at": 1795866225,
    "kind": "etf_flows"
+  },
+  "snap/fomc_odds": {
+   "bytes": 1843,
+   "fetched_at": 1795866022,
+   "imported_at": 1795866225,
+   "kind": "fomc_odds"
   },
   "snap/tv_econ_us": {
    "bytes": 7467,
