@@ -1,0 +1,63 @@
+name: Fetch ETF flows (SoSoValue)
+# Twice a day after the US close (22:40 and 02:40 UTC = 09:40 and 13:40 Sydney summer time): US spot ETF daily net
+# flows for BTC, ETH, SOL, XRP, DOGE, LINK, LTC, HBAR, AVAX and DOT from the SoSoValue API (tools/sosovalue_flows.py,
+# secret SOSOVALUE_API_KEY). Drops snap/etf_flows into incoming/ and starts the import, like binance.yml.
+# data/status/sosovalue.json records what each symbol returned. ZEC and HYPE come from the owner's PC readings script.
+# Run it by hand: Actions -> Fetch ETF flows (SoSoValue) -> Run workflow.
+on:
+  schedule:
+    - cron: '40 22 * * *'
+    - cron: '40 2 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: market-data-sosovalue
+  cancel-in-progress: false
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch ETF flows from SoSoValue
+        id: fetch
+        env:
+          SOSOVALUE_API_KEY: ${{ secrets.SOSOVALUE_API_KEY }}
+        shell: bash
+        run: |
+          set -uo pipefail
+          status=0; (cd tools && python3 sosovalue_flows.py) || status=$?
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          if ls incoming/snap-*/etf_flows.json >/dev/null 2>&1; then echo "staged=1" >> "$GITHUB_OUTPUT"; fi
+      - name: Save the upload and the status in one commit
+        shell: bash
+        run: |
+          set -uo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add incoming data/status/sosovalue.json
+          git diff --cached --quiet && { echo "Nothing to commit."; exit 0; }
+          git commit -q -m "ETF flows load (SoSoValue API)"
+          for attempt in 1 2 3 4 5 6; do
+            if git push -q origin HEAD:main; then echo "Pushed."; exit 0; fi
+            sleep $((attempt * 3))
+            git fetch --depth 1 origin main -q && git rebase -q origin/main || { echo "::error::Rebase failed"; exit 1; }
+          done
+          echo "::error::Could not push after 6 attempts"; exit 1
+      - name: Start the import
+        if: steps.fetch.outputs.staged == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run import.yml -R "${{ github.repository }}" --ref main && echo "Import started."
+      - name: Fail if nothing was loaded
+        if: steps.fetch.outputs.status != '0'
+        run: |
+          echo "::error::No ETF flows were loaded from SoSoValue (see data/status/sosovalue.json)."
+          exit 1
